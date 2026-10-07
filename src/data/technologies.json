@@ -1,0 +1,562 @@
+[
+ {
+  "id": "inf_1",
+  "name": "Улучшенное стрелковое оружие",
+  "branch": "infantry",
+  "branch_name": "Пехота",
+  "level": 1,
+  "cost": 30,
+  "requires": [],
+  "desc": "Пехота: уровень 1"
+ },
+ {
+  "id": "inf_2",
+  "name": "Моторизация пехоты",
+  "branch": "infantry",
+  "branch_name": "Пехота",
+  "level": 2,
+  "cost": 78,
+  "requires": [
+   "inf_1"
+  ],
+  "desc": "Пехота: уровень 2"
+ },
+ {
+  "id": "inf_3",
+  "name": "Тактика малых групп",
+  "branch": "infantry",
+  "branch_name": "Пехота",
+  "level": 3,
+  "cost": 144,
+  "requires": [
+   "inf_2"
+  ],
+  "desc": "Пехота: уровень 3"
+ },
+ {
+  "id": "inf_4",
+  "name": "Бронежилеты и ПНВ",
+  "branch": "infantry",
+  "branch_name": "Пехота",
+  "level": 4,
+  "cost": 228,
+  "requires": [
+   "inf_3"
+  ],
+  "desc": "Пехота: уровень 4"
+ },
+ {
+  "id": "inf_5",
+  "name": "Дроны-разведчики",
+  "branch": "infantry",
+  "branch_name": "Пехота",
+  "level": 5,
+  "cost": 330,
+  "requires": [
+   "inf_4"
+  ],
+  "desc": "Пехота: уровень 5"
+ },
+ {
+  "id": "inf_6",
+  "name": "Цифровая пехота",
+  "branch": "infantry",
+  "branch_name": "Пехота",
+  "level": 6,
+  "cost": 450,
+  "requires": [
+   "inf_5"
+  ],
+  "desc": "Пехота: уровень 6"
+ },
+ {
+  "id": "tank_1",
+  "name": "Основные боевые танки",
+  "branch": "tanks",
+  "branch_name": "Танки",
+  "level": 1,
+  "cost": 30,
+  "requires": [],
+  "desc": "Танки: уровень 1"
+ },
+ {
+  "id": "tank_2",
+  "name": "Комбинированная броня",
+  "branch": "tanks",
+  "branch_name": "Танки",
+  "level": 2,
+  "cost": 78,
+  "requires": [
+   "tank_1"
+  ],
+  "desc": "Танки: уровень 2"
+ },
+ {
+  "id": "tank_3",
+  "name": "Тепловизоры",
+  "branch": "tanks",
+  "branch_name": "Танки",
+  "level": 3,
+  "cost": 144,
+  "requires": [
+   "tank_2"
+  ],
+  "desc": "Танки: уровень 3"
+ },
+ {
+  "id": "tank_4",
+  "name": "Активная защита",
+  "branch": "tanks",
+  "branch_name": "Танки",
+  "level": 4,
+  "cost": 228,
+  "requires": [
+   "tank_3"
+  ],
+  "desc": "Танки: уровень 4"
+ },
+ {
+  "id": "tank_5",
+  "name": "Сетецентрическое управление",
+  "branch": "tanks",
+  "branch_name": "Танки",
+  "level": 5,
+  "cost": 330,
+  "requires": [
+   "tank_4"
+  ],
+  "desc": "Танки: уровень 5"
+ },
+ {
+  "id": "tank_6",
+  "name": "Танки нового поколения",
+  "branch": "tanks",
+  "branch_name": "Танки",
+  "level": 6,
+  "cost": 450,
+  "requires": [
+   "tank_5"
+  ],
+  "desc": "Танки: уровень 6"
+ },
+ {
+  "id": "air_1",
+  "name": "Реактивные истребители",
+  "branch": "air",
+  "branch_name": "Авиация",
+  "level": 1,
+  "cost": 30,
+  "requires": [],
+  "desc": "Авиация: уровень 1"
+ },
+ {
+  "id": "air_2",
+  "name": "Радары дальнего обнаружения",
+  "branch": "air",
+  "branch_name": "Авиация",
+  "level": 2,
+  "cost": 78,
+  "requires": [
+   "air_1"
+  ],
+  "desc": "Авиация: уровень 2"
+ },
+ {
+  "id": "air_3",
+  "name": "Управляемые ракеты",
+  "branch": "air",
+  "branch_name": "Авиация",
+  "level": 3,
+  "cost": 144,
+  "requires": [
+   "air_2"
+  ],
+  "desc": "Авиация: уровень 3"
+ },
+ {
+  "id": "air_4",
+  "name": "Малозаметность",
+  "branch": "air",
+  "branch_name": "Авиация",
+  "level": 4,
+  "cost": 228,
+  "requires": [
+   "air_3"
+  ],
+  "desc": "Авиация: уровень 4"
+ },
+ {
+  "id": "air_5",
+  "name": "БПЛА-ударные",
+  "branch": "air",
+  "branch_name": "Авиация",
+  "level": 5,
+  "cost": 330,
+  "requires": [
+   "air_4"
+  ],
+  "desc": "Авиация: уровень 5"
+ },
+ {
+  "id": "air_6",
+  "name": "Авиация 6-го поколения",
+  "branch": "air",
+  "branch_name": "Авиация",
+  "level": 6,
+  "cost": 450,
+  "requires": [
+   "air_5"
+  ],
+  "desc": "Авиация: уровень 6"
+ },
+ {
+  "id": "navy_1",
+  "name": "Эсминцы с УРО",
+  "branch": "navy",
+  "branch_name": "Флот",
+  "level": 1,
+  "cost": 30,
+  "requires": [],
+  "desc": "Флот: уровень 1"
+ },
+ {
+  "id": "navy_2",
+  "name": "Подводные лодки нового типа",
+  "branch": "navy",
+  "branch_name": "Флот",
+  "level": 2,
+  "cost": 78,
+  "requires": [
+   "navy_1"
+  ],
+  "desc": "Флот: уровень 2"
+ },
+ {
+  "id": "navy_3",
+  "name": "Авианосные группы",
+  "branch": "navy",
+  "branch_name": "Флот",
+  "level": 3,
+  "cost": 144,
+  "requires": [
+   "navy_2"
+  ],
+  "desc": "Флот: уровень 3"
+ },
+ {
+  "id": "navy_4",
+  "name": "Гиперзвуковые ПКР",
+  "branch": "navy",
+  "branch_name": "Флот",
+  "level": 4,
+  "cost": 228,
+  "requires": [
+   "navy_3"
+  ],
+  "desc": "Флот: уровень 4"
+ },
+ {
+  "id": "navy_5",
+  "name": "Безэкипажные катера",
+  "branch": "navy",
+  "branch_name": "Флот",
+  "level": 5,
+  "cost": 330,
+  "requires": [
+   "navy_4"
+  ],
+  "desc": "Флот: уровень 5"
+ },
+ {
+  "id": "navy_6",
+  "name": "Единая морская сеть",
+  "branch": "navy",
+  "branch_name": "Флот",
+  "level": 6,
+  "cost": 450,
+  "requires": [
+   "navy_5"
+  ],
+  "desc": "Флот: уровень 6"
+ },
+ {
+  "id": "ind_1",
+  "name": "Конвейерное производство",
+  "branch": "industry",
+  "branch_name": "Промышленность",
+  "level": 1,
+  "cost": 30,
+  "requires": [],
+  "desc": "Промышленность: уровень 1"
+ },
+ {
+  "id": "ind_2",
+  "name": "Автоматизация",
+  "branch": "industry",
+  "branch_name": "Промышленность",
+  "level": 2,
+  "cost": 78,
+  "requires": [
+   "ind_1"
+  ],
+  "desc": "Промышленность: уровень 2"
+ },
+ {
+  "id": "ind_3",
+  "name": "Роботизированные заводы",
+  "branch": "industry",
+  "branch_name": "Промышленность",
+  "level": 3,
+  "cost": 144,
+  "requires": [
+   "ind_2"
+  ],
+  "desc": "Промышленность: уровень 3"
+ },
+ {
+  "id": "ind_4",
+  "name": "Энергетика и логистика",
+  "branch": "industry",
+  "branch_name": "Промышленность",
+  "level": 4,
+  "cost": 228,
+  "requires": [
+   "ind_3"
+  ],
+  "desc": "Промышленность: уровень 4"
+ },
+ {
+  "id": "ind_5",
+  "name": "Цифровая экономика",
+  "branch": "industry",
+  "branch_name": "Промышленность",
+  "level": 5,
+  "cost": 330,
+  "requires": [
+   "ind_4"
+  ],
+  "desc": "Промышленность: уровень 5"
+ },
+ {
+  "id": "ind_6",
+  "name": "Индустрия 4.0",
+  "branch": "industry",
+  "branch_name": "Промышленность",
+  "level": 6,
+  "cost": 450,
+  "requires": [
+   "ind_5"
+  ],
+  "desc": "Промышленность: уровень 6"
+ },
+ {
+  "id": "eco_1",
+  "name": "Банковская реформа",
+  "branch": "economy",
+  "branch_name": "Экономика",
+  "level": 1,
+  "cost": 30,
+  "requires": [],
+  "desc": "Экономика: уровень 1 (бонус: доход казны)"
+ },
+ {
+  "id": "eco_2",
+  "name": "Фондовый рынок",
+  "branch": "economy",
+  "branch_name": "Экономика",
+  "level": 2,
+  "cost": 78,
+  "requires": [
+   "eco_1"
+  ],
+  "desc": "Экономика: уровень 2 (бонус: доход казны)"
+ },
+ {
+  "id": "eco_3",
+  "name": "Налоговая оптимизация",
+  "branch": "economy",
+  "branch_name": "Экономика",
+  "level": 3,
+  "cost": 144,
+  "requires": [
+   "eco_2"
+  ],
+  "desc": "Экономика: уровень 3 (бонус: доход казны)"
+ },
+ {
+  "id": "eco_4",
+  "name": "Свободные торговые зоны",
+  "branch": "economy",
+  "branch_name": "Экономика",
+  "level": 4,
+  "cost": 228,
+  "requires": [
+   "eco_3"
+  ],
+  "desc": "Экономика: уровень 4 (бонус: доход казны)"
+ },
+ {
+  "id": "eco_5",
+  "name": "Цифровые платежи",
+  "branch": "economy",
+  "branch_name": "Экономика",
+  "level": 5,
+  "cost": 330,
+  "requires": [
+   "eco_4"
+  ],
+  "desc": "Экономика: уровень 5 (бонус: доход казны)"
+ },
+ {
+  "id": "eco_6",
+  "name": "Глобальные финансы",
+  "branch": "economy",
+  "branch_name": "Экономика",
+  "level": 6,
+  "cost": 450,
+  "requires": [
+   "eco_5"
+  ],
+  "desc": "Экономика: уровень 6 (бонус: доход казны)"
+ },
+ {
+  "id": "infra_1",
+  "name": "Дорожная сеть",
+  "branch": "infra",
+  "branch_name": "Инфраструктура",
+  "level": 1,
+  "cost": 30,
+  "requires": [],
+  "desc": "Инфраструктура: уровень 1 (бонус: рост населения, людские ресурсы, снабжение)"
+ },
+ {
+  "id": "infra_2",
+  "name": "Электрификация",
+  "branch": "infra",
+  "branch_name": "Инфраструктура",
+  "level": 2,
+  "cost": 78,
+  "requires": [
+   "infra_1"
+  ],
+  "desc": "Инфраструктура: уровень 2 (бонус: рост населения, людские ресурсы, снабжение)"
+ },
+ {
+  "id": "infra_3",
+  "name": "Железные дороги",
+  "branch": "infra",
+  "branch_name": "Инфраструктура",
+  "level": 3,
+  "cost": 144,
+  "requires": [
+   "infra_2"
+  ],
+  "desc": "Инфраструктура: уровень 3 (бонус: рост населения, людские ресурсы, снабжение)"
+ },
+ {
+  "id": "infra_4",
+  "name": "Порты и аэропорты",
+  "branch": "infra",
+  "branch_name": "Инфраструктура",
+  "level": 4,
+  "cost": 228,
+  "requires": [
+   "infra_3"
+  ],
+  "desc": "Инфраструктура: уровень 4 (бонус: рост населения, людские ресурсы, снабжение)"
+ },
+ {
+  "id": "infra_5",
+  "name": "Городское планирование",
+  "branch": "infra",
+  "branch_name": "Инфраструктура",
+  "level": 5,
+  "cost": 330,
+  "requires": [
+   "infra_4"
+  ],
+  "desc": "Инфраструктура: уровень 5 (бонус: рост населения, людские ресурсы, снабжение)"
+ },
+ {
+  "id": "infra_6",
+  "name": "Умная логистика",
+  "branch": "infra",
+  "branch_name": "Инфраструктура",
+  "level": 6,
+  "cost": 450,
+  "requires": [
+   "infra_5"
+  ],
+  "desc": "Инфраструктура: уровень 6 (бонус: рост населения, людские ресурсы, снабжение)"
+ },
+ {
+  "id": "dipl_1",
+  "name": "Дипломатический корпус",
+  "branch": "diplomacy",
+  "branch_name": "Дипломатия",
+  "level": 1,
+  "cost": 30,
+  "requires": [],
+  "desc": "Дипломатия: уровень 1 (бонус: эффект дипломатии)"
+ },
+ {
+  "id": "dipl_2",
+  "name": "Посольская сеть",
+  "branch": "diplomacy",
+  "branch_name": "Дипломатия",
+  "level": 2,
+  "cost": 78,
+  "requires": [
+   "dipl_1"
+  ],
+  "desc": "Дипломатия: уровень 2 (бонус: эффект дипломатии)"
+ },
+ {
+  "id": "dipl_3",
+  "name": "Переговорные площадки",
+  "branch": "diplomacy",
+  "branch_name": "Дипломатия",
+  "level": 3,
+  "cost": 144,
+  "requires": [
+   "dipl_2"
+  ],
+  "desc": "Дипломатия: уровень 3 (бонус: эффект дипломатии)"
+ },
+ {
+  "id": "dipl_4",
+  "name": "Международное право",
+  "branch": "diplomacy",
+  "branch_name": "Дипломатия",
+  "level": 4,
+  "cost": 228,
+  "requires": [
+   "dipl_3"
+  ],
+  "desc": "Дипломатия: уровень 4 (бонус: эффект дипломатии)"
+ },
+ {
+  "id": "dipl_5",
+  "name": "Культурная дипломатия",
+  "branch": "diplomacy",
+  "branch_name": "Дипломатия",
+  "level": 5,
+  "cost": 330,
+  "requires": [
+   "dipl_4"
+  ],
+  "desc": "Дипломатия: уровень 5 (бонус: эффект дипломатии)"
+ },
+ {
+  "id": "dipl_6",
+  "name": "Мировой авторитет",
+  "branch": "diplomacy",
+  "branch_name": "Дипломатия",
+  "level": 6,
+  "cost": 450,
+  "requires": [
+   "dipl_5"
+  ],
+  "desc": "Дипломатия: уровень 6 (бонус: эффект дипломатии)"
+ }
+]

@@ -1,0 +1,3840 @@
+[
+ {
+  "iso": "DZA",
+  "name": "Алжир",
+  "continent": "Africa",
+  "population": 45.0,
+  "gdp": 240.0,
+  "manpower": 2250.0,
+  "stability": 53.2,
+  "ideology": "neutral",
+  "color": [
+   216,
+   155,
+   56
+  ],
+  "capital": "Алжир",
+  "oil_mult": 3.0,
+  "steel_mult": 0.74,
+  "food_mult": 0.8099999999999999
+ },
+ {
+  "iso": "AGO",
+  "name": "Ангола",
+  "continent": "Africa",
+  "population": 36.0,
+  "gdp": 85.0,
+  "manpower": 1800.0,
+  "stability": 53.4,
+  "ideology": "neutral",
+  "color": [
+   124,
+   178,
+   76
+  ],
+  "capital": "Луанда",
+  "oil_mult": 3.0,
+  "steel_mult": 0.6,
+  "food_mult": 1.1400000000000001
+ },
+ {
+  "iso": "BEN",
+  "name": "Бенин",
+  "continent": "Africa",
+  "population": 13.0,
+  "gdp": 19.0,
+  "manpower": 650.0,
+  "stability": 50.5,
+  "ideology": "neutral",
+  "color": [
+   213,
+   226,
+   93
+  ],
+  "capital": "Порто-Ново",
+  "oil_mult": 0.9099999999999999,
+  "steel_mult": 1.23,
+  "food_mult": 1.1400000000000001
+ },
+ {
+  "iso": "BWA",
+  "name": "Ботсвана",
+  "continent": "Africa",
+  "population": 2.6,
+  "gdp": 20.0,
+  "manpower": 130.0,
+  "stability": 61.1,
+  "ideology": "democracy",
+  "color": [
+   102,
+   86,
+   226
+  ],
+  "capital": "Габороне",
+  "oil_mult": 0.71,
+  "steel_mult": 1.05,
+  "food_mult": 0.62
+ },
+ {
+  "iso": "BFA",
+  "name": "Буркина-Фасо",
+  "continent": "Africa",
+  "population": 23.0,
+  "gdp": 20.0,
+  "manpower": 1150.0,
+  "stability": 36.8,
+  "ideology": "neutral",
+  "color": [
+   211,
+   110,
+   157
+  ],
+  "capital": "Уагадугу",
+  "oil_mult": 0.74,
+  "steel_mult": 0.97,
+  "food_mult": 1.0
+ },
+ {
+  "iso": "BDI",
+  "name": "Бурунди",
+  "continent": "Africa",
+  "population": 13.0,
+  "gdp": 3.0,
+  "manpower": 650.0,
+  "stability": 49.3,
+  "ideology": "autocracy",
+  "color": [
+   87,
+   165,
+   159
+  ],
+  "capital": "Гитега",
+  "oil_mult": 1.0699999999999998,
+  "steel_mult": 1.1600000000000001,
+  "food_mult": 0.9099999999999999
+ },
+ {
+  "iso": "CPV",
+  "name": "Кабо-Верде",
+  "continent": "Africa",
+  "population": 0.6,
+  "gdp": 2.4,
+  "manpower": 30.0,
+  "stability": 52.8,
+  "ideology": "neutral",
+  "color": [
+   173,
+   86,
+   124
+  ],
+  "capital": "Прая",
+  "oil_mult": 0.83,
+  "steel_mult": 1.1,
+  "food_mult": 0.82
+ },
+ {
+  "iso": "CMR",
+  "name": "Камерун",
+  "continent": "Africa",
+  "population": 28.0,
+  "gdp": 47.0,
+  "manpower": 1400.0,
+  "stability": 53.0,
+  "ideology": "autocracy",
+  "color": [
+   51,
+   183,
+   115
+  ],
+  "capital": "Яунде",
+  "oil_mult": 0.85,
+  "steel_mult": 1.31,
+  "food_mult": 0.72
+ },
+ {
+  "iso": "CAF",
+  "name": "ЦАР",
+  "continent": "Africa",
+  "population": 5.5,
+  "gdp": 2.5,
+  "manpower": 275.0,
+  "stability": 33.3,
+  "ideology": "neutral",
+  "color": [
+   221,
+   70,
+   226
+  ],
+  "capital": "Банги",
+  "oil_mult": 1.01,
+  "steel_mult": 1.3199999999999998,
+  "food_mult": 0.87
+ },
+ {
+  "iso": "TCD",
+  "name": "Чад",
+  "continent": "Africa",
+  "population": 18.0,
+  "gdp": 13.0,
+  "manpower": 900.0,
+  "stability": 45.3,
+  "ideology": "autocracy",
+  "color": [
+   196,
+   167,
+   86
+  ],
+  "capital": "Нджамена",
+  "oil_mult": 1.26,
+  "steel_mult": 1.28,
+  "food_mult": 0.62
+ },
+ {
+  "iso": "COM",
+  "name": "Коморы",
+  "continent": "Africa",
+  "population": 0.8,
+  "gdp": 1.3,
+  "manpower": 40.0,
+  "stability": 52.9,
+  "ideology": "neutral",
+  "color": [
+   175,
+   178,
+   76
+  ],
+  "capital": "Морони",
+  "oil_mult": 1.3900000000000001,
+  "steel_mult": 1.06,
+  "food_mult": 0.8099999999999999
+ },
+ {
+  "iso": "COG",
+  "name": "Конго",
+  "continent": "Africa",
+  "population": 6.0,
+  "gdp": 15.0,
+  "manpower": 300.0,
+  "stability": 52.6,
+  "ideology": "neutral",
+  "color": [
+   206,
+   84,
+   80
+  ],
+  "capital": "Браззавиль",
+  "oil_mult": 3.0,
+  "steel_mult": 0.82,
+  "food_mult": 1.1400000000000001
+ },
+ {
+  "iso": "COD",
+  "name": "ДР Конго",
+  "continent": "Africa",
+  "population": 102.0,
+  "gdp": 66.0,
+  "manpower": 5100.0,
+  "stability": 34.0,
+  "ideology": "neutral",
+  "color": [
+   219,
+   100,
+   187
+  ],
+  "capital": "Киншаса",
+  "oil_mult": 1.01,
+  "steel_mult": 0.6799999999999999,
+  "food_mult": 1.21
+ },
+ {
+  "iso": "CIV",
+  "name": "Кот-д'Ивуар",
+  "continent": "Africa",
+  "population": 28.0,
+  "gdp": 79.0,
+  "manpower": 1400.0,
+  "stability": 52.2,
+  "ideology": "neutral",
+  "color": [
+   198,
+   192,
+   107
+  ],
+  "capital": "Ямусукро",
+  "oil_mult": 0.71,
+  "steel_mult": 1.27,
+  "food_mult": 1.28
+ },
+ {
+  "iso": "DJI",
+  "name": "Джибути",
+  "continent": "Africa",
+  "population": 1.1,
+  "gdp": 3.5,
+  "manpower": 55.0,
+  "stability": 57.7,
+  "ideology": "autocracy",
+  "color": [
+   84,
+   93,
+   191
+  ],
+  "capital": "Джибути",
+  "oil_mult": 1.35,
+  "steel_mult": 0.82,
+  "food_mult": 0.9299999999999999
+ },
+ {
+  "iso": "EGY",
+  "name": "Египет",
+  "continent": "Africa",
+  "population": 112.0,
+  "gdp": 400.0,
+  "manpower": 5600.0,
+  "stability": 51.2,
+  "ideology": "autocracy",
+  "color": [
+   55,
+   62,
+   191
+  ],
+  "capital": "Каир",
+  "oil_mult": 1.3399999999999999,
+  "steel_mult": 0.87,
+  "food_mult": 0.7
+ },
+ {
+  "iso": "GNQ",
+  "name": "Экваториальная Гвинея",
+  "continent": "Africa",
+  "population": 1.7,
+  "gdp": 12.0,
+  "manpower": 85.0,
+  "stability": 58.7,
+  "ideology": "autocracy",
+  "color": [
+   222,
+   94,
+   224
+  ],
+  "capital": "Малабо",
+  "oil_mult": 1.26,
+  "steel_mult": 1.26,
+  "food_mult": 0.6
+ },
+ {
+  "iso": "ERI",
+  "name": "Эритрея",
+  "continent": "Africa",
+  "population": 3.7,
+  "gdp": 2.5,
+  "manpower": 185.0,
+  "stability": 52.1,
+  "ideology": "autocracy",
+  "color": [
+   53,
+   97,
+   198
+  ],
+  "capital": "Асмэра",
+  "oil_mult": 1.23,
+  "steel_mult": 0.96,
+  "food_mult": 0.7
+ },
+ {
+  "iso": "SWZ",
+  "name": "Эсватини",
+  "continent": "Africa",
+  "population": 1.2,
+  "gdp": 4.7,
+  "manpower": 60.0,
+  "stability": 58.7,
+  "ideology": "autocracy",
+  "color": [
+   99,
+   183,
+   216
+  ],
+  "capital": "Мбабане",
+  "oil_mult": 0.99,
+  "steel_mult": 0.6,
+  "food_mult": 0.6699999999999999
+ },
+ {
+  "iso": "ETH",
+  "name": "Эфиопия",
+  "continent": "Africa",
+  "population": 126.0,
+  "gdp": 160.0,
+  "manpower": 6300.0,
+  "stability": 47.0,
+  "ideology": "neutral",
+  "color": [
+   138,
+   214,
+   87
+  ],
+  "capital": "Аддис-Абеба",
+  "oil_mult": 1.22,
+  "steel_mult": 0.6699999999999999,
+  "food_mult": 0.64
+ },
+ {
+  "iso": "GAB",
+  "name": "Габон",
+  "continent": "Africa",
+  "population": 2.4,
+  "gdp": 20.0,
+  "manpower": 120.0,
+  "stability": 61.6,
+  "ideology": "neutral",
+  "color": [
+   197,
+   214,
+   102
+  ],
+  "capital": "Либревиль",
+  "oil_mult": 3.0,
+  "steel_mult": 0.87,
+  "food_mult": 0.97
+ },
+ {
+  "iso": "GMB",
+  "name": "Гамбия",
+  "continent": "Africa",
+  "population": 2.7,
+  "gdp": 2.3,
+  "manpower": 135.0,
+  "stability": 49.7,
+  "ideology": "neutral",
+  "color": [
+   118,
+   62,
+   178
+  ],
+  "capital": "Банжул",
+  "oil_mult": 0.64,
+  "steel_mult": 0.9299999999999999,
+  "food_mult": 1.18
+ },
+ {
+  "iso": "GHA",
+  "name": "Гана",
+  "continent": "Africa",
+  "population": 34.0,
+  "gdp": 76.0,
+  "manpower": 1700.0,
+  "stability": 49.1,
+  "ideology": "democracy",
+  "color": [
+   97,
+   72,
+   173
+  ],
+  "capital": "Аккра",
+  "oil_mult": 0.82,
+  "steel_mult": 0.96,
+  "food_mult": 1.17
+ },
+ {
+  "iso": "GIN",
+  "name": "Гвинея",
+  "continent": "Africa",
+  "population": 14.0,
+  "gdp": 21.0,
+  "manpower": 700.0,
+  "stability": 51.6,
+  "ideology": "neutral",
+  "color": [
+   97,
+   133,
+   211
+  ],
+  "capital": "Конакри",
+  "oil_mult": 0.6,
+  "steel_mult": 1.3900000000000001,
+  "food_mult": 0.62
+ },
+ {
+  "iso": "GNB",
+  "name": "Гвинея-Бисау",
+  "continent": "Africa",
+  "population": 2.1,
+  "gdp": 1.8,
+  "manpower": 105.0,
+  "stability": 45.8,
+  "ideology": "neutral",
+  "color": [
+   201,
+   78,
+   187
+  ],
+  "capital": "Бисау",
+  "oil_mult": 0.61,
+  "steel_mult": 0.61,
+  "food_mult": 0.76
+ },
+ {
+  "iso": "KEN",
+  "name": "Кения",
+  "continent": "Africa",
+  "population": 55.0,
+  "gdp": 108.0,
+  "manpower": 2750.0,
+  "stability": 51.6,
+  "ideology": "neutral",
+  "color": [
+   71,
+   160,
+   198
+  ],
+  "capital": "Найроби",
+  "oil_mult": 1.3900000000000001,
+  "steel_mult": 0.8,
+  "food_mult": 0.77
+ },
+ {
+  "iso": "LSO",
+  "name": "Лесото",
+  "continent": "Africa",
+  "population": 2.3,
+  "gdp": 2.2,
+  "manpower": 115.0,
+  "stability": 47.1,
+  "ideology": "neutral",
+  "color": [
+   142,
+   175,
+   70
+  ],
+  "capital": "Масеру",
+  "oil_mult": 1.2999999999999998,
+  "steel_mult": 1.02,
+  "food_mult": 0.6799999999999999
+ },
+ {
+  "iso": "LBR",
+  "name": "Либерия",
+  "continent": "Africa",
+  "population": 5.3,
+  "gdp": 4.0,
+  "manpower": 265.0,
+  "stability": 49.4,
+  "ideology": "neutral",
+  "color": [
+   216,
+   114,
+   186
+  ],
+  "capital": "Монровия",
+  "oil_mult": 1.28,
+  "steel_mult": 0.61,
+  "food_mult": 0.6
+ },
+ {
+  "iso": "LBY",
+  "name": "Ливия",
+  "continent": "Africa",
+  "population": 7.0,
+  "gdp": 45.0,
+  "manpower": 350.0,
+  "stability": 41.2,
+  "ideology": "neutral",
+  "color": [
+   216,
+   128,
+   108
+  ],
+  "capital": "Триполи",
+  "oil_mult": 3.0,
+  "steel_mult": 1.0899999999999999,
+  "food_mult": 1.04
+ },
+ {
+  "iso": "MDG",
+  "name": "Мадагаскар",
+  "continent": "Africa",
+  "population": 30.0,
+  "gdp": 15.0,
+  "manpower": 1500.0,
+  "stability": 47.5,
+  "ideology": "neutral",
+  "color": [
+   100,
+   224,
+   177
+  ],
+  "capital": "Антананариву",
+  "oil_mult": 1.3199999999999998,
+  "steel_mult": 0.71,
+  "food_mult": 0.78
+ },
+ {
+  "iso": "MWI",
+  "name": "Малави",
+  "continent": "Africa",
+  "population": 20.0,
+  "gdp": 13.0,
+  "manpower": 1000.0,
+  "stability": 51.0,
+  "ideology": "neutral",
+  "color": [
+   77,
+   112,
+   226
+  ],
+  "capital": "Лилонгве",
+  "oil_mult": 1.18,
+  "steel_mult": 0.73,
+  "food_mult": 1.06
+ },
+ {
+  "iso": "MLI",
+  "name": "Мали",
+  "continent": "Africa",
+  "population": 23.0,
+  "gdp": 19.0,
+  "manpower": 1150.0,
+  "stability": 37.7,
+  "ideology": "neutral",
+  "color": [
+   156,
+   178,
+   76
+  ],
+  "capital": "Бамако",
+  "oil_mult": 0.7,
+  "steel_mult": 0.72,
+  "food_mult": 0.6599999999999999
+ },
+ {
+  "iso": "MRT",
+  "name": "Мавритания",
+  "continent": "Africa",
+  "population": 4.9,
+  "gdp": 10.0,
+  "manpower": 245.0,
+  "stability": 55.8,
+  "ideology": "neutral",
+  "color": [
+   97,
+   221,
+   168
+  ],
+  "capital": "Нуакшот",
+  "oil_mult": 0.82,
+  "steel_mult": 1.3599999999999999,
+  "food_mult": 1.27
+ },
+ {
+  "iso": "MUS",
+  "name": "Маврикий",
+  "continent": "Africa",
+  "population": 1.3,
+  "gdp": 14.0,
+  "manpower": 65.0,
+  "stability": 57.0,
+  "ideology": "democracy",
+  "color": [
+   136,
+   224,
+   85
+  ],
+  "capital": "Порт-Луи",
+  "oil_mult": 0.74,
+  "steel_mult": 1.33,
+  "food_mult": 1.19
+ },
+ {
+  "iso": "MAR",
+  "name": "Марокко",
+  "continent": "Africa",
+  "population": 37.0,
+  "gdp": 134.0,
+  "manpower": 1850.0,
+  "stability": 52.3,
+  "ideology": "neutral",
+  "color": [
+   111,
+   67,
+   224
+  ],
+  "capital": "Рабат",
+  "oil_mult": 1.02,
+  "steel_mult": 0.85,
+  "food_mult": 0.62
+ },
+ {
+  "iso": "MOZ",
+  "name": "Мозамбик",
+  "continent": "Africa",
+  "population": 33.0,
+  "gdp": 18.0,
+  "manpower": 1650.0,
+  "stability": 43.6,
+  "ideology": "neutral",
+  "color": [
+   44,
+   89,
+   165
+  ],
+  "capital": "Мапуту",
+  "oil_mult": 1.37,
+  "steel_mult": 0.94,
+  "food_mult": 0.65
+ },
+ {
+  "iso": "NAM",
+  "name": "Намибия",
+  "continent": "Africa",
+  "population": 2.6,
+  "gdp": 12.0,
+  "manpower": 130.0,
+  "stability": 58.5,
+  "ideology": "neutral",
+  "color": [
+   211,
+   166,
+   107
+  ],
+  "capital": "Виндхук",
+  "oil_mult": 0.7,
+  "steel_mult": 0.88,
+  "food_mult": 0.76
+ },
+ {
+  "iso": "NER",
+  "name": "Нигер",
+  "continent": "Africa",
+  "population": 27.0,
+  "gdp": 15.0,
+  "manpower": 1350.0,
+  "stability": 48.7,
+  "ideology": "neutral",
+  "color": [
+   72,
+   191,
+   96
+  ],
+  "capital": "Ниамей",
+  "oil_mult": 1.28,
+  "steel_mult": 0.9299999999999999,
+  "food_mult": 1.13
+ },
+ {
+  "iso": "NGA",
+  "name": "Нигерия",
+  "continent": "Africa",
+  "population": 224.0,
+  "gdp": 363.0,
+  "manpower": 11200.0,
+  "stability": 46.9,
+  "ideology": "neutral",
+  "color": [
+   45,
+   67,
+   175
+  ],
+  "capital": "Абуджа",
+  "oil_mult": 3.0,
+  "steel_mult": 0.76,
+  "food_mult": 1.0899999999999999
+ },
+ {
+  "iso": "RWA",
+  "name": "Руанда",
+  "continent": "Africa",
+  "population": 14.0,
+  "gdp": 14.0,
+  "manpower": 700.0,
+  "stability": 53.2,
+  "ideology": "autocracy",
+  "color": [
+   221,
+   122,
+   173
+  ],
+  "capital": "Кигали",
+  "oil_mult": 0.8,
+  "steel_mult": 1.29,
+  "food_mult": 0.71
+ },
+ {
+  "iso": "STP",
+  "name": "Сан-Томе и Принсипи",
+  "continent": "Africa",
+  "population": 0.2,
+  "gdp": 0.5,
+  "manpower": 10.0,
+  "stability": 48.6,
+  "ideology": "neutral",
+  "color": [
+   168,
+   201,
+   86
+  ],
+  "capital": "Сан-Томе",
+  "oil_mult": 0.9199999999999999,
+  "steel_mult": 0.98,
+  "food_mult": 1.02
+ },
+ {
+  "iso": "SEN",
+  "name": "Сенегал",
+  "continent": "Africa",
+  "population": 18.0,
+  "gdp": 28.0,
+  "manpower": 900.0,
+  "stability": 52.7,
+  "ideology": "neutral",
+  "color": [
+   135,
+   196,
+   74
+  ],
+  "capital": "Дакар",
+  "oil_mult": 1.25,
+  "steel_mult": 1.1400000000000001,
+  "food_mult": 1.03
+ },
+ {
+  "iso": "SYC",
+  "name": "Сейшелы",
+  "continent": "Africa",
+  "population": 0.1,
+  "gdp": 2.0,
+  "manpower": 5.0,
+  "stability": 65.5,
+  "ideology": "neutral",
+  "color": [
+   224,
+   181,
+   103
+  ],
+  "capital": "Виктория",
+  "oil_mult": 0.96,
+  "steel_mult": 1.1600000000000001,
+  "food_mult": 0.61
+ },
+ {
+  "iso": "SLE",
+  "name": "Сьерра-Леоне",
+  "continent": "Africa",
+  "population": 8.6,
+  "gdp": 4.0,
+  "manpower": 430.0,
+  "stability": 49.3,
+  "ideology": "neutral",
+  "color": [
+   95,
+   97,
+   204
+  ],
+  "capital": "Фритаун",
+  "oil_mult": 0.8,
+  "steel_mult": 1.0699999999999998,
+  "food_mult": 0.8899999999999999
+ },
+ {
+  "iso": "SOM",
+  "name": "Сомали",
+  "continent": "Africa",
+  "population": 18.0,
+  "gdp": 11.0,
+  "manpower": 900.0,
+  "stability": 32.9,
+  "ideology": "neutral",
+  "color": [
+   191,
+   174,
+   76
+  ],
+  "capital": "Могадишо",
+  "oil_mult": 0.94,
+  "steel_mult": 1.3199999999999998,
+  "food_mult": 0.97
+ },
+ {
+  "iso": "ZAF",
+  "name": "ЮАР",
+  "continent": "Africa",
+  "population": 60.0,
+  "gdp": 380.0,
+  "manpower": 3000.0,
+  "stability": 54.1,
+  "ideology": "democracy",
+  "color": [
+   77,
+   170,
+   63
+  ],
+  "capital": "Претория",
+  "oil_mult": 0.9299999999999999,
+  "steel_mult": 2.5,
+  "food_mult": 0.95
+ },
+ {
+  "iso": "SSD",
+  "name": "Южный Судан",
+  "continent": "Africa",
+  "population": 11.0,
+  "gdp": 5.0,
+  "manpower": 550.0,
+  "stability": 36.3,
+  "ideology": "neutral",
+  "color": [
+   164,
+   53,
+   168
+  ],
+  "capital": "Джуба",
+  "oil_mult": 1.35,
+  "steel_mult": 1.12,
+  "food_mult": 0.96
+ },
+ {
+  "iso": "SDN",
+  "name": "Судан",
+  "continent": "Africa",
+  "population": 48.0,
+  "gdp": 35.0,
+  "manpower": 2400.0,
+  "stability": 34.3,
+  "ideology": "autocracy",
+  "color": [
+   115,
+   79,
+   165
+  ],
+  "capital": "Хартум",
+  "oil_mult": 0.6799999999999999,
+  "steel_mult": 0.9099999999999999,
+  "food_mult": 1.29
+ },
+ {
+  "iso": "TZA",
+  "name": "Танзания",
+  "continent": "Africa",
+  "population": 67.0,
+  "gdp": 79.0,
+  "manpower": 3350.0,
+  "stability": 53.7,
+  "ideology": "neutral",
+  "color": [
+   155,
+   65,
+   181
+  ],
+  "capital": "Додома",
+  "oil_mult": 0.62,
+  "steel_mult": 1.2,
+  "food_mult": 1.1400000000000001
+ },
+ {
+  "iso": "TGO",
+  "name": "Того",
+  "continent": "Africa",
+  "population": 9.0,
+  "gdp": 9.0,
+  "manpower": 450.0,
+  "stability": 48.2,
+  "ideology": "neutral",
+  "color": [
+   201,
+   140,
+   66
+  ],
+  "capital": "Ломе",
+  "oil_mult": 0.64,
+  "steel_mult": 0.75,
+  "food_mult": 1.22
+ },
+ {
+  "iso": "TUN",
+  "name": "Тунис",
+  "continent": "Africa",
+  "population": 12.0,
+  "gdp": 48.0,
+  "manpower": 600.0,
+  "stability": 50.8,
+  "ideology": "neutral",
+  "color": [
+   144,
+   49,
+   165
+  ],
+  "capital": "Тунис",
+  "oil_mult": 0.88,
+  "steel_mult": 0.9099999999999999,
+  "food_mult": 0.82
+ },
+ {
+  "iso": "UGA",
+  "name": "Уганда",
+  "continent": "Africa",
+  "population": 49.0,
+  "gdp": 49.0,
+  "manpower": 2450.0,
+  "stability": 50.2,
+  "ideology": "autocracy",
+  "color": [
+   94,
+   201,
+   160
+  ],
+  "capital": "Кампала",
+  "oil_mult": 0.99,
+  "steel_mult": 0.87,
+  "food_mult": 0.6599999999999999
+ },
+ {
+  "iso": "ZMB",
+  "name": "Замбия",
+  "continent": "Africa",
+  "population": 20.0,
+  "gdp": 28.0,
+  "manpower": 1000.0,
+  "stability": 51.3,
+  "ideology": "neutral",
+  "color": [
+   162,
+   209,
+   60
+  ],
+  "capital": "Лусака",
+  "oil_mult": 0.64,
+  "steel_mult": 0.73,
+  "food_mult": 1.0699999999999998
+ },
+ {
+  "iso": "ZWE",
+  "name": "Зимбабве",
+  "continent": "Africa",
+  "population": 16.0,
+  "gdp": 35.0,
+  "manpower": 800.0,
+  "stability": 48.0,
+  "ideology": "neutral",
+  "color": [
+   117,
+   219,
+   76
+  ],
+  "capital": "Хараре",
+  "oil_mult": 0.99,
+  "steel_mult": 1.15,
+  "food_mult": 1.01
+ },
+ {
+  "iso": "ESH",
+  "name": "Западная Сахара",
+  "continent": "Africa",
+  "population": 0.6,
+  "gdp": 1.0,
+  "manpower": 30.0,
+  "stability": 47.0,
+  "ideology": "neutral",
+  "color": [
+   193,
+   102,
+   128
+  ],
+  "capital": "Эль-Аюн",
+  "oil_mult": 1.0899999999999999,
+  "steel_mult": 1.29,
+  "food_mult": 0.98
+ },
+ {
+  "iso": "AFG",
+  "name": "Афганистан",
+  "continent": "Asia",
+  "population": 41.0,
+  "gdp": 14.0,
+  "manpower": 2050.0,
+  "stability": 34.8,
+  "ideology": "autocracy",
+  "color": [
+   172,
+   66,
+   175
+  ],
+  "capital": "Кабул",
+  "oil_mult": 1.2999999999999998,
+  "steel_mult": 1.12,
+  "food_mult": 1.08
+ },
+ {
+  "iso": "ARM",
+  "name": "Армения",
+  "continent": "Asia",
+  "population": 3.0,
+  "gdp": 24.0,
+  "manpower": 150.0,
+  "stability": 54.4,
+  "ideology": "neutral",
+  "color": [
+   183,
+   76,
+   219
+  ],
+  "capital": "Ереван",
+  "oil_mult": 1.08,
+  "steel_mult": 1.28,
+  "food_mult": 1.18
+ },
+ {
+  "iso": "AZE",
+  "name": "Азербайджан",
+  "continent": "Asia",
+  "population": 10.0,
+  "gdp": 78.0,
+  "manpower": 500.0,
+  "stability": 55.2,
+  "ideology": "autocracy",
+  "color": [
+   108,
+   181,
+   90
+  ],
+  "capital": "Баку",
+  "oil_mult": 3.0,
+  "steel_mult": 0.74,
+  "food_mult": 0.75
+ },
+ {
+  "iso": "BHR",
+  "name": "Бахрейн",
+  "continent": "Asia",
+  "population": 1.5,
+  "gdp": 44.0,
+  "manpower": 75.0,
+  "stability": 67.7,
+  "ideology": "autocracy",
+  "color": [
+   106,
+   159,
+   216
+  ],
+  "capital": "Манама",
+  "oil_mult": 1.15,
+  "steel_mult": 0.75,
+  "food_mult": 1.13
+ },
+ {
+  "iso": "BGD",
+  "name": "Бангладеш",
+  "continent": "Asia",
+  "population": 172.0,
+  "gdp": 437.0,
+  "manpower": 8600.0,
+  "stability": 54.7,
+  "ideology": "neutral",
+  "color": [
+   211,
+   71,
+   125
+  ],
+  "capital": "Дакка",
+  "oil_mult": 1.01,
+  "steel_mult": 0.78,
+  "food_mult": 0.74
+ },
+ {
+  "iso": "BTN",
+  "name": "Бутан",
+  "continent": "Asia",
+  "population": 0.8,
+  "gdp": 2.5,
+  "manpower": 40.0,
+  "stability": 56.6,
+  "ideology": "neutral",
+  "color": [
+   112,
+   59,
+   219
+  ],
+  "capital": "Тхимпху",
+  "oil_mult": 0.83,
+  "steel_mult": 0.6799999999999999,
+  "food_mult": 1.18
+ },
+ {
+  "iso": "BRN",
+  "name": "Бруней",
+  "continent": "Asia",
+  "population": 0.45,
+  "gdp": 15.0,
+  "manpower": 22.5,
+  "stability": 66.5,
+  "ideology": "autocracy",
+  "color": [
+   173,
+   81,
+   204
+  ],
+  "capital": "Бандар-Сери-Бегаван",
+  "oil_mult": 1.01,
+  "steel_mult": 0.9199999999999999,
+  "food_mult": 0.72
+ },
+ {
+  "iso": "KHM",
+  "name": "Камбоджа",
+  "continent": "Asia",
+  "population": 17.0,
+  "gdp": 31.0,
+  "manpower": 850.0,
+  "stability": 54.3,
+  "ideology": "neutral",
+  "color": [
+   224,
+   100,
+   216
+  ],
+  "capital": "Пномпень",
+  "oil_mult": 0.87,
+  "steel_mult": 0.87,
+  "food_mult": 0.7
+ },
+ {
+  "iso": "CHN",
+  "name": "Китай",
+  "continent": "Asia",
+  "population": 1410.0,
+  "gdp": 17800.0,
+  "manpower": 70500.0,
+  "stability": 62.9,
+  "ideology": "communism",
+  "color": [
+   94,
+   214,
+   81
+  ],
+  "capital": "Пекин",
+  "oil_mult": 0.88,
+  "steel_mult": 2.5,
+  "food_mult": 1.6
+ },
+ {
+  "iso": "CYP",
+  "name": "Кипр",
+  "continent": "Asia",
+  "population": 1.3,
+  "gdp": 31.0,
+  "manpower": 65.0,
+  "stability": 68.5,
+  "ideology": "neutral",
+  "color": [
+   209,
+   69,
+   143
+  ],
+  "capital": "Никосия",
+  "oil_mult": 0.75,
+  "steel_mult": 0.8899999999999999,
+  "food_mult": 0.79
+ },
+ {
+  "iso": "GEO",
+  "name": "Грузия",
+  "continent": "Asia",
+  "population": 3.7,
+  "gdp": 30.0,
+  "manpower": 185.0,
+  "stability": 54.4,
+  "ideology": "neutral",
+  "color": [
+   221,
+   99,
+   221
+  ],
+  "capital": "Тбилиси",
+  "oil_mult": 0.95,
+  "steel_mult": 0.64,
+  "food_mult": 1.25
+ },
+ {
+  "iso": "IND",
+  "name": "Индия",
+  "continent": "Asia",
+  "population": 1428.0,
+  "gdp": 3550.0,
+  "manpower": 71400.0,
+  "stability": 51.6,
+  "ideology": "democracy",
+  "color": [
+   201,
+   169,
+   62
+  ],
+  "capital": "Нью-Дели",
+  "oil_mult": 1.35,
+  "steel_mult": 2.5,
+  "food_mult": 1.6
+ },
+ {
+  "iso": "IDN",
+  "name": "Индонезия",
+  "continent": "Asia",
+  "population": 277.0,
+  "gdp": 1370.0,
+  "manpower": 13850.0,
+  "stability": 58.8,
+  "ideology": "democracy",
+  "color": [
+   64,
+   206,
+   78
+  ],
+  "capital": "Джакарта",
+  "oil_mult": 1.38,
+  "steel_mult": 1.18,
+  "food_mult": 1.24
+ },
+ {
+  "iso": "IRN",
+  "name": "Иран",
+  "continent": "Asia",
+  "population": 89.0,
+  "gdp": 400.0,
+  "manpower": 4450.0,
+  "stability": 52.4,
+  "ideology": "autocracy",
+  "color": [
+   97,
+   204,
+   158
+  ],
+  "capital": "Тегеран",
+  "oil_mult": 3.0,
+  "steel_mult": 1.21,
+  "food_mult": 1.08
+ },
+ {
+  "iso": "IRQ",
+  "name": "Ирак",
+  "continent": "Asia",
+  "population": 45.0,
+  "gdp": 250.0,
+  "manpower": 2250.0,
+  "stability": 57.4,
+  "ideology": "neutral",
+  "color": [
+   171,
+   204,
+   99
+  ],
+  "capital": "Багдад",
+  "oil_mult": 3.0,
+  "steel_mult": 1.02,
+  "food_mult": 0.86
+ },
+ {
+  "iso": "ISR",
+  "name": "Израиль",
+  "continent": "Asia",
+  "population": 9.8,
+  "gdp": 510.0,
+  "manpower": 490.0,
+  "stability": 68.1,
+  "ideology": "democracy",
+  "color": [
+   92,
+   66,
+   178
+  ],
+  "capital": "Иерусалим",
+  "oil_mult": 0.82,
+  "steel_mult": 1.31,
+  "food_mult": 0.8899999999999999
+ },
+ {
+  "iso": "JPN",
+  "name": "Япония",
+  "continent": "Asia",
+  "population": 124.0,
+  "gdp": 4200.0,
+  "manpower": 6200.0,
+  "stability": 64.6,
+  "ideology": "democracy",
+  "color": [
+   91,
+   183,
+   82
+  ],
+  "capital": "Токио",
+  "oil_mult": 0.86,
+  "steel_mult": 1.01,
+  "food_mult": 0.78
+ },
+ {
+  "iso": "JOR",
+  "name": "Иордания",
+  "continent": "Asia",
+  "population": 11.0,
+  "gdp": 50.0,
+  "manpower": 550.0,
+  "stability": 51.4,
+  "ideology": "autocracy",
+  "color": [
+   87,
+   191,
+   155
+  ],
+  "capital": "Амман",
+  "oil_mult": 0.8099999999999999,
+  "steel_mult": 0.8,
+  "food_mult": 0.78
+ },
+ {
+  "iso": "KAZ",
+  "name": "Казахстан",
+  "continent": "Asia",
+  "population": 20.0,
+  "gdp": 260.0,
+  "manpower": 1000.0,
+  "stability": 63.0,
+  "ideology": "autocracy",
+  "color": [
+   211,
+   69,
+   183
+  ],
+  "capital": "Астана",
+  "oil_mult": 3.0,
+  "steel_mult": 2.5,
+  "food_mult": 0.95
+ },
+ {
+  "iso": "KWT",
+  "name": "Кувейт",
+  "continent": "Asia",
+  "population": 4.3,
+  "gdp": 160.0,
+  "manpower": 215.0,
+  "stability": 66.2,
+  "ideology": "autocracy",
+  "color": [
+   219,
+   193,
+   107
+  ],
+  "capital": "Эль-Кувейт",
+  "oil_mult": 3.0,
+  "steel_mult": 0.77,
+  "food_mult": 1.29
+ },
+ {
+  "iso": "KGZ",
+  "name": "Киргизия",
+  "continent": "Asia",
+  "population": 7.0,
+  "gdp": 14.0,
+  "manpower": 350.0,
+  "stability": 50.7,
+  "ideology": "autocracy",
+  "color": [
+   105,
+   179,
+   206
+  ],
+  "capital": "Бишкек",
+  "oil_mult": 1.37,
+  "steel_mult": 1.28,
+  "food_mult": 0.82
+ },
+ {
+  "iso": "LAO",
+  "name": "Лаос",
+  "continent": "Asia",
+  "population": 7.5,
+  "gdp": 15.0,
+  "manpower": 375.0,
+  "stability": 47.7,
+  "ideology": "communism",
+  "color": [
+   115,
+   214,
+   130
+  ],
+  "capital": "Вьентьян",
+  "oil_mult": 0.78,
+  "steel_mult": 0.6699999999999999,
+  "food_mult": 0.64
+ },
+ {
+  "iso": "LBN",
+  "name": "Ливан",
+  "continent": "Asia",
+  "population": 5.5,
+  "gdp": 18.0,
+  "manpower": 275.0,
+  "stability": 49.8,
+  "ideology": "neutral",
+  "color": [
+   146,
+   219,
+   87
+  ],
+  "capital": "Бейрут",
+  "oil_mult": 0.6,
+  "steel_mult": 1.3199999999999998,
+  "food_mult": 0.8099999999999999
+ },
+ {
+  "iso": "MYS",
+  "name": "Малайзия",
+  "continent": "Asia",
+  "population": 34.0,
+  "gdp": 400.0,
+  "manpower": 1700.0,
+  "stability": 62.5,
+  "ideology": "neutral",
+  "color": [
+   165,
+   88,
+   181
+  ],
+  "capital": "Куала-Лумпур",
+  "oil_mult": 1.25,
+  "steel_mult": 1.3900000000000001,
+  "food_mult": 0.72
+ },
+ {
+  "iso": "MDV",
+  "name": "Мальдивы",
+  "continent": "Asia",
+  "population": 0.5,
+  "gdp": 6.0,
+  "manpower": 25.0,
+  "stability": 58.6,
+  "ideology": "neutral",
+  "color": [
+   183,
+   78,
+   106
+  ],
+  "capital": "Мале",
+  "oil_mult": 0.82,
+  "steel_mult": 1.0899999999999999,
+  "food_mult": 0.83
+ },
+ {
+  "iso": "MNG",
+  "name": "Монголия",
+  "continent": "Asia",
+  "population": 3.4,
+  "gdp": 20.0,
+  "manpower": 170.0,
+  "stability": 55.7,
+  "ideology": "neutral",
+  "color": [
+   170,
+   73,
+   66
+  ],
+  "capital": "Улан-Батор",
+  "oil_mult": 0.82,
+  "steel_mult": 1.24,
+  "food_mult": 1.26
+ },
+ {
+  "iso": "MMR",
+  "name": "Мьянма",
+  "continent": "Asia",
+  "population": 54.0,
+  "gdp": 65.0,
+  "manpower": 2700.0,
+  "stability": 37.8,
+  "ideology": "autocracy",
+  "color": [
+   83,
+   204,
+   145
+  ],
+  "capital": "Нейпьидо",
+  "oil_mult": 1.0,
+  "steel_mult": 0.8999999999999999,
+  "food_mult": 0.63
+ },
+ {
+  "iso": "NPL",
+  "name": "Непал",
+  "continent": "Asia",
+  "population": 30.0,
+  "gdp": 40.0,
+  "manpower": 1500.0,
+  "stability": 51.2,
+  "ideology": "neutral",
+  "color": [
+   60,
+   191,
+   51
+  ],
+  "capital": "Катманду",
+  "oil_mult": 0.9299999999999999,
+  "steel_mult": 1.1400000000000001,
+  "food_mult": 0.99
+ },
+ {
+  "iso": "PRK",
+  "name": "КНДР",
+  "continent": "Asia",
+  "population": 26.0,
+  "gdp": 18.0,
+  "manpower": 1300.0,
+  "stability": 47.2,
+  "ideology": "communism",
+  "color": [
+   67,
+   186,
+   168
+  ],
+  "capital": "Пхеньян",
+  "oil_mult": 1.0,
+  "steel_mult": 1.0,
+  "food_mult": 1.18
+ },
+ {
+  "iso": "OMN",
+  "name": "Оман",
+  "continent": "Asia",
+  "population": 4.6,
+  "gdp": 105.0,
+  "manpower": 230.0,
+  "stability": 67.3,
+  "ideology": "autocracy",
+  "color": [
+   82,
+   221,
+   205
+  ],
+  "capital": "Маскат",
+  "oil_mult": 3.0,
+  "steel_mult": 1.04,
+  "food_mult": 0.9199999999999999
+ },
+ {
+  "iso": "PAK",
+  "name": "Пакистан",
+  "continent": "Asia",
+  "population": 240.0,
+  "gdp": 340.0,
+  "manpower": 12000.0,
+  "stability": 47.4,
+  "ideology": "neutral",
+  "color": [
+   91,
+   55,
+   198
+  ],
+  "capital": "Исламабад",
+  "oil_mult": 0.86,
+  "steel_mult": 1.38,
+  "food_mult": 0.8999999999999999
+ },
+ {
+  "iso": "PSE",
+  "name": "Палестина",
+  "continent": "Asia",
+  "population": 5.4,
+  "gdp": 18.0,
+  "manpower": 270.0,
+  "stability": 50.9,
+  "ideology": "neutral",
+  "color": [
+   62,
+   155,
+   221
+  ],
+  "capital": "Рамалла",
+  "oil_mult": 0.98,
+  "steel_mult": 1.25,
+  "food_mult": 0.71
+ },
+ {
+  "iso": "PHL",
+  "name": "Филиппины",
+  "continent": "Asia",
+  "population": 117.0,
+  "gdp": 440.0,
+  "manpower": 5850.0,
+  "stability": 52.5,
+  "ideology": "democracy",
+  "color": [
+   81,
+   193,
+   98
+  ],
+  "capital": "Манила",
+  "oil_mult": 1.0899999999999999,
+  "steel_mult": 1.24,
+  "food_mult": 0.82
+ },
+ {
+  "iso": "QAT",
+  "name": "Катар",
+  "continent": "Asia",
+  "population": 2.7,
+  "gdp": 220.0,
+  "manpower": 135.0,
+  "stability": 75.8,
+  "ideology": "autocracy",
+  "color": [
+   98,
+   143,
+   188
+  ],
+  "capital": "Доха",
+  "oil_mult": 3.0,
+  "steel_mult": 0.8999999999999999,
+  "food_mult": 1.19
+ },
+ {
+  "iso": "SAU",
+  "name": "Саудовская Аравия",
+  "continent": "Asia",
+  "population": 36.0,
+  "gdp": 1070.0,
+  "manpower": 1800.0,
+  "stability": 65.8,
+  "ideology": "autocracy",
+  "color": [
+   62,
+   178,
+   91
+  ],
+  "capital": "Эр-Рияд",
+  "oil_mult": 3.0,
+  "steel_mult": 0.6799999999999999,
+  "food_mult": 1.1
+ },
+ {
+  "iso": "SGP",
+  "name": "Сингапур",
+  "continent": "Asia",
+  "population": 5.9,
+  "gdp": 500.0,
+  "manpower": 295.0,
+  "stability": 71.1,
+  "ideology": "neutral",
+  "color": [
+   150,
+   198,
+   91
+  ],
+  "capital": "Сингапур",
+  "oil_mult": 0.71,
+  "steel_mult": 0.9099999999999999,
+  "food_mult": 0.6
+ },
+ {
+  "iso": "KOR",
+  "name": "Южная Корея",
+  "continent": "Asia",
+  "population": 51.0,
+  "gdp": 1700.0,
+  "manpower": 2550.0,
+  "stability": 63.5,
+  "ideology": "democracy",
+  "color": [
+   209,
+   87,
+   138
+  ],
+  "capital": "Сеул",
+  "oil_mult": 1.1,
+  "steel_mult": 0.72,
+  "food_mult": 1.2
+ },
+ {
+  "iso": "LKA",
+  "name": "Шри-Ланка",
+  "continent": "Asia",
+  "population": 22.0,
+  "gdp": 75.0,
+  "manpower": 1100.0,
+  "stability": 51.0,
+  "ideology": "neutral",
+  "color": [
+   128,
+   219,
+   105
+  ],
+  "capital": "Коломбо",
+  "oil_mult": 1.3599999999999999,
+  "steel_mult": 0.6699999999999999,
+  "food_mult": 0.61
+ },
+ {
+  "iso": "SYR",
+  "name": "Сирия",
+  "continent": "Asia",
+  "population": 22.0,
+  "gdp": 10.0,
+  "manpower": 1100.0,
+  "stability": 33.3,
+  "ideology": "autocracy",
+  "color": [
+   83,
+   107,
+   214
+  ],
+  "capital": "Дамаск",
+  "oil_mult": 1.38,
+  "steel_mult": 1.29,
+  "food_mult": 0.94
+ },
+ {
+  "iso": "TWN",
+  "name": "Тайвань",
+  "continent": "Asia",
+  "population": 23.5,
+  "gdp": 760.0,
+  "manpower": 1175.0,
+  "stability": 64.3,
+  "ideology": "democracy",
+  "color": [
+   164,
+   181,
+   92
+  ],
+  "capital": "Тайбэй",
+  "oil_mult": 1.35,
+  "steel_mult": 1.2999999999999998,
+  "food_mult": 1.22
+ },
+ {
+  "iso": "TJK",
+  "name": "Таджикистан",
+  "continent": "Asia",
+  "population": 10.0,
+  "gdp": 12.0,
+  "manpower": 500.0,
+  "stability": 46.8,
+  "ideology": "autocracy",
+  "color": [
+   209,
+   132,
+   77
+  ],
+  "capital": "Душанбе",
+  "oil_mult": 0.95,
+  "steel_mult": 0.7,
+  "food_mult": 1.03
+ },
+ {
+  "iso": "THA",
+  "name": "Таиланд",
+  "continent": "Asia",
+  "population": 72.0,
+  "gdp": 515.0,
+  "manpower": 3600.0,
+  "stability": 60.8,
+  "ideology": "neutral",
+  "color": [
+   186,
+   75,
+   48
+  ],
+  "capital": "Бангкок",
+  "oil_mult": 0.85,
+  "steel_mult": 0.64,
+  "food_mult": 1.6
+ },
+ {
+  "iso": "TLS",
+  "name": "Восточный Тимор",
+  "continent": "Asia",
+  "population": 1.4,
+  "gdp": 2.0,
+  "manpower": 70.0,
+  "stability": 46.4,
+  "ideology": "neutral",
+  "color": [
+   126,
+   204,
+   87
+  ],
+  "capital": "Дили",
+  "oil_mult": 1.3599999999999999,
+  "steel_mult": 1.06,
+  "food_mult": 0.83
+ },
+ {
+  "iso": "TUR",
+  "name": "Турция",
+  "continent": "Asia",
+  "population": 85.0,
+  "gdp": 1030.0,
+  "manpower": 4250.0,
+  "stability": 59.6,
+  "ideology": "neutral",
+  "color": [
+   69,
+   191,
+   66
+  ],
+  "capital": "Анкара",
+  "oil_mult": 0.94,
+  "steel_mult": 0.6599999999999999,
+  "food_mult": 1.18
+ },
+ {
+  "iso": "TKM",
+  "name": "Туркменистан",
+  "continent": "Asia",
+  "population": 6.5,
+  "gdp": 60.0,
+  "manpower": 325.0,
+  "stability": 62.1,
+  "ideology": "autocracy",
+  "color": [
+   73,
+   142,
+   188
+  ],
+  "capital": "Ашхабад",
+  "oil_mult": 0.88,
+  "steel_mult": 0.63,
+  "food_mult": 0.74
+ },
+ {
+  "iso": "ARE",
+  "name": "ОАЭ",
+  "continent": "Asia",
+  "population": 9.5,
+  "gdp": 510.0,
+  "manpower": 475.0,
+  "stability": 66.3,
+  "ideology": "autocracy",
+  "color": [
+   98,
+   186,
+   105
+  ],
+  "capital": "Абу-Даби",
+  "oil_mult": 3.0,
+  "steel_mult": 1.3900000000000001,
+  "food_mult": 0.9099999999999999
+ },
+ {
+  "iso": "UZB",
+  "name": "Узбекистан",
+  "continent": "Asia",
+  "population": 36.0,
+  "gdp": 90.0,
+  "manpower": 1800.0,
+  "stability": 50.6,
+  "ideology": "autocracy",
+  "color": [
+   210,
+   116,
+   224
+  ],
+  "capital": "Ташкент",
+  "oil_mult": 1.37,
+  "steel_mult": 0.88,
+  "food_mult": 0.9099999999999999
+ },
+ {
+  "iso": "VNM",
+  "name": "Вьетнам",
+  "continent": "Asia",
+  "population": 100.0,
+  "gdp": 430.0,
+  "manpower": 5000.0,
+  "stability": 53.1,
+  "ideology": "communism",
+  "color": [
+   191,
+   91,
+   148
+  ],
+  "capital": "Ханой",
+  "oil_mult": 1.08,
+  "steel_mult": 1.31,
+  "food_mult": 1.6
+ },
+ {
+  "iso": "YEM",
+  "name": "Йемен",
+  "continent": "Asia",
+  "population": 34.0,
+  "gdp": 21.0,
+  "manpower": 1700.0,
+  "stability": 29.9,
+  "ideology": "neutral",
+  "color": [
+   84,
+   211,
+   120
+  ],
+  "capital": "Сана",
+  "oil_mult": 0.7,
+  "steel_mult": 0.88,
+  "food_mult": 0.62
+ },
+ {
+  "iso": "ALB",
+  "name": "Албания",
+  "continent": "Europe",
+  "population": 2.8,
+  "gdp": 22.0,
+  "manpower": 140.0,
+  "stability": 55.3,
+  "ideology": "democracy",
+  "color": [
+   173,
+   186,
+   59
+  ],
+  "capital": "Тирана",
+  "oil_mult": 0.9199999999999999,
+  "steel_mult": 1.17,
+  "food_mult": 0.96
+ },
+ {
+  "iso": "AND",
+  "name": "Андорра",
+  "continent": "Europe",
+  "population": 0.08,
+  "gdp": 3.3,
+  "manpower": 4.0,
+  "stability": 63.8,
+  "ideology": "neutral",
+  "color": [
+   173,
+   108,
+   67
+  ],
+  "capital": "Андорра-ла-Велья",
+  "oil_mult": 1.38,
+  "steel_mult": 1.18,
+  "food_mult": 1.1
+ },
+ {
+  "iso": "AUT",
+  "name": "Австрия",
+  "continent": "Europe",
+  "population": 9.0,
+  "gdp": 520.0,
+  "manpower": 450.0,
+  "stability": 67.8,
+  "ideology": "neutral",
+  "color": [
+   74,
+   196,
+   194
+  ],
+  "capital": "Вена",
+  "oil_mult": 1.2,
+  "steel_mult": 1.04,
+  "food_mult": 1.06
+ },
+ {
+  "iso": "BLR",
+  "name": "Беларусь",
+  "continent": "Europe",
+  "population": 9.2,
+  "gdp": 72.0,
+  "manpower": 460.0,
+  "stability": 58.2,
+  "ideology": "autocracy",
+  "color": [
+   137,
+   191,
+   84
+  ],
+  "capital": "Минск",
+  "oil_mult": 0.8999999999999999,
+  "steel_mult": 0.78,
+  "food_mult": 0.72
+ },
+ {
+  "iso": "BEL",
+  "name": "Бельгия",
+  "continent": "Europe",
+  "population": 11.7,
+  "gdp": 630.0,
+  "manpower": 585.0,
+  "stability": 67.3,
+  "ideology": "democracy",
+  "color": [
+   110,
+   165,
+   64
+  ],
+  "capital": "Брюссель",
+  "oil_mult": 0.8099999999999999,
+  "steel_mult": 0.8099999999999999,
+  "food_mult": 1.28
+ },
+ {
+  "iso": "BIH",
+  "name": "Босния и Герцеговина",
+  "continent": "Europe",
+  "population": 3.2,
+  "gdp": 26.0,
+  "manpower": 160.0,
+  "stability": 59.4,
+  "ideology": "democracy",
+  "color": [
+   108,
+   221,
+   90
+  ],
+  "capital": "Сараево",
+  "oil_mult": 1.04,
+  "steel_mult": 0.8,
+  "food_mult": 1.19
+ },
+ {
+  "iso": "BGR",
+  "name": "Болгария",
+  "continent": "Europe",
+  "population": 6.4,
+  "gdp": 100.0,
+  "manpower": 320.0,
+  "stability": 59.1,
+  "ideology": "democracy",
+  "color": [
+   78,
+   196,
+   184
+  ],
+  "capital": "София",
+  "oil_mult": 1.15,
+  "steel_mult": 1.26,
+  "food_mult": 0.74
+ },
+ {
+  "iso": "HRV",
+  "name": "Хорватия",
+  "continent": "Europe",
+  "population": 3.9,
+  "gdp": 82.0,
+  "manpower": 195.0,
+  "stability": 63.8,
+  "ideology": "democracy",
+  "color": [
+   226,
+   104,
+   93
+  ],
+  "capital": "Загреб",
+  "oil_mult": 1.18,
+  "steel_mult": 0.8099999999999999,
+  "food_mult": 1.17
+ },
+ {
+  "iso": "CZE",
+  "name": "Чехия",
+  "continent": "Europe",
+  "population": 10.5,
+  "gdp": 330.0,
+  "manpower": 525.0,
+  "stability": 62.2,
+  "ideology": "democracy",
+  "color": [
+   160,
+   168,
+   74
+  ],
+  "capital": "Прага",
+  "oil_mult": 1.01,
+  "steel_mult": 1.1,
+  "food_mult": 0.69
+ },
+ {
+  "iso": "DNK",
+  "name": "Дания",
+  "continent": "Europe",
+  "population": 5.9,
+  "gdp": 400.0,
+  "manpower": 295.0,
+  "stability": 74.7,
+  "ideology": "democracy",
+  "color": [
+   196,
+   116,
+   66
+  ],
+  "capital": "Копенгаген",
+  "oil_mult": 0.7,
+  "steel_mult": 1.1600000000000001,
+  "food_mult": 0.95
+ },
+ {
+  "iso": "EST",
+  "name": "Эстония",
+  "continent": "Europe",
+  "population": 1.4,
+  "gdp": 41.0,
+  "manpower": 70.0,
+  "stability": 65.7,
+  "ideology": "democracy",
+  "color": [
+   100,
+   191,
+   72
+  ],
+  "capital": "Таллин",
+  "oil_mult": 1.26,
+  "steel_mult": 1.38,
+  "food_mult": 0.82
+ },
+ {
+  "iso": "FIN",
+  "name": "Финляндия",
+  "continent": "Europe",
+  "population": 5.6,
+  "gdp": 300.0,
+  "manpower": 280.0,
+  "stability": 72.3,
+  "ideology": "democracy",
+  "color": [
+   191,
+   175,
+   74
+  ],
+  "capital": "Хельсинки",
+  "oil_mult": 1.26,
+  "steel_mult": 1.37,
+  "food_mult": 1.1
+ },
+ {
+  "iso": "FRA",
+  "name": "Франция",
+  "continent": "Europe",
+  "population": 68.0,
+  "gdp": 3030.0,
+  "manpower": 3400.0,
+  "stability": 68.2,
+  "ideology": "democracy",
+  "color": [
+   95,
+   206,
+   122
+  ],
+  "capital": "Париж",
+  "oil_mult": 1.1600000000000001,
+  "steel_mult": 1.2,
+  "food_mult": 1.6
+ },
+ {
+  "iso": "DEU",
+  "name": "Германия",
+  "continent": "Europe",
+  "population": 84.0,
+  "gdp": 4450.0,
+  "manpower": 4200.0,
+  "stability": 65.3,
+  "ideology": "democracy",
+  "color": [
+   201,
+   86,
+   182
+  ],
+  "capital": "Берлин",
+  "oil_mult": 0.9299999999999999,
+  "steel_mult": 1.21,
+  "food_mult": 1.05
+ },
+ {
+  "iso": "GRC",
+  "name": "Греция",
+  "continent": "Europe",
+  "population": 10.4,
+  "gdp": 240.0,
+  "manpower": 520.0,
+  "stability": 61.3,
+  "ideology": "democracy",
+  "color": [
+   51,
+   198,
+   147
+  ],
+  "capital": "Афины",
+  "oil_mult": 0.9099999999999999,
+  "steel_mult": 0.8099999999999999,
+  "food_mult": 0.65
+ },
+ {
+  "iso": "HUN",
+  "name": "Венгрия",
+  "continent": "Europe",
+  "population": 9.6,
+  "gdp": 210.0,
+  "manpower": 480.0,
+  "stability": 66.0,
+  "ideology": "democracy",
+  "color": [
+   165,
+   53,
+   113
+  ],
+  "capital": "Будапешт",
+  "oil_mult": 1.15,
+  "steel_mult": 0.61,
+  "food_mult": 0.84
+ },
+ {
+  "iso": "ISL",
+  "name": "Исландия",
+  "continent": "Europe",
+  "population": 0.38,
+  "gdp": 31.0,
+  "manpower": 19.0,
+  "stability": 70.8,
+  "ideology": "democracy",
+  "color": [
+   64,
+   188,
+   97
+  ],
+  "capital": "Рейкьявик",
+  "oil_mult": 1.01,
+  "steel_mult": 0.6,
+  "food_mult": 1.29
+ },
+ {
+  "iso": "IRL",
+  "name": "Ирландия",
+  "continent": "Europe",
+  "population": 5.2,
+  "gdp": 550.0,
+  "manpower": 260.0,
+  "stability": 76.4,
+  "ideology": "neutral",
+  "color": [
+   83,
+   173,
+   141
+  ],
+  "capital": "Дублин",
+  "oil_mult": 1.2999999999999998,
+  "steel_mult": 0.78,
+  "food_mult": 0.85
+ },
+ {
+  "iso": "ITA",
+  "name": "Италия",
+  "continent": "Europe",
+  "population": 59.0,
+  "gdp": 2250.0,
+  "manpower": 2950.0,
+  "stability": 67.3,
+  "ideology": "democracy",
+  "color": [
+   226,
+   108,
+   136
+  ],
+  "capital": "Рим",
+  "oil_mult": 0.9299999999999999,
+  "steel_mult": 1.04,
+  "food_mult": 1.27
+ },
+ {
+  "iso": "KOS",
+  "name": "Косово",
+  "continent": "Europe",
+  "population": 1.8,
+  "gdp": 10.0,
+  "manpower": 90.0,
+  "stability": 53.4,
+  "ideology": "democracy",
+  "color": [
+   94,
+   107,
+   186
+  ],
+  "capital": "Приштина",
+  "oil_mult": 0.96,
+  "steel_mult": 1.35,
+  "food_mult": 0.8899999999999999
+ },
+ {
+  "iso": "LVA",
+  "name": "Латвия",
+  "continent": "Europe",
+  "population": 1.9,
+  "gdp": 43.0,
+  "manpower": 95.0,
+  "stability": 63.2,
+  "ideology": "democracy",
+  "color": [
+   174,
+   83,
+   186
+  ],
+  "capital": "Рига",
+  "oil_mult": 1.0,
+  "steel_mult": 0.8,
+  "food_mult": 1.28
+ },
+ {
+  "iso": "LIE",
+  "name": "Лихтенштейн",
+  "continent": "Europe",
+  "population": 0.04,
+  "gdp": 7.0,
+  "manpower": 2.0,
+  "stability": 79.4,
+  "ideology": "neutral",
+  "color": [
+   145,
+   221,
+   57
+  ],
+  "capital": "Вадуц",
+  "oil_mult": 0.72,
+  "steel_mult": 0.84,
+  "food_mult": 1.1
+ },
+ {
+  "iso": "LTU",
+  "name": "Литва",
+  "continent": "Europe",
+  "population": 2.8,
+  "gdp": 78.0,
+  "manpower": 140.0,
+  "stability": 63.4,
+  "ideology": "democracy",
+  "color": [
+   211,
+   55,
+   159
+  ],
+  "capital": "Вильнюс",
+  "oil_mult": 1.3599999999999999,
+  "steel_mult": 0.64,
+  "food_mult": 1.15
+ },
+ {
+  "iso": "LUX",
+  "name": "Люксембург",
+  "continent": "Europe",
+  "population": 0.66,
+  "gdp": 85.0,
+  "manpower": 33.0,
+  "stability": 78.6,
+  "ideology": "democracy",
+  "color": [
+   147,
+   196,
+   82
+  ],
+  "capital": "Люксембург",
+  "oil_mult": 0.82,
+  "steel_mult": 1.01,
+  "food_mult": 1.17
+ },
+ {
+  "iso": "MLT",
+  "name": "Мальта",
+  "continent": "Europe",
+  "population": 0.54,
+  "gdp": 20.0,
+  "manpower": 27.0,
+  "stability": 63.1,
+  "ideology": "neutral",
+  "color": [
+   95,
+   216,
+   65
+  ],
+  "capital": "Валлетта",
+  "oil_mult": 1.25,
+  "steel_mult": 1.3900000000000001,
+  "food_mult": 1.05
+ },
+ {
+  "iso": "MDA",
+  "name": "Молдова",
+  "continent": "Europe",
+  "population": 2.6,
+  "gdp": 15.0,
+  "manpower": 130.0,
+  "stability": 52.6,
+  "ideology": "democracy",
+  "color": [
+   183,
+   135,
+   71
+  ],
+  "capital": "Кишинёв",
+  "oil_mult": 1.1600000000000001,
+  "steel_mult": 0.99,
+  "food_mult": 0.9099999999999999
+ },
+ {
+  "iso": "MCO",
+  "name": "Монако",
+  "continent": "Europe",
+  "population": 0.04,
+  "gdp": 8.0,
+  "manpower": 2.0,
+  "stability": 80.2,
+  "ideology": "neutral",
+  "color": [
+   67,
+   188,
+   150
+  ],
+  "capital": "Монако",
+  "oil_mult": 1.22,
+  "steel_mult": 0.87,
+  "food_mult": 0.8099999999999999
+ },
+ {
+  "iso": "MNE",
+  "name": "Черногория",
+  "continent": "Europe",
+  "population": 0.62,
+  "gdp": 7.0,
+  "manpower": 31.0,
+  "stability": 64.3,
+  "ideology": "democracy",
+  "color": [
+   183,
+   103,
+   77
+  ],
+  "capital": "Подгорица",
+  "oil_mult": 0.9099999999999999,
+  "steel_mult": 0.72,
+  "food_mult": 1.12
+ },
+ {
+  "iso": "NLD",
+  "name": "Нидерланды",
+  "continent": "Europe",
+  "population": 17.6,
+  "gdp": 1120.0,
+  "manpower": 880.0,
+  "stability": 69.3,
+  "ideology": "democracy",
+  "color": [
+   219,
+   111,
+   142
+  ],
+  "capital": "Амстердам",
+  "oil_mult": 0.83,
+  "steel_mult": 1.27,
+  "food_mult": 0.9199999999999999
+ },
+ {
+  "iso": "MKD",
+  "name": "Северная Македония",
+  "continent": "Europe",
+  "population": 1.8,
+  "gdp": 14.0,
+  "manpower": 90.0,
+  "stability": 57.2,
+  "ideology": "democracy",
+  "color": [
+   118,
+   175,
+   84
+  ],
+  "capital": "Скопье",
+  "oil_mult": 1.3900000000000001,
+  "steel_mult": 0.96,
+  "food_mult": 1.03
+ },
+ {
+  "iso": "NOR",
+  "name": "Норвегия",
+  "continent": "Europe",
+  "population": 5.5,
+  "gdp": 480.0,
+  "manpower": 275.0,
+  "stability": 76.2,
+  "ideology": "democracy",
+  "color": [
+   168,
+   80,
+   86
+  ],
+  "capital": "Осло",
+  "oil_mult": 3.0,
+  "steel_mult": 0.78,
+  "food_mult": 1.27
+ },
+ {
+  "iso": "POL",
+  "name": "Польша",
+  "continent": "Europe",
+  "population": 37.7,
+  "gdp": 810.0,
+  "manpower": 1885.0,
+  "stability": 64.9,
+  "ideology": "democracy",
+  "color": [
+   191,
+   103,
+   166
+  ],
+  "capital": "Варшава",
+  "oil_mult": 0.72,
+  "steel_mult": 1.29,
+  "food_mult": 1.12
+ },
+ {
+  "iso": "PRT",
+  "name": "Португалия",
+  "continent": "Europe",
+  "population": 10.3,
+  "gdp": 285.0,
+  "manpower": 515.0,
+  "stability": 63.4,
+  "ideology": "democracy",
+  "color": [
+   110,
+   71,
+   188
+  ],
+  "capital": "Лиссабон",
+  "oil_mult": 1.2,
+  "steel_mult": 0.6,
+  "food_mult": 1.23
+ },
+ {
+  "iso": "ROU",
+  "name": "Румыния",
+  "continent": "Europe",
+  "population": 19.0,
+  "gdp": 350.0,
+  "manpower": 950.0,
+  "stability": 60.0,
+  "ideology": "democracy",
+  "color": [
+   82,
+   170,
+   101
+  ],
+  "capital": "Бухарест",
+  "oil_mult": 0.6599999999999999,
+  "steel_mult": 0.64,
+  "food_mult": 0.85
+ },
+ {
+  "iso": "RUS",
+  "name": "Россия",
+  "continent": "Europe",
+  "population": 144.0,
+  "gdp": 2000.0,
+  "manpower": 7200.0,
+  "stability": 63.4,
+  "ideology": "autocracy",
+  "color": [
+   49,
+   178,
+   75
+  ],
+  "capital": "Москва",
+  "oil_mult": 3.0,
+  "steel_mult": 2.5,
+  "food_mult": 1.6
+ },
+ {
+  "iso": "SMR",
+  "name": "Сан-Марино",
+  "continent": "Europe",
+  "population": 0.034,
+  "gdp": 2.0,
+  "manpower": 1.7,
+  "stability": 72.9,
+  "ideology": "neutral",
+  "color": [
+   183,
+   66,
+   91
+  ],
+  "capital": "Сан-Марино",
+  "oil_mult": 0.76,
+  "steel_mult": 0.94,
+  "food_mult": 1.01
+ },
+ {
+  "iso": "SRB",
+  "name": "Сербия",
+  "continent": "Europe",
+  "population": 6.7,
+  "gdp": 75.0,
+  "manpower": 335.0,
+  "stability": 60.2,
+  "ideology": "democracy",
+  "color": [
+   196,
+   68,
+   115
+  ],
+  "capital": "Белград",
+  "oil_mult": 0.97,
+  "steel_mult": 0.83,
+  "food_mult": 0.88
+ },
+ {
+  "iso": "SVK",
+  "name": "Словакия",
+  "continent": "Europe",
+  "population": 5.4,
+  "gdp": 133.0,
+  "manpower": 270.0,
+  "stability": 67.7,
+  "ideology": "democracy",
+  "color": [
+   162,
+   201,
+   98
+  ],
+  "capital": "Братислава",
+  "oil_mult": 0.61,
+  "steel_mult": 0.94,
+  "food_mult": 0.8899999999999999
+ },
+ {
+  "iso": "SVN",
+  "name": "Словения",
+  "continent": "Europe",
+  "population": 2.1,
+  "gdp": 68.0,
+  "manpower": 105.0,
+  "stability": 67.3,
+  "ideology": "democracy",
+  "color": [
+   193,
+   169,
+   94
+  ],
+  "capital": "Любляна",
+  "oil_mult": 1.03,
+  "steel_mult": 0.9299999999999999,
+  "food_mult": 1.12
+ },
+ {
+  "iso": "ESP",
+  "name": "Испания",
+  "continent": "Europe",
+  "population": 48.0,
+  "gdp": 1580.0,
+  "manpower": 2400.0,
+  "stability": 63.4,
+  "ideology": "democracy",
+  "color": [
+   89,
+   165,
+   140
+  ],
+  "capital": "Мадрид",
+  "oil_mult": 1.15,
+  "steel_mult": 1.17,
+  "food_mult": 1.17
+ },
+ {
+  "iso": "SWE",
+  "name": "Швеция",
+  "continent": "Europe",
+  "population": 10.5,
+  "gdp": 590.0,
+  "manpower": 525.0,
+  "stability": 66.6,
+  "ideology": "democracy",
+  "color": [
+   169,
+   173,
+   52
+  ],
+  "capital": "Стокгольм",
+  "oil_mult": 1.0899999999999999,
+  "steel_mult": 2.5,
+  "food_mult": 1.27
+ },
+ {
+  "iso": "CHE",
+  "name": "Швейцария",
+  "continent": "Europe",
+  "population": 8.8,
+  "gdp": 905.0,
+  "manpower": 440.0,
+  "stability": 76.2,
+  "ideology": "neutral",
+  "color": [
+   209,
+   134,
+   69
+  ],
+  "capital": "Берн",
+  "oil_mult": 0.6,
+  "steel_mult": 0.98,
+  "food_mult": 0.87
+ },
+ {
+  "iso": "UKR",
+  "name": "Украина",
+  "continent": "Europe",
+  "population": 37.0,
+  "gdp": 160.0,
+  "manpower": 1850.0,
+  "stability": 59.2,
+  "ideology": "democracy",
+  "color": [
+   88,
+   226,
+   104
+  ],
+  "capital": "Киев",
+  "oil_mult": 1.17,
+  "steel_mult": 2.5,
+  "food_mult": 1.6
+ },
+ {
+  "iso": "GBR",
+  "name": "Великобритания",
+  "continent": "Europe",
+  "population": 67.0,
+  "gdp": 3340.0,
+  "manpower": 3350.0,
+  "stability": 65.9,
+  "ideology": "democracy",
+  "color": [
+   68,
+   221,
+   150
+  ],
+  "capital": "Лондон",
+  "oil_mult": 1.37,
+  "steel_mult": 1.18,
+  "food_mult": 0.77
+ },
+ {
+  "iso": "VAT",
+  "name": "Ватикан",
+  "continent": "Europe",
+  "population": 0.001,
+  "gdp": 0.3,
+  "manpower": 0.1,
+  "stability": 83.7,
+  "ideology": "neutral",
+  "color": [
+   165,
+   87,
+   143
+  ],
+  "capital": "Ватикан",
+  "oil_mult": 0.76,
+  "steel_mult": 1.0899999999999999,
+  "food_mult": 1.28
+ },
+ {
+  "iso": "GRL",
+  "name": "Гренландия",
+  "continent": "North America",
+  "population": 0.056,
+  "gdp": 3.1,
+  "manpower": 2.8,
+  "stability": 67.5,
+  "ideology": "democracy",
+  "color": [
+   224,
+   92,
+   184
+  ],
+  "capital": "Нуук",
+  "oil_mult": 1.15,
+  "steel_mult": 0.77,
+  "food_mult": 1.02
+ },
+ {
+  "iso": "ATG",
+  "name": "Антигуа и Барбуда",
+  "continent": "North America",
+  "population": 0.1,
+  "gdp": 1.9,
+  "manpower": 5.0,
+  "stability": 59.2,
+  "ideology": "democracy",
+  "color": [
+   175,
+   82,
+   133
+  ],
+  "capital": "Сент-Джонс",
+  "oil_mult": 1.06,
+  "steel_mult": 0.73,
+  "food_mult": 0.95
+ },
+ {
+  "iso": "BHS",
+  "name": "Багамы",
+  "continent": "North America",
+  "population": 0.4,
+  "gdp": 14.0,
+  "manpower": 20.0,
+  "stability": 64.8,
+  "ideology": "democracy",
+  "color": [
+   178,
+   121,
+   89
+  ],
+  "capital": "Нассау",
+  "oil_mult": 1.03,
+  "steel_mult": 0.61,
+  "food_mult": 0.96
+ },
+ {
+  "iso": "BRB",
+  "name": "Барбадос",
+  "continent": "North America",
+  "population": 0.28,
+  "gdp": 5.5,
+  "manpower": 14.0,
+  "stability": 62.4,
+  "ideology": "democracy",
+  "color": [
+   224,
+   181,
+   107
+  ],
+  "capital": "Бриджтаун",
+  "oil_mult": 0.73,
+  "steel_mult": 1.0,
+  "food_mult": 1.28
+ },
+ {
+  "iso": "BLZ",
+  "name": "Белиз",
+  "continent": "North America",
+  "population": 0.4,
+  "gdp": 3.0,
+  "manpower": 20.0,
+  "stability": 58.0,
+  "ideology": "democracy",
+  "color": [
+   55,
+   173,
+   124
+  ],
+  "capital": "Бельмопан",
+  "oil_mult": 1.0899999999999999,
+  "steel_mult": 0.76,
+  "food_mult": 1.0699999999999998
+ },
+ {
+  "iso": "CAN",
+  "name": "Канада",
+  "continent": "North America",
+  "population": 40.0,
+  "gdp": 2140.0,
+  "manpower": 2000.0,
+  "stability": 73.3,
+  "ideology": "democracy",
+  "color": [
+   83,
+   193,
+   63
+  ],
+  "capital": "Оттава",
+  "oil_mult": 3.0,
+  "steel_mult": 2.5,
+  "food_mult": 1.6
+ },
+ {
+  "iso": "CRI",
+  "name": "Коста-Рика",
+  "continent": "North America",
+  "population": 5.2,
+  "gdp": 86.0,
+  "manpower": 260.0,
+  "stability": 60.4,
+  "ideology": "neutral",
+  "color": [
+   211,
+   209,
+   107
+  ],
+  "capital": "Сан-Хосе",
+  "oil_mult": 1.2,
+  "steel_mult": 1.04,
+  "food_mult": 1.1099999999999999
+ },
+ {
+  "iso": "CUB",
+  "name": "Куба",
+  "continent": "North America",
+  "population": 11.0,
+  "gdp": 107.0,
+  "manpower": 550.0,
+  "stability": 61.4,
+  "ideology": "communism",
+  "color": [
+   199,
+   105,
+   206
+  ],
+  "capital": "Гавана",
+  "oil_mult": 1.2999999999999998,
+  "steel_mult": 0.6599999999999999,
+  "food_mult": 1.0
+ },
+ {
+  "iso": "DMA",
+  "name": "Доминика",
+  "continent": "North America",
+  "population": 0.07,
+  "gdp": 0.6,
+  "manpower": 3.5,
+  "stability": 55.7,
+  "ideology": "democracy",
+  "color": [
+   60,
+   209,
+   68
+  ],
+  "capital": "Розо",
+  "oil_mult": 0.9299999999999999,
+  "steel_mult": 1.37,
+  "food_mult": 0.86
+ },
+ {
+  "iso": "DOM",
+  "name": "Доминиканская Республика",
+  "continent": "North America",
+  "population": 11.0,
+  "gdp": 121.0,
+  "manpower": 550.0,
+  "stability": 62.1,
+  "ideology": "democracy",
+  "color": [
+   59,
+   204,
+   155
+  ],
+  "capital": "Санто-Доминго",
+  "oil_mult": 1.19,
+  "steel_mult": 0.9199999999999999,
+  "food_mult": 0.75
+ },
+ {
+  "iso": "SLV",
+  "name": "Сальвадор",
+  "continent": "North America",
+  "population": 6.3,
+  "gdp": 34.0,
+  "manpower": 315.0,
+  "stability": 56.3,
+  "ideology": "democracy",
+  "color": [
+   221,
+   206,
+   93
+  ],
+  "capital": "Сан-Сальвадор",
+  "oil_mult": 0.79,
+  "steel_mult": 0.9299999999999999,
+  "food_mult": 1.25
+ },
+ {
+  "iso": "GRD",
+  "name": "Гренада",
+  "continent": "North America",
+  "population": 0.12,
+  "gdp": 1.2,
+  "manpower": 6.0,
+  "stability": 59.6,
+  "ideology": "democracy",
+  "color": [
+   181,
+   66,
+   183
+  ],
+  "capital": "Сент-Джорджес",
+  "oil_mult": 0.95,
+  "steel_mult": 1.1,
+  "food_mult": 1.08
+ },
+ {
+  "iso": "GTM",
+  "name": "Гватемала",
+  "continent": "North America",
+  "population": 18.0,
+  "gdp": 102.0,
+  "manpower": 900.0,
+  "stability": 58.5,
+  "ideology": "democracy",
+  "color": [
+   93,
+   190,
+   198
+  ],
+  "capital": "Гватемала",
+  "oil_mult": 1.0899999999999999,
+  "steel_mult": 0.83,
+  "food_mult": 1.18
+ },
+ {
+  "iso": "HTI",
+  "name": "Гаити",
+  "continent": "North America",
+  "population": 11.7,
+  "gdp": 20.0,
+  "manpower": 585.0,
+  "stability": 36.1,
+  "ideology": "democracy",
+  "color": [
+   209,
+   104,
+   203
+  ],
+  "capital": "Порт-о-Пренс",
+  "oil_mult": 1.05,
+  "steel_mult": 0.8,
+  "food_mult": 0.9199999999999999
+ },
+ {
+  "iso": "HND",
+  "name": "Гондурас",
+  "continent": "North America",
+  "population": 10.4,
+  "gdp": 34.0,
+  "manpower": 520.0,
+  "stability": 50.8,
+  "ideology": "democracy",
+  "color": [
+   168,
+   69,
+   161
+  ],
+  "capital": "Тегусигальпа",
+  "oil_mult": 1.02,
+  "steel_mult": 0.76,
+  "food_mult": 1.05
+ },
+ {
+  "iso": "JAM",
+  "name": "Ямайка",
+  "continent": "North America",
+  "population": 2.8,
+  "gdp": 19.0,
+  "manpower": 140.0,
+  "stability": 60.5,
+  "ideology": "democracy",
+  "color": [
+   183,
+   102,
+   67
+  ],
+  "capital": "Кингстон",
+  "oil_mult": 1.27,
+  "steel_mult": 0.85,
+  "food_mult": 1.08
+ },
+ {
+  "iso": "MEX",
+  "name": "Мексика",
+  "continent": "North America",
+  "population": 128.0,
+  "gdp": 1790.0,
+  "manpower": 6400.0,
+  "stability": 64.5,
+  "ideology": "democracy",
+  "color": [
+   120,
+   226,
+   154
+  ],
+  "capital": "Мехико",
+  "oil_mult": 3.0,
+  "steel_mult": 0.8,
+  "food_mult": 1.18
+ },
+ {
+  "iso": "NIC",
+  "name": "Никарагуа",
+  "continent": "North America",
+  "population": 6.9,
+  "gdp": 17.0,
+  "manpower": 345.0,
+  "stability": 54.6,
+  "ideology": "autocracy",
+  "color": [
+   67,
+   60,
+   201
+  ],
+  "capital": "Манагуа",
+  "oil_mult": 1.24,
+  "steel_mult": 0.8999999999999999,
+  "food_mult": 1.21
+ },
+ {
+  "iso": "PAN",
+  "name": "Панама",
+  "continent": "North America",
+  "population": 4.5,
+  "gdp": 83.0,
+  "manpower": 225.0,
+  "stability": 64.0,
+  "ideology": "democracy",
+  "color": [
+   169,
+   85,
+   170
+  ],
+  "capital": "Панама",
+  "oil_mult": 0.76,
+  "steel_mult": 1.22,
+  "food_mult": 0.6799999999999999
+ },
+ {
+  "iso": "KNA",
+  "name": "Сент-Китс и Невис",
+  "continent": "North America",
+  "population": 0.05,
+  "gdp": 1.1,
+  "manpower": 2.5,
+  "stability": 67.1,
+  "ideology": "democracy",
+  "color": [
+   198,
+   81,
+   159
+  ],
+  "capital": "Бастер",
+  "oil_mult": 1.1,
+  "steel_mult": 0.77,
+  "food_mult": 1.1
+ },
+ {
+  "iso": "LCA",
+  "name": "Сент-Люсия",
+  "continent": "North America",
+  "population": 0.18,
+  "gdp": 2.4,
+  "manpower": 9.0,
+  "stability": 59.2,
+  "ideology": "democracy",
+  "color": [
+   209,
+   123,
+   224
+  ],
+  "capital": "Кастри",
+  "oil_mult": 1.37,
+  "steel_mult": 0.8,
+  "food_mult": 1.1400000000000001
+ },
+ {
+  "iso": "VCT",
+  "name": "Сент-Винсент и Гренадины",
+  "continent": "North America",
+  "population": 0.1,
+  "gdp": 0.9,
+  "manpower": 5.0,
+  "stability": 58.0,
+  "ideology": "democracy",
+  "color": [
+   101,
+   191,
+   129
+  ],
+  "capital": "Кингстаун",
+  "oil_mult": 1.3900000000000001,
+  "steel_mult": 1.23,
+  "food_mult": 0.8
+ },
+ {
+  "iso": "TTO",
+  "name": "Тринидад и Тобаго",
+  "continent": "North America",
+  "population": 1.5,
+  "gdp": 28.0,
+  "manpower": 75.0,
+  "stability": 61.1,
+  "ideology": "democracy",
+  "color": [
+   168,
+   56,
+   43
+  ],
+  "capital": "Порт-оф-Спейн",
+  "oil_mult": 0.78,
+  "steel_mult": 0.85,
+  "food_mult": 0.72
+ },
+ {
+  "iso": "USA",
+  "name": "США",
+  "continent": "North America",
+  "population": 335.0,
+  "gdp": 27360.0,
+  "manpower": 16750.0,
+  "stability": 74.8,
+  "ideology": "democracy",
+  "color": [
+   224,
+   186,
+   71
+  ],
+  "capital": "Вашингтон",
+  "oil_mult": 3.0,
+  "steel_mult": 2.5,
+  "food_mult": 1.6
+ },
+ {
+  "iso": "PRI",
+  "name": "Пуэрто-Рико",
+  "continent": "North America",
+  "population": 3.2,
+  "gdp": 120.0,
+  "manpower": 160.0,
+  "stability": 68.2,
+  "ideology": "democracy",
+  "color": [
+   84,
+   206,
+   180
+  ],
+  "capital": "Сан-Хуан",
+  "oil_mult": 1.3900000000000001,
+  "steel_mult": 0.94,
+  "food_mult": 0.74
+ },
+ {
+  "iso": "ARG",
+  "name": "Аргентина",
+  "continent": "South America",
+  "population": 46.0,
+  "gdp": 640.0,
+  "manpower": 2300.0,
+  "stability": 57.4,
+  "ideology": "democracy",
+  "color": [
+   104,
+   214,
+   139
+  ],
+  "capital": "Буэнос-Айрес",
+  "oil_mult": 1.38,
+  "steel_mult": 1.26,
+  "food_mult": 1.6
+ },
+ {
+  "iso": "BOL",
+  "name": "Боливия",
+  "continent": "South America",
+  "population": 12.0,
+  "gdp": 45.0,
+  "manpower": 600.0,
+  "stability": 53.5,
+  "ideology": "democracy",
+  "color": [
+   224,
+   105,
+   143
+  ],
+  "capital": "Сукре",
+  "oil_mult": 0.64,
+  "steel_mult": 1.13,
+  "food_mult": 1.17
+ },
+ {
+  "iso": "BRA",
+  "name": "Бразилия",
+  "continent": "South America",
+  "population": 216.0,
+  "gdp": 2170.0,
+  "manpower": 10800.0,
+  "stability": 58.6,
+  "ideology": "democracy",
+  "color": [
+   158,
+   82,
+   175
+  ],
+  "capital": "Бразилиа",
+  "oil_mult": 3.0,
+  "steel_mult": 2.5,
+  "food_mult": 1.6
+ },
+ {
+  "iso": "CHL",
+  "name": "Чили",
+  "continent": "South America",
+  "population": 19.6,
+  "gdp": 335.0,
+  "manpower": 980.0,
+  "stability": 60.6,
+  "ideology": "democracy",
+  "color": [
+   153,
+   73,
+   193
+  ],
+  "capital": "Сантьяго",
+  "oil_mult": 0.8999999999999999,
+  "steel_mult": 0.63,
+  "food_mult": 1.0
+ },
+ {
+  "iso": "COL",
+  "name": "Колумбия",
+  "continent": "South America",
+  "population": 52.0,
+  "gdp": 363.0,
+  "manpower": 2600.0,
+  "stability": 55.6,
+  "ideology": "democracy",
+  "color": [
+   126,
+   72,
+   173
+  ],
+  "capital": "Богота",
+  "oil_mult": 0.9199999999999999,
+  "steel_mult": 1.27,
+  "food_mult": 0.6799999999999999
+ },
+ {
+  "iso": "ECU",
+  "name": "Эквадор",
+  "continent": "South America",
+  "population": 18.0,
+  "gdp": 118.0,
+  "manpower": 900.0,
+  "stability": 54.3,
+  "ideology": "democracy",
+  "color": [
+   71,
+   131,
+   165
+  ],
+  "capital": "Кито",
+  "oil_mult": 0.85,
+  "steel_mult": 0.94,
+  "food_mult": 1.2
+ },
+ {
+  "iso": "GUY",
+  "name": "Гайана",
+  "continent": "South America",
+  "population": 0.8,
+  "gdp": 16.0,
+  "manpower": 40.0,
+  "stability": 61.5,
+  "ideology": "democracy",
+  "color": [
+   183,
+   116,
+   211
+  ],
+  "capital": "Джорджтаун",
+  "oil_mult": 1.03,
+  "steel_mult": 1.0899999999999999,
+  "food_mult": 1.25
+ },
+ {
+  "iso": "PRY",
+  "name": "Парагвай",
+  "continent": "South America",
+  "population": 6.8,
+  "gdp": 42.0,
+  "manpower": 340.0,
+  "stability": 56.0,
+  "ideology": "democracy",
+  "color": [
+   132,
+   70,
+   226
+  ],
+  "capital": "Асунсьон",
+  "oil_mult": 1.33,
+  "steel_mult": 0.74,
+  "food_mult": 0.84
+ },
+ {
+  "iso": "PER",
+  "name": "Перу",
+  "continent": "South America",
+  "population": 34.0,
+  "gdp": 267.0,
+  "manpower": 1700.0,
+  "stability": 54.3,
+  "ideology": "democracy",
+  "color": [
+   207,
+   79,
+   221
+  ],
+  "capital": "Лима",
+  "oil_mult": 1.03,
+  "steel_mult": 0.72,
+  "food_mult": 1.0899999999999999
+ },
+ {
+  "iso": "SUR",
+  "name": "Суринам",
+  "continent": "South America",
+  "population": 0.6,
+  "gdp": 3.6,
+  "manpower": 30.0,
+  "stability": 58.8,
+  "ideology": "democracy",
+  "color": [
+   168,
+   83,
+   173
+  ],
+  "capital": "Парамарибо",
+  "oil_mult": 0.84,
+  "steel_mult": 1.23,
+  "food_mult": 0.74
+ },
+ {
+  "iso": "URY",
+  "name": "Уругвай",
+  "continent": "South America",
+  "population": 3.4,
+  "gdp": 77.0,
+  "manpower": 170.0,
+  "stability": 60.2,
+  "ideology": "democracy",
+  "color": [
+   216,
+   211,
+   110
+  ],
+  "capital": "Монтевидео",
+  "oil_mult": 1.12,
+  "steel_mult": 1.27,
+  "food_mult": 0.72
+ },
+ {
+  "iso": "VEN",
+  "name": "Венесуэла",
+  "continent": "South America",
+  "population": 28.0,
+  "gdp": 100.0,
+  "manpower": 1400.0,
+  "stability": 58.2,
+  "ideology": "autocracy",
+  "color": [
+   116,
+   73,
+   175
+  ],
+  "capital": "Каракас",
+  "oil_mult": 3.0,
+  "steel_mult": 0.78,
+  "food_mult": 0.9199999999999999
+ },
+ {
+  "iso": "FLK",
+  "name": "Фолклендские острова",
+  "continent": "South America",
+  "population": 0.003,
+  "gdp": 0.3,
+  "manpower": 0.2,
+  "stability": 72.1,
+  "ideology": "democracy",
+  "color": [
+   58,
+   120,
+   201
+  ],
+  "capital": "Стэнли",
+  "oil_mult": 0.6599999999999999,
+  "steel_mult": 0.79,
+  "food_mult": 0.8999999999999999
+ },
+ {
+  "iso": "AUS",
+  "name": "Австралия",
+  "continent": "Oceania",
+  "population": 26.0,
+  "gdp": 1700.0,
+  "manpower": 1300.0,
+  "stability": 71.5,
+  "ideology": "democracy",
+  "color": [
+   128,
+   72,
+   173
+  ],
+  "capital": "Канберра",
+  "oil_mult": 1.38,
+  "steel_mult": 2.5,
+  "food_mult": 1.6
+ },
+ {
+  "iso": "FJI",
+  "name": "Фиджи",
+  "continent": "Oceania",
+  "population": 0.93,
+  "gdp": 5.0,
+  "manpower": 46.5,
+  "stability": 60.3,
+  "ideology": "democracy",
+  "color": [
+   168,
+   158,
+   84
+  ],
+  "capital": "Сува",
+  "oil_mult": 1.02,
+  "steel_mult": 0.77,
+  "food_mult": 1.03
+ },
+ {
+  "iso": "KIR",
+  "name": "Кирибати",
+  "continent": "Oceania",
+  "population": 0.13,
+  "gdp": 0.2,
+  "manpower": 6.5,
+  "stability": 54.7,
+  "ideology": "democracy",
+  "color": [
+   214,
+   83,
+   209
+  ],
+  "capital": "Тарава",
+  "oil_mult": 0.99,
+  "steel_mult": 1.24,
+  "food_mult": 1.23
+ },
+ {
+  "iso": "MHL",
+  "name": "Маршалловы Острова",
+  "continent": "Oceania",
+  "population": 0.04,
+  "gdp": 0.3,
+  "manpower": 2.0,
+  "stability": 61.0,
+  "ideology": "democracy",
+  "color": [
+   183,
+   71,
+   79
+  ],
+  "capital": "Маджуро",
+  "oil_mult": 0.86,
+  "steel_mult": 0.98,
+  "food_mult": 1.08
+ },
+ {
+  "iso": "FSM",
+  "name": "Микронезия",
+  "continent": "Oceania",
+  "population": 0.11,
+  "gdp": 0.4,
+  "manpower": 5.5,
+  "stability": 53.3,
+  "ideology": "democracy",
+  "color": [
+   165,
+   64,
+   44
+  ],
+  "capital": "Паликир",
+  "oil_mult": 1.28,
+  "steel_mult": 0.79,
+  "food_mult": 0.63
+ },
+ {
+  "iso": "NRU",
+  "name": "Науру",
+  "continent": "Oceania",
+  "population": 0.01,
+  "gdp": 0.14,
+  "manpower": 0.5,
+  "stability": 61.5,
+  "ideology": "democracy",
+  "color": [
+   72,
+   123,
+   168
+  ],
+  "capital": "Ярен",
+  "oil_mult": 1.05,
+  "steel_mult": 1.02,
+  "food_mult": 0.61
+ },
+ {
+  "iso": "NZL",
+  "name": "Новая Зеландия",
+  "continent": "Oceania",
+  "population": 5.2,
+  "gdp": 252.0,
+  "manpower": 260.0,
+  "stability": 67.7,
+  "ideology": "democracy",
+  "color": [
+   173,
+   57,
+   152
+  ],
+  "capital": "Веллингтон",
+  "oil_mult": 0.9099999999999999,
+  "steel_mult": 1.19,
+  "food_mult": 0.88
+ },
+ {
+  "iso": "PLW",
+  "name": "Палау",
+  "continent": "Oceania",
+  "population": 0.018,
+  "gdp": 0.25,
+  "manpower": 0.9,
+  "stability": 57.4,
+  "ideology": "democracy",
+  "color": [
+   102,
+   182,
+   214
+  ],
+  "capital": "Нгерулмуд",
+  "oil_mult": 1.23,
+  "steel_mult": 0.79,
+  "food_mult": 0.72
+ },
+ {
+  "iso": "PNG",
+  "name": "Папуа — Новая Гвинея",
+  "continent": "Oceania",
+  "population": 10.3,
+  "gdp": 31.0,
+  "manpower": 515.0,
+  "stability": 55.4,
+  "ideology": "democracy",
+  "color": [
+   179,
+   55,
+   183
+  ],
+  "capital": "Порт-Морсби",
+  "oil_mult": 1.0,
+  "steel_mult": 1.26,
+  "food_mult": 1.01
+ },
+ {
+  "iso": "WSM",
+  "name": "Самоа",
+  "continent": "Oceania",
+  "population": 0.22,
+  "gdp": 0.9,
+  "manpower": 11.0,
+  "stability": 57.9,
+  "ideology": "democracy",
+  "color": [
+   85,
+   200,
+   209
+  ],
+  "capital": "Апиа",
+  "oil_mult": 1.05,
+  "steel_mult": 1.2,
+  "food_mult": 1.08
+ },
+ {
+  "iso": "SLB",
+  "name": "Соломоновы Острова",
+  "continent": "Oceania",
+  "population": 0.74,
+  "gdp": 1.6,
+  "manpower": 37.0,
+  "stability": 51.0,
+  "ideology": "democracy",
+  "color": [
+   153,
+   188,
+   86
+  ],
+  "capital": "Хониара",
+  "oil_mult": 1.1400000000000001,
+  "steel_mult": 1.06,
+  "food_mult": 0.9199999999999999
+ },
+ {
+  "iso": "TON",
+  "name": "Тонга",
+  "continent": "Oceania",
+  "population": 0.1,
+  "gdp": 0.5,
+  "manpower": 5.0,
+  "stability": 53.9,
+  "ideology": "democracy",
+  "color": [
+   203,
+   214,
+   111
+  ],
+  "capital": "Нукуалофа",
+  "oil_mult": 1.29,
+  "steel_mult": 0.94,
+  "food_mult": 1.0699999999999998
+ },
+ {
+  "iso": "TUV",
+  "name": "Тувалу",
+  "continent": "Oceania",
+  "population": 0.01,
+  "gdp": 0.06,
+  "manpower": 0.5,
+  "stability": 54.8,
+  "ideology": "democracy",
+  "color": [
+   114,
+   51,
+   191
+  ],
+  "capital": "Фунафути",
+  "oil_mult": 0.86,
+  "steel_mult": 0.9299999999999999,
+  "food_mult": 0.87
+ },
+ {
+  "iso": "VUT",
+  "name": "Вануату",
+  "continent": "Oceania",
+  "population": 0.33,
+  "gdp": 1.0,
+  "manpower": 16.5,
+  "stability": 49.5,
+  "ideology": "democracy",
+  "color": [
+   146,
+   89,
+   165
+  ],
+  "capital": "Порт-Вила",
+  "oil_mult": 1.1,
+  "steel_mult": 1.08,
+  "food_mult": 0.77
+ },
+ {
+  "iso": "NCL",
+  "name": "Новая Каледония",
+  "continent": "Oceania",
+  "population": 0.27,
+  "gdp": 9.4,
+  "manpower": 13.5,
+  "stability": 62.8,
+  "ideology": "democracy",
+  "color": [
+   191,
+   49,
+   151
+  ],
+  "capital": "Нумеа",
+  "oil_mult": 0.63,
+  "steel_mult": 0.9099999999999999,
+  "food_mult": 0.73
+ }
+]
