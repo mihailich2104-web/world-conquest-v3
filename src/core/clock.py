@@ -11,6 +11,7 @@ class GameClock:
         self.paused = paused
         self.speed_idx = max(0, min(len(SPEEDS) - 1, speed_idx))
         self.acc = 0.0
+        self.max_days = MAX_DAYS_PER_FRAME     # на слабых устройствах main.py снижает до 1
 
     @property
     def speed(self) -> int:
@@ -42,8 +43,8 @@ class GameClock:
         if days <= 0:
             return 0
         self.acc -= days * DAY_SECONDS
-        if days > MAX_DAYS_PER_FRAME:          # защита от «спирали смерти» при лагах
-            days = MAX_DAYS_PER_FRAME
+        if days > self.max_days:               # защита от «спирали смерти» при лагах
+            days = self.max_days
             self.acc = 0.0
         return days
 

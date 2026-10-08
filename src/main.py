@@ -6,6 +6,7 @@ from __future__ import annotations
 
 import json
 import logging
+import os
 import sys
 import threading
 from pathlib import Path
@@ -16,7 +17,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))   # импорты ви
 import pygame
 import pygame_gui
 
-from config import (COUNTRIES_PATH, FPS, HUD_HEIGHT, LEFT_PANEL_W, SETTINGS, SIDE_PANEL_W, THEME_PATH, TITLE,
+from config import (COUNTRIES_PATH, FPS, HUD_HEIGHT, LEFT_PANEL_W, MAX_DAYS_PER_FRAME, SETTINGS, SIDE_PANEL_W, THEME_PATH, TITLE,
                     TUTORIAL_H, USER_DIR, WINDOW_SIZE)
 from core.game_state import GameState, list_saves, load_game, save_game
 from core.session import Session
@@ -77,6 +78,10 @@ class App:
         self.renderer.rebuild(self.preview)
         self.renderer.make_backdrop(self.size)
         self.t = 0.0
+        self.lite = False                                    # авто-режим для слабых устройств
+        self._ema = 16.0
+        self._slow = 0.0
+        self._lite_init = False
         self.mode = "menu"                                   # menu | lobby | play
         self.running = True
         self.menu: Optional[MainMenu] = MainMenu(self.manager, self.size, has_saves=bool(list_saves(1)))
@@ -322,6 +327,9 @@ class App:
             return
         if e.type == pygame_gui.UI_BUTTON_PRESSED and self.btn_over is not None and e.ui_element is self.btn_over:
             self.to_menu()
+            return
+        if e.type == pygame.KEYDOWN and e.key == pygame.K_F9:
+            self.set_lite(not self.lite)
             return
         ce = self.chat_entry
         if ce is not None:
@@ -652,6 +660,7 @@ class App:
                 self.overlay.update()
             if self.engine.finished and st.tutorial:
                 st.tutorial = False
+        ses.clock.max_days = 1 if self.lite else MAX_DAYS_PER_FRAME
         ses.update(dt)
         if ses.closed_reason:
             self.to_menu(ses.closed_reason)
@@ -749,10 +758,32 @@ class App:
         elif me is not None and not me.alive and ses.multiplayer:
             self._banner("Ваша страна пала — вы наблюдаете за игрой", (226, 120, 120), HUD_HEIGHT + 46, 20)
 
+    def set_lite(self, on: bool) -> None:
+        """Режим для слабых устройств (авто или клавиша F9)."""
+        self.lite = on
+        self.renderer.lite = on
+        log.info("Облегчённый режим: %s", on)
+
+    def _perf(self, raw_ms: float, dt: float) -> None:
+        """Если игра долго идёт медленнее ~36 кадров/с — включает облегчённый режим (необратимо до выхода)."""
+        if not self._lite_init:                              # 1–2 ядра CPU — сразу облегчённый режим
+            self._lite_init = True
+            if (os.cpu_count() or 4) <= 2:
+                self.set_lite(True)
+        if self.mode != "play" or self.lite:
+            self._ema, self._slow = 16.0, 0.0
+            return
+        self._ema = self._ema * 0.9 + raw_ms * 0.1
+        self._slow = self._slow + dt if self._ema > 28.0 else max(0.0, self._slow - dt)
+        if self._slow > 2.0:
+            self.set_lite(True)
+
     def run(self) -> None:
         """Главный цикл."""
         while self.running:
-            dt = min(self.clock.tick(FPS) / 1000.0, 0.25)
+            raw = self.clock.tick(30 if self.lite or self.mode != "play" else FPS)
+            dt = min(raw / 1000.0, 0.25)
+            self._perf(raw, dt)
             try:
                 for e in pygame.event.get():
                     self.handle(e)

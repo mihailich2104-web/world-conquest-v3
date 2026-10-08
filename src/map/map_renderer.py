@@ -66,6 +66,10 @@ class MapRenderer:
         self._tb_cache: dict[tuple[str, str], float] = {}
         self._prog: dict[tuple[int, str], float] = {}                  # анимированный прогресс армий по маршруту
         self.pulse = 0.0
+        self._base: Optional[pygame.Surface] = None      # готовый кадр карты без оверлеев (кэш)
+        self._base_key: Optional[tuple] = None
+        self._rev = 0
+        self.lite = False        # режим для слабых устройств: реже векторная отрисовка, без мелководья
         self.backdrop: Optional[pygame.Surface] = None
 
     # ---------- цвета ----------
@@ -128,6 +132,7 @@ class MapRenderer:
                 pygame.draw.lines(self.world, COAST if kind == "coast" else BORDER, False, a.pts, 1)
         self._compute_labels(state)
         self._tb_cache.clear()
+        self._rev += 1
         state.map_dirty = False
 
     # ---------- рисование ----------
@@ -137,9 +142,14 @@ class MapRenderer:
         if state.map_dirty:
             self.rebuild(state)
         cam = self.cam
+        key = (cam.x, cam.y, cam.zoom, screen.get_size(), self._rev, self.lite, state.date.year, state.date.month)
+        if key == self._base_key and self._base is not None:
+            screen.blit(self._base, (0, 0))               # камера не двигалась — берём готовый кадр
+            self._draw_top(screen, state, hover, selected, extra)
+            return
         screen.fill(OCEAN)
         vx, vy, vw, vh = cam.view_rect()
-        if cam.zoom < VECTOR_ZOOM:
+        if cam.zoom < (4.0 if self.lite else VECTOR_ZOOM):
             src = pygame.Rect(int(max(vx, 0)), int(max(vy, 0)), 0, 0)
             src.w = int(min(vx + vw, WORLD_W)) - src.x + 1
             src.h = int(min(vy + vh, WORLD_H)) - src.y + 1
@@ -150,6 +160,12 @@ class MapRenderer:
                 screen.blit(pygame.transform.scale(sub, size), cam.world_to_screen(src.x, src.y))
         else:
             self._draw_vector(screen, state)
+        self._base = screen.copy()
+        self._base_key = key
+        self._draw_top(screen, state, hover, selected, extra)
+
+    def _draw_top(self, screen: pygame.Surface, state: GameState, hover: Optional[str],
+                  selected: Optional[str], extra: tuple[str, ...]) -> None:
         for iso in extra:
             self._outline(screen, iso, (255, 215, 0), 3)
         if hover and hover in self.by_iso:
@@ -163,9 +179,11 @@ class MapRenderer:
         for p in self.order:
             if self._visible(p):
                 col = self.color_of(p.iso, state)
-                for pts in self._screen_rings(p):
-                    pygame.draw.polygon(screen, SHALLOW, pts, 5)
-                for pts in self._screen_rings(p):
+                rings = self._screen_rings(p)
+                if not self.lite:
+                    for pts in rings:
+                        pygame.draw.polygon(screen, SHALLOW, pts, 5)
+                for pts in rings:
                     pygame.draw.polygon(screen, col, pts)
         width = 2 if z >= 4.0 else 1
         for a in self.arcs:
