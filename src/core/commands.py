@@ -6,6 +6,7 @@ import logging
 from typing import Any, Callable
 
 from config import BUILD_NAMES, COSTS
+from . import armies as am
 from . import diplomacy as dip
 
 log = logging.getLogger(__name__)
@@ -57,7 +58,43 @@ def _war(state, iso, a) -> Result:
 
 def _peace(state, iso, a) -> Result:
     t = _tgt(state, iso, a)
-    return state.countries[iso].propose_peace(state, t) if t else (False, "Некорректная цель")
+    mode = a.get("mode", "auto")
+    if mode not in ("auto", "white", "annex"):
+        return False, "Некорректные условия мира"
+    return dip.propose_peace(state, iso, t, mode) if t else (False, "Некорректная цель")
+
+
+def _int(v) -> bool:
+    return isinstance(v, int) and not isinstance(v, bool)
+
+
+def _army_cmd(fn: Callable) -> Callable:
+    def run(state, iso, a) -> Result:
+        aid = a.get("id")
+        return fn(state, iso, aid, a) if _int(aid) else (False, "Некорректная армия")
+    return run
+
+
+def _a_move(state, iso, aid, a) -> Result:
+    t = a.get("target")
+    return am.order_move(state, iso, aid, t) if isinstance(t, str) and len(t) <= 16 else (False, "Некорректная цель")
+
+
+def _a_split(state, iso, aid, a) -> Result:
+    n = a.get("n")
+    return am.split_army(state, iso, aid, n) if _int(n) else (False, "Некорректное число дивизий")
+
+
+def _a_merge(state, iso, a) -> Result:
+    ids = a.get("ids")
+    if not isinstance(ids, list) or not 2 <= len(ids) <= 20 or not all(_int(i) for i in ids):
+        return False, "Некорректный список армий"
+    return am.merge_armies(state, iso, ids)
+
+
+def _a_rename(state, iso, aid, a) -> Result:
+    n = a.get("name")
+    return am.rename_army(state, iso, aid, n) if isinstance(n, str) else (False, "Некорректное имя")
 
 
 def _offer(accept: bool) -> Callable:
@@ -73,6 +110,9 @@ HANDLERS: dict[str, Callable[[Any, str, dict], Result]] = {
     "pact": _dipl(dip.propose_pact), "alliance": _dipl(dip.propose_alliance),
     "break_alliance": _dipl(dip.break_alliance), "war": _war, "peace": _peace,
     "offer_accept": _offer(True), "offer_decline": _offer(False),
+    "army_move": _army_cmd(_a_move), "army_stop": _army_cmd(lambda st, i, aid, a: am.order_stop(st, i, aid)),
+    "army_retreat": _army_cmd(lambda st, i, aid, a: am.order_retreat(st, i, aid)),
+    "army_split": _army_cmd(_a_split), "army_merge": _a_merge, "army_rename": _army_cmd(_a_rename),
 }
 
 

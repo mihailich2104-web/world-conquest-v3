@@ -22,10 +22,14 @@ class LobbyInfo:
     leave: Callable[[], None] = lambda: None
     can_start: Callable[[], tuple[bool, str]] = lambda: (False, "")
     discovery: bool = True
+    allow_join: bool = True                     # можно ли подключаться после начала партии
+    toggle_join: Callable[[], None] = lambda: None
+    scenario: str = ""                          # название сценария лобби
+    cycle_scenario: Callable[[], None] = lambda: None
 
     def signature(self) -> tuple:
         """Для обнаружения изменений (перестраивать панель только при необходимости)."""
-        return (tuple((p["pid"], p["name"], p["ready"], p["iso"]) for p in self.players), self.message)
+        return (tuple((p["pid"], p["name"], p["ready"], p["iso"]) for p in self.players), self.message, self.allow_join, self.scenario)
 
 
 class LobbyPanel(SidePanel):
@@ -56,6 +60,8 @@ class LobbyPanel(SidePanel):
         label = f"Выбрать страну: {st.countries[sel].name}" if sel in st.countries else "Выберите страну на карте"
         self.add_button(label, lb.pick, enabled=sel in st.countries)
         if lb.role == "host":
+            self.add_button(f"Сценарий: {lb.scenario}", lb.cycle_scenario, h=28)
+            self.add_button(f"Вход во время партии: {'разрешён' if lb.allow_join else 'закрыт'}", lb.toggle_join, h=28)
             ok, why = lb.can_start()
             self.add_button("Начать игру", lb.start, enabled=ok)
             if not ok and why:

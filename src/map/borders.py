@@ -33,8 +33,14 @@ def _key(a: tuple[float, float], b: tuple[float, float]) -> tuple:
     return (qa, qb) if qa <= qb else (qb, qa)
 
 
+_CACHE: list = []          # [(список провинций, число, дуги)] — дуги считаются один раз для загрузчика и рендерера
+
+
 def build_arcs(provs: Iterable[Province]) -> list[Arc]:
-    """Строит дуги границ. Общая граница двух провинций представлена одной дугой."""
+    """Строит дуги границ. Общая граница двух провинций представлена одной дугой (результат кэшируется)."""
+    if isinstance(provs, list) and _CACHE and _CACHE[0][0] is provs and _CACHE[0][1] == len(provs):
+        return _CACHE[0][2]
+    src = provs
     provs = list(provs)
     owners: dict[tuple, list[str]] = {}
     rings: list[tuple[str, list[tuple[float, float]]]] = []
@@ -72,6 +78,8 @@ def build_arcs(provs: Iterable[Province]) -> list[Arc]:
             cur.append(b)
         flush()
     log.info("Границы: %d дуг", len(arcs))
+    if isinstance(src, list):
+        _CACHE[:] = [(src, len(src), arcs)]
     return arcs
 
 
@@ -83,6 +91,18 @@ def arc_kind(arc: Arc, owner: dict[str, str]) -> Optional[str]:
     if arc.nb == SEAM:
         return None
     return "border" if owner.get(arc.iso, arc.iso) != owner.get(arc.nb, arc.nb) else None
+
+
+K_NONE, K_COAST, K_BORDER, K_INNER = 0, 1, 2, 3
+
+
+def arc_class(arc: Arc, owner: dict[str, str]) -> int:
+    """Класс дуги для регионной карты: берег, граница держав, граница регионов одной державы, шов (не рисуется)."""
+    if arc.nb is None:
+        return K_COAST
+    if arc.nb == SEAM:
+        return K_NONE
+    return K_BORDER if owner.get(arc.iso, arc.iso) != owner.get(arc.nb, arc.nb) else K_INNER
 
 
 def territory_edge(arc: Arc, owner: dict[str, str], who: str) -> bool:

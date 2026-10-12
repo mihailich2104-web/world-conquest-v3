@@ -6,12 +6,12 @@ fake = types.ModuleType("pygame"); fake.Rect = lambda *a: a; sys.modules["pygame
 from config import COUNTRIES_PATH
 from core.game_state import GameState
 from core.turn_manager import TurnManager
-from map.map_loader import load_world
+from map.map_loader import load_world_geo
 from tutorial.tutor_engine import TutorContext, TutorEngine
 
 data = json.loads(COUNTRIES_PATH.read_text(encoding="utf-8"))
-provs, adj, fb = load_world(data)
-st = GameState.new(data, [(p.iso, p.name, p.continent) for p in provs], adj, seed=3, tutorial=True)
+provs, geo, fb = load_world_geo(data)
+st = GameState.new(data, [(p.iso, p.name, p.continent) for p in provs], geo.adj, seed=3, tutorial=True, geo=geo)
 class Cam:  # заглушка камеры
     def focus(self, *a): pass
 class Rend:
@@ -29,7 +29,17 @@ assert me.recruit("army")[0]; eng.update(); assert eng.step.id == "war"
 tgt = ctx.memo["target"]; print("цель:", tgt, "армия цели:", st.countries[tgt].army, "моя:", me.army)
 ok, m = me.declare_war(st, tgt); assert ok, m
 eng.update(); assert eng.step.id == "battle"
-for _ in range(10):
+from core import armies
+a = max(armies.armies_of(st, me.iso), key=lambda x: x.strength)
+best = None
+for r, o in st.owner.items():
+    if o == tgt:
+        res = armies.find_path(st, a, r)
+        if res and (best is None or res[1] < best[1]):
+            best = (r, res[1])
+assert best, "до цели должен существовать маршрут"
+ok, m = armies.order_move(st, me.iso, a.id, best[0]); assert ok, m
+for _ in range(400):
     tm.next_turn(); eng.update()
     if eng.step.id == "finish": break
 assert eng.step.id == "finish", (eng.step.id, st.stats)

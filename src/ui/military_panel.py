@@ -3,6 +3,7 @@ from __future__ import annotations
 
 from config import COSTS
 from core import military
+from core.diplomacy import peace_preview
 from . import SidePanel
 
 
@@ -34,7 +35,11 @@ class MilitaryPanel(SidePanel):
                         lambda: ctx.do({"t": "recruit", "kind": "navy"}))
         self.add_button(f"Нанять эскадрилью ({f['treasury']:.0f} казны)",
                         lambda: ctx.do({"t": "recruit", "kind": "air"}))
-        for w in [w for w in st.wars if w.side_of(c.iso)][:3]:
+        for w in [w for w in st.wars if w.side_of(c.iso)][:2]:
             en = w.enemy_main(c.iso)
-            self.add_button(f"Предложить мир: {st.countries[en].name}",
-                            (lambda e=en: ctx.do({"t": "peace", "target": e})))
+            pv = peace_preview(st, c.iso, en)
+            nm = st.countries[en].name
+            self.add_button(f"Мир с {nm} (по итогам войны)", (lambda e=en: ctx.do({"t": "peace", "target": e})))
+            self.add_row([("Белый мир", (lambda e=en: ctx.do({"t": "peace", "target": e, "mode": "white"}))),
+                          (f"С аннексией (+{pv.get('gain', 0)})",
+                           (lambda e=en: ctx.do({"t": "peace", "target": e, "mode": "annex"})))], h=28)

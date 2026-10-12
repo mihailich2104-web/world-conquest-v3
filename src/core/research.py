@@ -103,6 +103,8 @@ def start_research(c: "Country", tech_id: str) -> tuple[bool, str]:
         return False, "Неизвестная технология"
     if tech_id in c.technologies:
         return False, "Уже изучено"
+    if t.branch in getattr(c, "locked", ()):
+        return False, "Эта ветка недоступна в выбранную эпоху"
     if any(r[0] == tech_id for r in c.researching):
         return False, "Уже изучается"
     if len(c.researching) >= RESEARCH_SLOTS:

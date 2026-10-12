@@ -81,7 +81,7 @@ def point_in_ring(x: float, y: float, ring: Ring) -> bool:
 
 @dataclass
 class Province:
-    """Провинция = страна на карте 110m (мультиполигон без дыр)."""
+    """Провинция (регион): часть страны или страна целиком; iso — id региона (для «страны целиком» совпадает с ISO)."""
     iso: str
     name: str
     continent: str
@@ -94,6 +94,9 @@ class Province:
     holes: list[Ring] = field(default_factory=list)          # внутренние кольца (анклавы) — только для границ
     capital: Optional[tuple[float, float]] = None            # (lon, lat) настоящей столицы
     main_wbbox: tuple[float, float, float, float] = (0, 0, 0, 0)   # рамка крупнейшей части (для подписей)
+    country: str = ""                                        # ISO страны, которой регион принадлежит по данным карты
+    center: Optional[tuple[float, float]] = None             # (lon, lat) центра региона — точка внутри него
+    is_capital: bool = False                                 # регион с исторической столицей страны
 
     def finalize(self) -> "Province":
         """Считает проекцию, рамки, центроид и площадь."""
@@ -108,7 +111,14 @@ class Province:
         self.centroid = ring_centroid(biggest)
         bw = [lonlat_to_world(lo, la) for lo, la in biggest]
         self.main_wbbox = (min(p[0] for p in bw), min(p[1] for p in bw), max(p[0] for p in bw), max(p[1] for p in bw))
+        if not self.country:
+            self.country = self.iso
         return self
+
+    @property
+    def center_world(self) -> tuple[float, float]:
+        """Центр региона в мировых пикселях (для маркеров армий и маршрутов)."""
+        return lonlat_to_world(*(self.center or self.centroid))
 
     def contains(self, lon: float, lat: float) -> bool:
         """Попадает ли точка (lon, lat) в провинцию."""

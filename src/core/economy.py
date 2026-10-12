@@ -20,7 +20,7 @@ def tax_income(c: "Country") -> float:
     base = 2.0 + c.gdp ** 0.6 * 0.3
     stab = 0.5 + c.stability / 100.0
     mult = 1 + tech_bonus(c, "industry") + tech_bonus(c, "economy") + c.modifier("income")
-    return base * (c.tax_rate / 0.25) * max(0.1, mult) * stab
+    return base * (c.tax_rate / 0.25) * max(0.1, mult) * stab * max(0.2, getattr(c, "econ_mult", 1.0))
 
 
 def trade_income(c: "Country") -> float:

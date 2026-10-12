@@ -13,10 +13,13 @@ import pygame_gui
 from pygame_gui.elements import UIButton, UITextEntryLine
 
 from config import NET_DEFAULT_PORT, SETTINGS, TITLE
-from . import get_font
+from . import get_font, wrap_text
+from config import SPEEDS
 
 log = logging.getLogger(__name__)
 AGGR = ((0.0, "Мирный"), (0.5, "Низкая"), (1.0, "Обычная"), (2.0, "Высокая"))
+DIFF = (("easy", "лёгкая"), ("normal", "обычная"), ("hard", "высокая"))
+AI_ACT = ("пассивный", "обычный", "активный")
 PANEL_W = 430
 TXT = (226, 230, 236)
 TXT_DIM = (150, 158, 170)
@@ -34,6 +37,9 @@ class MainMenu:
         self.status = ""
         self.screen = "main"
         self._y = 0
+        self.scenarios: list[dict[str, Any]] = []            # описания сценариев (заполняет App)
+        self.opts: dict[str, Any] = {"scenario": SETTINGS.last_scenario, "difficulty": SETTINGS.difficulty,
+                                     "ai": SETTINGS.ai_activity, "speed": SETTINGS.default_speed}
         self.show_main()
 
     # ---------- построение ----------
@@ -47,8 +53,8 @@ class MainMenu:
         self.captions.clear()
         self._y = 220
 
-    def _add(self, items: list[tuple[str, str, Any]], disabled: tuple[str, ...] = ()) -> None:
-        w, h, gap = PANEL_W - 80, 44, 10
+    def _add(self, items: list[tuple[str, str, Any]], disabled: tuple[str, ...] = (), h: int = 44, gap: int = 10) -> None:
+        w = PANEL_W - 80
         for text, action, data in items:
             b = UIButton(pygame.Rect(40, self._y, w, h), text, self.m)
             if action in disabled:
@@ -84,7 +90,41 @@ class MainMenu:
         """Выбор: свободная игра или обучение."""
         self._clear()
         self.screen = "new"
-        self._add([("Свободная игра", "new", None), ("Обучение", "tutorial", None), ("Назад", "main", None)])
+        self._add([("Свободная игра (сценарии)", "new_scenario_menu", None), ("Обучение", "tutorial", None),
+                   ("Назад", "main", None)])
+
+    def show_scenarios(self) -> None:
+        """Экран выбора сценария: период, сложность, активность ИИ и скорость по умолчанию."""
+        self._clear()
+        self.screen = "scen"
+        self._y = 168
+        scs = self.scenarios or [{"id": "modern", "name": "Современность", "desc": "", "date": [2025, 1, 1],
+                                  "approx": False, "notes": ""}]
+        if not any(s["id"] == self.opts["scenario"] for s in scs):
+            self.opts["scenario"] = scs[0]["id"]
+        self.captions.append(("Исторический период", 40, self._y, TXT_DIM, 14))
+        self._y += 20
+        for s in scs:
+            mark = "[x]  " if s["id"] == self.opts["scenario"] else "[   ]  "
+            self._add([(mark + s["name"], "sc_pick", s["id"])], h=34, gap=5)
+        cur = next(s for s in scs if s["id"] == self.opts["scenario"])
+        d = cur["date"]
+        txt = f"Старт: {d[2]:02d}.{d[1]:02d}.{d[0]}. {cur.get('desc', '')}"
+        if cur.get("approx") and cur.get("notes"):
+            txt += " " + cur["notes"]
+        self._y += 4
+        for ln in wrap_text(txt, get_font(13), PANEL_W - 80)[:9]:
+            self.captions.append((ln, 40, self._y, TXT_DIM, 13))
+            self._y += 16
+        self._y += 6
+        diff = dict(DIFF).get(self.opts["difficulty"], "обычная")
+        self._add([(f"Сложность ИИ: {diff}", "sc_diff", None),
+                   (f"Активность ИИ: {AI_ACT[max(0, min(2, int(self.opts['ai'])))]}", "sc_ai", None),
+                   (f"Скорость по умолчанию: {SPEEDS[max(0, min(len(SPEEDS) - 1, int(self.opts['speed'])))]}X",
+                    "sc_speed", None)], h=34, gap=5)
+        self.captions.append(("Государство выбирается на карте сразу после старта.", 40, self._y + 2, TXT_DIM, 12))
+        self._y += 22
+        self._add([("Начать", "sc_start", None), ("Назад", "new_menu_back", None)], h=34, gap=5)
 
     def show_load(self, saves: list[dict[str, Any]]) -> None:
         """Список последних сохранений."""
@@ -121,9 +161,13 @@ class MainMenu:
         self._entry("ip", "IP хоста", SETTINGS.last_ip)
         self._entry("port", "Порт", str(SETTINGS.last_port or NET_DEFAULT_PORT))
         self._add([("Подключиться", "join", None), ("Найти серверы в сети", "discover", None)])
-        for s in (servers or [])[:3]:
-            self._add([(f"{s['name']}  {s['ip']}:{s['port']}  ({s['players']}/{s['max']})", "join_found",
-                        (s["ip"], int(s["port"])))])
+        for s in (servers or [])[:4]:
+            st = s.get("status", "play" if s.get("started") else "lobby")
+            label = {"lobby": "ждёт игроков", "play": "идёт игра", "full": "нет мест"}.get(st, st)
+            self._add([(f"{s['name']}  {s['players']}/{s['max']} — {label}", "join_found", (s["ip"], int(s["port"])))],
+                      disabled=("join_found",) if st == "full" else (), h=34, gap=14)
+            info = " · ".join(str(x) for x in (s.get("scenario"), s.get("date"), f"{s['ip']}:{s['port']}") if x)
+            self.captions.append((info[:46], 42, self._y - 15, TXT_DIM, 12))
         self._add([("Назад", "mp_menu", None)])
 
     # ---------- события ----------
@@ -139,8 +183,29 @@ class MainMenu:
         self.status = ""
         if action == "main":
             self.show_main()
-        elif action == "new_menu":
+        elif action in ("new_menu", "new_menu_back"):
             self.show_new()
+        elif action in ("new_scenario_menu", "new"):
+            self.show_scenarios()
+        elif action == "sc_pick":
+            self.opts["scenario"] = data
+            self.show_scenarios()
+        elif action == "sc_diff":
+            keys = [k for k, _ in DIFF]
+            self.opts["difficulty"] = keys[(keys.index(self.opts["difficulty"]) + 1) % len(keys)] \
+                if self.opts["difficulty"] in keys else "normal"
+            self.show_scenarios()
+        elif action == "sc_ai":
+            self.opts["ai"] = (int(self.opts["ai"]) + 1) % 3
+            self.show_scenarios()
+        elif action == "sc_speed":
+            self.opts["speed"] = (int(self.opts["speed"]) + 1) % len(SPEEDS)
+            self.show_scenarios()
+        elif action == "sc_start":
+            SETTINGS.last_scenario, SETTINGS.difficulty = self.opts["scenario"], self.opts["difficulty"]
+            SETTINGS.ai_activity, SETTINGS.default_speed = int(self.opts["ai"]), int(self.opts["speed"])
+            SETTINGS.save()
+            return "new_scenario", dict(self.opts)
         elif action == "settings":
             self.show_settings()
         elif action == "mp_menu":

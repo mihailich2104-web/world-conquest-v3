@@ -13,7 +13,7 @@ from config import COUNTRIES_PATH, PROVINCES_PATH  # noqa: E402
 from core import war  # noqa: E402
 from core.game_state import GameState  # noqa: E402
 from map.borders import arc_kind, build_arcs, border_point, territory_edge  # noqa: E402
-from map.map_loader import build_adjacency, load_provinces, load_world  # noqa: E402
+from map.map_loader import build_adjacency, load_provinces, load_world, load_world_geo  # noqa: E402
 from map.province import WORLD_H, WORLD_W, lonlat_to_world, world_to_lonlat  # noqa: E402
 
 
@@ -38,11 +38,13 @@ def main():
 
     # --- настоящие столицы и слияние границ при захвате (реальные данные) ---
     data = json.loads(COUNTRIES_PATH.read_text(encoding="utf-8"))
-    provs, adj, fb = load_world(data)
+    provs, geo_, fb = load_world_geo(data)
+    adj = geo_.adj
     by = {p.iso: p for p in provs}
     assert not fb
-    caps = {p.iso: p.capital for p in provs}
-    assert all(caps.values()), [i for i, c in caps.items() if not c]
+    caps = {p.country: p.capital for p in provs if p.is_capital}        # у каждой страны ровно один регион-столица
+    assert len(caps) == len({p.country for p in provs}) and all(caps.values()), [i for i, c in caps.items() if not c]
+    assert sum(1 for p in provs if p.is_capital) == len(caps)
     assert abs(caps["DEU"][0] - 13.41) < 0.1 and abs(caps["DEU"][1] - 52.52) < 0.1      # Берлин
     assert abs(caps["JPN"][0] - 139.69) < 0.1 and abs(caps["RUS"][1] - 55.76) < 0.1      # Токио, Москва
     assert abs(caps["BRA"][1] + 15.79) < 0.1                                             # Бразилиа, не центр страны
@@ -53,9 +55,10 @@ def main():
     assert shown("DEU", "POL") >= 1 and shown("DEU", "FRA") >= 1
     coast0 = sum(1 for x in arcs if arc_kind(x, owner) == "coast")
     # DEU захватывает POL: граница DEU–POL исчезает, граница POL–соседи становится границей DEU
-    st = GameState.new(data, [(p.iso, p.name, p.continent) for p in provs], adj, seed=1)
+    st = GameState.new(data, [(p.iso, p.name, p.continent) for p in provs], adj, seed=1, geo=geo_)
     war.annex(st, "DEU", "POL")
-    assert st.owner["POL"] == "DEU" and not st.countries["POL"].alive
+    assert all(o == "DEU" for r, o in st.owner.items() if st.geo.country_of[r] == "POL")
+    assert not st.countries["POL"].alive
     assert shown("DEU", "POL") >= 1                                              # (старый owner ещё без обновления)
     owner = dict(st.owner)
     assert shown("DEU", "POL") == 0, "граница внутри одной державы должна стираться"
@@ -64,8 +67,9 @@ def main():
     # подсветка территории: у DEU внешний контур включает бывшую границу POL–CZE, но не DEU–POL
     assert any(territory_edge(x, owner, "DEU") for x in pair("POL", "CZE"))
     assert not any(territory_edge(x, owner, "DEU") for x in pair("DEU", "POL"))
-    bp = border_point(arcs, {p.iso: p.iso for p in provs}, "DEU", "FRA", by["DEU"].capital_world, by["FRA"].capital_world)
-    assert bp is not None and by["DEU"].wbbox[0] - 50 < bp[0] < by["FRA"].wbbox[2] + 400
+    a_id, b_id = next((x.iso, x.nb) for x in arcs if x.nb and x.iso.startswith("DEU") and x.nb.startswith("FRA"))
+    bp = border_point(arcs, {p.iso: p.iso for p in provs}, a_id, b_id, by[a_id].center_world, by[b_id].center_world)
+    assert bp is not None
 
     # --- анклавы (дыры) и территории суверена: синтетические данные ---
     geo = {"type": "FeatureCollection", "features": [

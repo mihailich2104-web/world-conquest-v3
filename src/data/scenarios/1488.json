@@ -1,0 +1,1383 @@
+{
+ "v": 1,
+ "id": "1488",
+ "name": "1488 — Позднее Средневековье",
+ "date": [
+  1488,
+  1,
+  1
+ ],
+ "era": "medieval",
+ "approx": true,
+ "desc": "Конец XV века. Османы воюют с мамлюками, Москва собирает русские земли, Испания завершает Реконкисту, Мин правит Китаем, в Мезоамерике и Андах растут империи ацтеков и инков.",
+ "notes": "Достоверных границ нет: карта построена на регионах современных стран. Государства показаны приблизительно (регионы отнесены к ближайшему историческому государству), земли без данных помечены «Земли: …». Танки и авиации в эту эпоху нет.",
+ "locked": [
+  "tanks",
+  "air"
+ ],
+ "techs": [],
+ "default": {
+  "pop_mult": 0.06,
+  "gdp_mult": 0.004,
+  "army_mult": 0.25,
+  "air_mult": 0.0,
+  "fallback_fmt": "Земли: {name}"
+ },
+ "flat": [
+  {
+   "c": [
+    "USA",
+    "CAN",
+    "AUS",
+    "NZL",
+    "BRA",
+    "ARG",
+    "CHL",
+    "COL",
+    "VEN",
+    "URY",
+    "PRY",
+    "GRL",
+    "PNG",
+    "ZAF",
+    "NAM",
+    "BWA",
+    "AGO",
+    "MOZ",
+    "MDG",
+    "SAU",
+    "KAZ",
+    "MNG",
+    "CUB",
+    "DOM",
+    "HTI",
+    "JAM",
+    "ISL",
+    "FJI"
+   ],
+   "gdp": 3,
+   "pop": 4,
+   "army": 3
+  }
+ ],
+ "countries": [
+  {
+   "id": "CHN",
+   "name": "Империя Мин",
+   "color": [
+    200,
+    168,
+    64
+   ],
+   "ideology": "autocracy",
+   "pop": 130,
+   "gdp": 60,
+   "army": 38,
+   "capital": "Пекин",
+   "cap_ll": [
+    116.4,
+    39.9
+   ]
+  },
+  {
+   "id": "MGL",
+   "name": "Могулистан и Турфан",
+   "color": [
+    150,
+    130,
+    96
+   ],
+   "ideology": "autocracy",
+   "pop": 5,
+   "gdp": 3,
+   "army": 5,
+   "new": true,
+   "population": 5
+  },
+  {
+   "id": "TIB",
+   "name": "Тибет",
+   "color": [
+    176,
+    98,
+    96
+   ],
+   "ideology": "autocracy",
+   "pop": 5,
+   "gdp": 3,
+   "army": 4,
+   "new": true,
+   "population": 5
+  },
+  {
+   "id": "JRC",
+   "name": "Чжурчжэни и племена Маньчжурии",
+   "color": [
+    110,
+    130,
+    96
+   ],
+   "ideology": "autocracy",
+   "pop": 4,
+   "gdp": 3,
+   "army": 5,
+   "new": true,
+   "population": 4
+  },
+  {
+   "id": "MNG",
+   "name": "Монгольские ханства",
+   "color": [
+    140,
+    120,
+    80
+   ],
+   "ideology": "autocracy",
+   "pop": 3,
+   "gdp": 3,
+   "army": 12
+  },
+  {
+   "id": "KOR",
+   "name": "Чосон",
+   "color": [
+    160,
+    190,
+    210
+   ],
+   "ideology": "autocracy",
+   "pop": 9,
+   "gdp": 8,
+   "army": 10,
+   "capital": "Ханян",
+   "cap_ll": [
+    127.0,
+    37.55
+   ]
+  },
+  {
+   "id": "JPN",
+   "name": "Япония (Сэнгоку)",
+   "color": [
+    214,
+    214,
+    210
+   ],
+   "ideology": "autocracy",
+   "pop": 14,
+   "gdp": 10,
+   "army": 14,
+   "capital": "Киото",
+   "cap_ll": [
+    135.75,
+    35.0
+   ]
+  },
+  {
+   "id": "VNM",
+   "name": "Дайвьет",
+   "color": [
+    120,
+    170,
+    110
+   ],
+   "ideology": "autocracy",
+   "pop": 4,
+   "gdp": 6,
+   "army": 9
+  },
+  {
+   "id": "THA",
+   "name": "Аютия",
+   "color": [
+    160,
+    120,
+    170
+   ],
+   "ideology": "autocracy",
+   "pop": 3,
+   "gdp": 5,
+   "army": 8
+  },
+  {
+   "id": "MMR",
+   "name": "Государства Бирмы",
+   "color": [
+    190,
+    150,
+    90
+   ],
+   "ideology": "autocracy",
+   "pop": 3,
+   "gdp": 4,
+   "army": 6
+  },
+  {
+   "id": "MYS",
+   "name": "Малаккский султанат",
+   "color": [
+    96,
+    160,
+    150
+   ],
+   "ideology": "autocracy",
+   "pop": 2,
+   "gdp": 6,
+   "army": 5
+  },
+  {
+   "id": "IDN",
+   "name": "Нусантара (султанаты и Маджапахит)",
+   "color": [
+    120,
+    150,
+    90
+   ],
+   "ideology": "autocracy",
+   "pop": 8,
+   "gdp": 5,
+   "army": 7
+  },
+  {
+   "id": "IND",
+   "name": "Делийский султанат (Лоди)",
+   "color": [
+    170,
+    110,
+    80
+   ],
+   "ideology": "autocracy",
+   "pop": 25,
+   "gdp": 18,
+   "army": 20,
+   "capital": "Дели",
+   "cap_ll": [
+    77.2,
+    28.6
+   ]
+  },
+  {
+   "id": "GUJ",
+   "name": "Гуджаратский султанат",
+   "color": [
+    190,
+    130,
+    100
+   ],
+   "ideology": "autocracy",
+   "pop": 6,
+   "gdp": 6,
+   "army": 8,
+   "new": true,
+   "population": 6
+  },
+  {
+   "id": "BGD",
+   "name": "Бенгальский султанат",
+   "color": [
+    110,
+    150,
+    120
+   ],
+   "ideology": "autocracy",
+   "pop": 7,
+   "gdp": 6,
+   "army": 8
+  },
+  {
+   "id": "BHM",
+   "name": "Бахманидский султанат",
+   "color": [
+    150,
+    90,
+    110
+   ],
+   "ideology": "autocracy",
+   "pop": 8,
+   "gdp": 6,
+   "army": 9,
+   "new": true,
+   "population": 8
+  },
+  {
+   "id": "VJN",
+   "name": "Виджаянагара",
+   "color": [
+    210,
+    150,
+    70
+   ],
+   "ideology": "autocracy",
+   "pop": 10,
+   "gdp": 8,
+   "army": 12,
+   "new": true,
+   "population": 10
+  },
+  {
+   "id": "AFG",
+   "name": "Тимуриды (Герат)",
+   "color": [
+    96,
+    130,
+    170
+   ],
+   "ideology": "autocracy",
+   "pop": 6,
+   "gdp": 8,
+   "army": 10,
+   "capital": "Герат",
+   "cap_ll": [
+    62.2,
+    34.35
+   ]
+  },
+  {
+   "id": "IRN",
+   "name": "Ак-Коюнлу (Тебриз)",
+   "color": [
+    130,
+    90,
+    140
+   ],
+   "ideology": "autocracy",
+   "pop": 7,
+   "gdp": 8,
+   "army": 12,
+   "capital": "Тебриз",
+   "cap_ll": [
+    46.3,
+    38.1
+   ]
+  },
+  {
+   "id": "TUR",
+   "name": "Османская империя",
+   "color": [
+    84,
+    140,
+    100
+   ],
+   "ideology": "autocracy",
+   "pop": 9,
+   "gdp": 22,
+   "army": 26,
+   "capital": "Эдирне",
+   "cap_ll": [
+    26.55,
+    41.7
+   ]
+  },
+  {
+   "id": "EGY",
+   "name": "Мамлюкский султанат",
+   "color": [
+    200,
+    180,
+    100
+   ],
+   "ideology": "autocracy",
+   "pop": 6,
+   "gdp": 14,
+   "army": 15,
+   "capital": "Каир",
+   "cap_ll": [
+    31.2,
+    30.05
+   ]
+  },
+  {
+   "id": "SAU",
+   "name": "Бедуинские племена Аравии",
+   "color": [
+    190,
+    170,
+    130
+   ],
+   "ideology": "autocracy",
+   "pop": 3,
+   "gdp": 3,
+   "army": 4
+  },
+  {
+   "id": "RUS",
+   "name": "Великое княжество Московское",
+   "color": [
+    170,
+    60,
+    60
+   ],
+   "ideology": "autocracy",
+   "pop": 7,
+   "gdp": 10,
+   "army": 13,
+   "capital": "Москва",
+   "cap_ll": [
+    37.6,
+    55.75
+   ]
+  },
+  {
+   "id": "KZN",
+   "name": "Казанское ханство",
+   "color": [
+    110,
+    150,
+    170
+   ],
+   "ideology": "autocracy",
+   "pop": 2,
+   "gdp": 4,
+   "army": 6,
+   "new": true,
+   "population": 2
+  },
+  {
+   "id": "GHD",
+   "name": "Большая Орда",
+   "color": [
+    160,
+    140,
+    90
+   ],
+   "ideology": "autocracy",
+   "pop": 2,
+   "gdp": 5,
+   "army": 10,
+   "new": true,
+   "population": 2
+  },
+  {
+   "id": "SIB",
+   "name": "Сибирские ханства и племена",
+   "color": [
+    120,
+    140,
+    130
+   ],
+   "ideology": "autocracy",
+   "pop": 1,
+   "gdp": 2,
+   "army": 3,
+   "new": true,
+   "population": 1
+  },
+  {
+   "id": "POL",
+   "name": "Польша и Литва",
+   "color": [
+    190,
+    90,
+    100
+   ],
+   "ideology": "autocracy",
+   "pop": 9,
+   "gdp": 16,
+   "army": 16,
+   "capital": "Краков",
+   "cap_ll": [
+    19.9,
+    50.05
+   ]
+  },
+  {
+   "id": "LVA",
+   "name": "Ливонский орден",
+   "color": [
+    150,
+    150,
+    160
+   ],
+   "ideology": "autocracy",
+   "pop": 1,
+   "gdp": 4,
+   "army": 5
+  },
+  {
+   "id": "DNK",
+   "name": "Кальмарская уния",
+   "color": [
+    190,
+    110,
+    90
+   ],
+   "ideology": "autocracy",
+   "pop": 3,
+   "gdp": 7,
+   "army": 8,
+   "capital": "Копенгаген",
+   "cap_ll": [
+    12.6,
+    55.7
+   ]
+  },
+  {
+   "id": "SWE",
+   "name": "Швеция",
+   "color": [
+    100,
+    140,
+    190
+   ],
+   "ideology": "autocracy",
+   "pop": 2,
+   "gdp": 5,
+   "army": 7,
+   "capital": "Стокгольм",
+   "cap_ll": [
+    18.1,
+    59.3
+   ]
+  },
+  {
+   "id": "DEU",
+   "name": "Священная Римская империя",
+   "color": [
+    140,
+    140,
+    150
+   ],
+   "ideology": "autocracy",
+   "pop": 14,
+   "gdp": 22,
+   "army": 15,
+   "capital": "Вена",
+   "cap_ll": [
+    16.4,
+    48.2
+   ]
+  },
+  {
+   "id": "CZE",
+   "name": "Королевство Богемия",
+   "color": [
+    120,
+    160,
+    190
+   ],
+   "ideology": "autocracy",
+   "pop": 3,
+   "gdp": 6,
+   "army": 6
+  },
+  {
+   "id": "HUN",
+   "name": "Королевство Венгрия",
+   "color": [
+    170,
+    100,
+    70
+   ],
+   "ideology": "autocracy",
+   "pop": 4,
+   "gdp": 10,
+   "army": 12,
+   "capital": "Буда",
+   "cap_ll": [
+    19.05,
+    47.5
+   ]
+  },
+  {
+   "id": "ROU",
+   "name": "Валахия и Молдавия",
+   "color": [
+    130,
+    170,
+    120
+   ],
+   "ideology": "autocracy",
+   "pop": 2,
+   "gdp": 4,
+   "army": 6
+  },
+  {
+   "id": "ITA",
+   "name": "Итальянские государства",
+   "color": [
+    110,
+    170,
+    110
+   ],
+   "ideology": "autocracy",
+   "pop": 9,
+   "gdp": 20,
+   "army": 12,
+   "capital": "Венеция",
+   "cap_ll": [
+    12.3,
+    45.45
+   ]
+  },
+  {
+   "id": "FRA",
+   "name": "Королевство Франция",
+   "color": [
+    100,
+    130,
+    200
+   ],
+   "ideology": "autocracy",
+   "pop": 14,
+   "gdp": 24,
+   "army": 20,
+   "capital": "Париж",
+   "cap_ll": [
+    2.35,
+    48.85
+   ]
+  },
+  {
+   "id": "ESP",
+   "name": "Кастилия и Арагон",
+   "color": [
+    214,
+    170,
+    80
+   ],
+   "ideology": "autocracy",
+   "pop": 7,
+   "gdp": 14,
+   "army": 14,
+   "capital": "Вальядолид",
+   "cap_ll": [
+    -4.7,
+    41.65
+   ]
+  },
+  {
+   "id": "PRT",
+   "name": "Португалия",
+   "color": [
+    96,
+    160,
+    100
+   ],
+   "ideology": "autocracy",
+   "pop": 1,
+   "gdp": 6,
+   "army": 5
+  },
+  {
+   "id": "GBR",
+   "name": "Королевство Англия",
+   "color": [
+    196,
+    110,
+    120
+   ],
+   "ideology": "autocracy",
+   "pop": 4,
+   "gdp": 9,
+   "army": 9,
+   "capital": "Лондон",
+   "cap_ll": [
+    -0.1,
+    51.5
+   ]
+  },
+  {
+   "id": "IRL",
+   "name": "Ирландские лордства",
+   "color": [
+    90,
+    170,
+    100
+   ],
+   "ideology": "autocracy",
+   "pop": 1,
+   "gdp": 2,
+   "army": 3
+  },
+  {
+   "id": "MAR",
+   "name": "Ваттасиды (Марокко)",
+   "color": [
+    190,
+    90,
+    80
+   ],
+   "ideology": "autocracy",
+   "pop": 3,
+   "gdp": 4,
+   "army": 6
+  },
+  {
+   "id": "DZA",
+   "name": "Государство Зайянидов",
+   "color": [
+    170,
+    130,
+    80
+   ],
+   "ideology": "autocracy",
+   "pop": 2,
+   "gdp": 4,
+   "army": 5
+  },
+  {
+   "id": "TUN",
+   "name": "Хафсиды",
+   "color": [
+    150,
+    110,
+    100
+   ],
+   "ideology": "autocracy",
+   "pop": 2,
+   "gdp": 4,
+   "army": 5
+  },
+  {
+   "id": "TUA",
+   "name": "Туареги и племена Сахары",
+   "color": [
+    180,
+    160,
+    110
+   ],
+   "ideology": "autocracy",
+   "pop": 1,
+   "gdp": 2,
+   "army": 3,
+   "new": true,
+   "population": 1
+  },
+  {
+   "id": "SNG",
+   "name": "Империя Сонгай",
+   "color": [
+    200,
+    140,
+    60
+   ],
+   "ideology": "autocracy",
+   "pop": 5,
+   "gdp": 6,
+   "army": 10,
+   "capital": "Гао",
+   "cap_ll": [
+    0.05,
+    16.3
+   ],
+   "new": true,
+   "population": 5
+  },
+  {
+   "id": "SEN",
+   "name": "Джолоф",
+   "color": [
+    140,
+    170,
+    100
+   ],
+   "ideology": "autocracy",
+   "pop": 1,
+   "gdp": 2,
+   "army": 3
+  },
+  {
+   "id": "BEN",
+   "name": "Королевство Бенин",
+   "color": [
+    170,
+    100,
+    90
+   ],
+   "ideology": "autocracy",
+   "pop": 1,
+   "gdp": 3,
+   "army": 4
+  },
+  {
+   "id": "ETH",
+   "name": "Эфиопская империя",
+   "color": [
+    110,
+    160,
+    90
+   ],
+   "ideology": "autocracy",
+   "pop": 4,
+   "gdp": 5,
+   "army": 9,
+   "capital": "Шоа",
+   "cap_ll": [
+    39.0,
+    9.0
+   ]
+  },
+  {
+   "id": "SOM",
+   "name": "Султанат Адал и Сомали",
+   "color": [
+    150,
+    160,
+    120
+   ],
+   "ideology": "autocracy",
+   "pop": 1,
+   "gdp": 2,
+   "army": 4
+  },
+  {
+   "id": "KNG",
+   "name": "Королевство Конго",
+   "color": [
+    150,
+    120,
+    90
+   ],
+   "ideology": "autocracy",
+   "pop": 2,
+   "gdp": 3,
+   "army": 5,
+   "new": true,
+   "population": 2
+  },
+  {
+   "id": "ZWE",
+   "name": "Мономотапа",
+   "color": [
+    170,
+    130,
+    110
+   ],
+   "ideology": "autocracy",
+   "pop": 1,
+   "gdp": 3,
+   "army": 4
+  },
+  {
+   "id": "TZA",
+   "name": "Города Суахили (Килва)",
+   "color": [
+    110,
+    150,
+    160
+   ],
+   "ideology": "autocracy",
+   "pop": 1,
+   "gdp": 3,
+   "army": 3
+  },
+  {
+   "id": "AZT",
+   "name": "Ацтекская Тройственная империя",
+   "color": [
+    176,
+    80,
+    70
+   ],
+   "ideology": "autocracy",
+   "pop": 10,
+   "gdp": 8,
+   "army": 14,
+   "capital": "Теночтитлан",
+   "cap_ll": [
+    -99.1,
+    19.4
+   ],
+   "new": true,
+   "population": 10
+  },
+  {
+   "id": "GTM",
+   "name": "Города-государства майя",
+   "color": [
+    120,
+    160,
+    110
+   ],
+   "ideology": "autocracy",
+   "pop": 2,
+   "gdp": 3,
+   "army": 5
+  },
+  {
+   "id": "INC",
+   "name": "Тауантинсуйу (Инки)",
+   "color": [
+    200,
+    170,
+    70
+   ],
+   "ideology": "autocracy",
+   "pop": 10,
+   "gdp": 8,
+   "army": 14,
+   "capital": "Куско",
+   "cap_ll": [
+    -72.0,
+    -13.5
+   ],
+   "new": true,
+   "population": 10
+  }
+ ],
+ "rules": [
+  {
+   "to": "DEU",
+   "c": [
+    "AUT",
+    "SVN",
+    "LUX",
+    "BEL",
+    "NLD",
+    "LIE"
+   ]
+  },
+  {
+   "to": "HUN",
+   "c": [
+    "SVK",
+    "HRV"
+   ]
+  },
+  {
+   "to": "ROU",
+   "c": [
+    "MDA"
+   ]
+  },
+  {
+   "to": "POL",
+   "c": [
+    "LTU",
+    "BLR",
+    "UKR"
+   ]
+  },
+  {
+   "to": "LVA",
+   "c": [
+    "EST"
+   ]
+  },
+  {
+   "to": "DNK",
+   "c": [
+    "NOR",
+    "ISL"
+   ]
+  },
+  {
+   "to": "SWE",
+   "c": [
+    "FIN"
+   ]
+  },
+  {
+   "to": "ESP",
+   "c": [
+    "AND"
+   ]
+  },
+  {
+   "to": "TUR",
+   "c": [
+    "BGR",
+    "GRC",
+    "SRB",
+    "MKD",
+    "MNE",
+    "ALB",
+    "KOS",
+    "BIH"
+   ]
+  },
+  {
+   "to": "ITA",
+   "c": [
+    "CYP",
+    "MLT",
+    "SMR",
+    "VAT"
+   ]
+  },
+  {
+   "to": "SIB",
+   "c": [
+    "RUS"
+   ]
+  },
+  {
+   "to": "RUS",
+   "regions": [
+    "RUS-13",
+    "RUS-23",
+    "RUS-20",
+    "RUS-19"
+   ]
+  },
+  {
+   "to": "KZN",
+   "regions": [
+    "RUS-05",
+    "RUS-09"
+   ]
+  },
+  {
+   "to": "GHD",
+   "regions": [
+    "RUS-11",
+    "KAZ-02",
+    "KAZ-04"
+   ]
+  },
+  {
+   "to": "KAZ",
+   "c": [
+    "KGZ"
+   ]
+  },
+  {
+   "to": "MGL",
+   "regions": [
+    "CHN-01",
+    "CHN-08",
+    "CHN-15",
+    "CHN-21"
+   ]
+  },
+  {
+   "to": "TIB",
+   "regions": [
+    "CHN-04",
+    "CHN-19",
+    "CHN-20",
+    "CHN-12"
+   ]
+  },
+  {
+   "to": "JRC",
+   "regions": [
+    "CHN-02",
+    "CHN-05",
+    "CHN-11"
+   ]
+  },
+  {
+   "to": "KOR",
+   "c": [
+    "PRK"
+   ]
+  },
+  {
+   "to": "IDN",
+   "c": [
+    "TLS"
+   ]
+  },
+  {
+   "to": "THA",
+   "c": [
+    "LAO",
+    "KHM"
+   ]
+  },
+  {
+   "to": "MYS",
+   "c": [
+    "SGP",
+    "BRN"
+   ]
+  },
+  {
+   "to": "IND",
+   "regions": [
+    "IND-06",
+    "IND-04",
+    "PAK-01"
+   ]
+  },
+  {
+   "to": "GUJ",
+   "regions": [
+    "IND-02"
+   ]
+  },
+  {
+   "to": "BGD",
+   "regions": [
+    "IND-01",
+    "IND-05"
+   ]
+  },
+  {
+   "to": "BHM",
+   "regions": [
+    "IND-03"
+   ]
+  },
+  {
+   "to": "VJN",
+   "regions": [
+    "IND-07"
+   ]
+  },
+  {
+   "to": "PAK",
+   "regions": [
+    "PAK-02"
+   ]
+  },
+  {
+   "to": "NPL",
+   "c": [
+    "BTN"
+   ]
+  },
+  {
+   "to": "AFG",
+   "c": [
+    "TKM",
+    "UZB",
+    "TJK"
+   ]
+  },
+  {
+   "to": "AFG",
+   "regions": [
+    "IRN-04"
+   ]
+  },
+  {
+   "to": "IRN",
+   "c": [
+    "IRQ",
+    "AZE",
+    "ARM"
+   ]
+  },
+  {
+   "to": "IRN",
+   "regions": [
+    "TUR-01"
+   ]
+  },
+  {
+   "to": "TUR",
+   "regions": [
+    "TUR-02"
+   ]
+  },
+  {
+   "to": "EGY",
+   "c": [
+    "SYR",
+    "LBN",
+    "PSE",
+    "ISR",
+    "JOR"
+   ]
+  },
+  {
+   "to": "EGY",
+   "regions": [
+    "SAU-02"
+   ]
+  },
+  {
+   "to": "SAU",
+   "c": [
+    "YEM",
+    "OMN",
+    "ARE",
+    "QAT",
+    "BHR",
+    "KWT"
+   ]
+  },
+  {
+   "to": "TUN",
+   "regions": [
+    "LBY-03"
+   ]
+  },
+  {
+   "to": "TUA",
+   "regions": [
+    "DZA-02",
+    "DZA-04",
+    "DZA-05",
+    "MLI-03",
+    "NER-01",
+    "TCD-02"
+   ]
+  },
+  {
+   "to": "SNG",
+   "c": [
+    "BFA"
+   ]
+  },
+  {
+   "to": "SNG",
+   "regions": [
+    "MLI-01",
+    "MLI-02",
+    "NER-02",
+    "NER-03"
+   ]
+  },
+  {
+   "to": "SEN",
+   "c": [
+    "GMB"
+   ]
+  },
+  {
+   "to": "BEN",
+   "regions": [
+    "NGA-02"
+   ]
+  },
+  {
+   "to": "BEN",
+   "c": [
+    "TGO",
+    "BEN"
+   ]
+  },
+  {
+   "to": "SOM",
+   "regions": [
+    "ETH-03"
+   ]
+  },
+  {
+   "to": "KNG",
+   "regions": [
+    "AGO-01",
+    "COD-04"
+   ]
+  },
+  {
+   "to": "KNG",
+   "c": [
+    "COG",
+    "GAB"
+   ]
+  },
+  {
+   "to": "ZWE",
+   "c": [
+    "ZWE"
+   ]
+  },
+  {
+   "to": "TZA",
+   "c": [
+    "KEN"
+   ]
+  },
+  {
+   "to": "TZA",
+   "regions": [
+    "MOZ-01"
+   ]
+  },
+  {
+   "to": "AZT",
+   "regions": [
+    "MEX-02",
+    "MEX-03"
+   ]
+  },
+  {
+   "to": "GTM",
+   "c": [
+    "BLZ",
+    "HND",
+    "SLV"
+   ]
+  },
+  {
+   "to": "INC",
+   "c": [
+    "PER",
+    "ECU",
+    "BOL"
+   ]
+  },
+  {
+   "to": "INC",
+   "regions": [
+    "CHL-02",
+    "ARG-01",
+    "COL-03"
+   ]
+  }
+ ],
+ "alliances": [
+  [
+   "ESP",
+   "PRT"
+  ],
+  [
+   "POL",
+   "HUN"
+  ]
+ ],
+ "pacts": [
+  [
+   "FRA",
+   "ESP"
+  ]
+ ],
+ "relations": [
+  [
+   "TUR",
+   "EGY",
+   -60
+  ],
+  [
+   "RUS",
+   "KZN",
+   -50
+  ],
+  [
+   "RUS",
+   "POL",
+   -30
+  ],
+  [
+   "FRA",
+   "DEU",
+   -15
+  ],
+  [
+   "ESP",
+   "FRA",
+   -10
+  ],
+  [
+   "CHN",
+   "MNG",
+   -40
+  ]
+ ],
+ "wars": [
+  {
+   "attackers": [
+    "TUR"
+   ],
+   "defenders": [
+    "EGY"
+   ],
+   "momentum": 0,
+   "ago": 900
+  },
+  {
+   "attackers": [
+    "RUS"
+   ],
+   "defenders": [
+    "KZN"
+   ],
+   "momentum": 4,
+   "ago": 200
+  }
+ ]
+}

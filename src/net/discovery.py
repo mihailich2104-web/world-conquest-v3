@@ -64,8 +64,18 @@ class DiscoveryResponder:
                 pass
 
 
-def discover(timeout: float = 1.2, port: int = NET_DISCOVERY_PORT) -> list[dict[str, Any]]:
-    """Ищет серверы в локальной сети. Возвращает [{ip, port, name, players, max, started}]."""
+def reachable(ip: str, port: int, timeout: float = 0.6) -> bool:
+    """Можно ли реально установить TCP-соединение с сервером (устаревшие ответы не показываем как доступные)."""
+    try:
+        with socket.create_connection((ip, int(port)), timeout=timeout):
+            return True
+    except (OSError, ValueError):
+        return False
+
+
+def discover(timeout: float = 1.2, port: int = NET_DISCOVERY_PORT, check: bool = True) -> list[dict[str, Any]]:
+    """Ищет серверы в локальной сети. Возвращает [{ip, port, name, players, max, started, status, scenario, date}];
+    при check=True недоступные серверы отбрасываются."""
     found: dict[tuple[str, int], dict[str, Any]] = {}
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     try:
@@ -97,4 +107,9 @@ def discover(timeout: float = 1.2, port: int = NET_DISCOVERY_PORT) -> list[dict[
                 continue
     finally:
         s.close()
-    return list(found.values())
+    res = list(found.values())
+    if check:
+        res = [i for i in res if reachable(i["ip"], int(i["port"]))]
+    for i in res:
+        i.setdefault("status", "play" if i.get("started") else "lobby")
+    return sorted(res, key=lambda i: (i.get("status") == "full", str(i.get("name", ""))))

@@ -47,6 +47,8 @@ def _enter_war(ctx: Ctx) -> None:
     t = st.countries[tgt]
     me.army = max(me.army, 3)
     t.army, t.navy, t.airforce, t.fort = max(1, min(t.army, me.army // 3)), 0, 0, 0
+    from core import armies
+    armies.reconcile(st)                                   # армии цели ослабляются вместе со счётчиком
     t.allies.clear()
     ctx.memo["target"] = tgt
     ctx.select(tgt)
@@ -77,10 +79,10 @@ STEPS: list[Step] = [
                           f"{c.state.countries[c.memo['target']].name} (подсвечена). В «Дипломатии» нажми «Объявить войну».",
          highlight="btn_war", fallback="btn_diplomacy", on_enter=_enter_war,
          done=lambda c: bool(c.player.at_war_with)),
-    Step("battle", lambda c: "Шаг 6/6. Выиграй первый бой: запусти время кнопкой «Пуск» (Пробел) или жми «+1 день» слева, пока в журнале "
-                             "не появится перевес на твоей стороне. Счёт войны — в панели «Армия».",
+    Step("battle", lambda c: "Шаг 6/6. Отправь армию в бой: нажми на свою армию на карте (плашка с числом), затем ПРАВОЙ кнопкой "
+                             "мыши — на регион противника. Запусти время (Пробел): армия дойдёт, победит и займёт регион.",
          highlight="btn_next_turn",
-         done=lambda c: c.state.stats["battles_won"].get(c.player.iso, 0) >= 1),
+         done=lambda c: c.player.iso in c.state.ctrl.values() or c.state.stats["battles_won"].get(c.player.iso, 0) >= 1),
     Step("finish", lambda c: "Обучение завершено! Расширяй экономику, исследуй технологии, заключай союзы "
                              "и захватывай мир (победа — контроль 50% провинций). Нажми «Далее», запусти время (Пробел) и играй свободно."),
 ]

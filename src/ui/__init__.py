@@ -55,6 +55,9 @@ class UIContext:
         self.start_play: Callable[[], None] = lambda: None
         self.do: Callable[[dict], None] = lambda cmd: None     # игровая команда (одиночная/хост/клиент)
         self.session: Any = None                               # core.session.Session
+        self.sel_army: Optional[int] = None                    # выбранная на карте армия
+        self.select_army: Callable[[Optional[int]], None] = lambda aid: None
+        self.center_on: Callable[[str], None] = lambda rid: None   # центрировать карту на регионе
 
     @property
     def player_iso(self) -> Optional[str]:

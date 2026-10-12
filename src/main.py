@@ -17,21 +17,25 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))   # импорты ви
 import pygame
 import pygame_gui
 
-from config import (COUNTRIES_PATH, FPS, HUD_HEIGHT, LEFT_PANEL_W, MAX_DAYS_PER_FRAME, SETTINGS, SIDE_PANEL_W, THEME_PATH, TITLE,
-                    TUTORIAL_H, USER_DIR, WINDOW_SIZE)
+from config import (COUNTRIES_PATH, FPS, HUD_HEIGHT, LEFT_PANEL_W, MAX_DAYS_PER_FRAME, SETTINGS, SIDE_PANEL_W, TECH_PATH,
+                    THEME_PATH, TITLE, TUTORIAL_H, USER_DIR, WINDOW_SIZE)
+from core import armies as am, scenarios
 from core.game_state import GameState, list_saves, load_game, save_game
 from core.session import Session
 from map.camera import Camera
-from map.map_loader import load_world
+from map.map_loader import load_world_geo
 from map.map_renderer import MapRenderer
 from net.client import Client, ClientError
 from net.discovery import discover
 from net.host import Host
 from tutorial.tutor_engine import TutorContext, TutorEngine
 from ui import UIContext, get_font
+from ui.armies_panel import ArmiesPanel, TERR_RU
 from ui.country_panel import CountryPanel
 from ui.diplomacy_panel import DiplomacyPanel
 from ui.hud import HUD
+from ui.join_picker import JoinPicker
+from ui.progress_panel import ProgressPanel
 from ui.lobby import LobbyInfo, LobbyPanel
 from ui.main_menu import MainMenu
 from ui.military_panel import MilitaryPanel
@@ -70,7 +74,13 @@ class App:
         except (OSError, ValueError):
             log.exception("countries.json не найден — запустите tools/gen_countries.py")
             self.countries = []
-        self.provs, self.adj, self.fallback_map = load_world(self.countries)
+        self.provs, self.geo, self.fallback_map = load_world_geo(self.countries)
+        self.adj = self.geo.adj
+        try:
+            self._tech_ids: Optional[set[str]] = {t["id"] for t in json.loads(TECH_PATH.read_text(encoding="utf-8"))}
+        except (OSError, ValueError, KeyError, TypeError):
+            self._tech_ids = None
+        self._sc_cache: dict[str, dict[str, Any]] = {}
         self.camera = Camera(*self.size)
         self.renderer = MapRenderer(self.provs, self.camera, get_font(13))
         # фон меню: карта мира с затемнением
@@ -85,6 +95,12 @@ class App:
         self.mode = "menu"                                   # menu | lobby | play
         self.running = True
         self.menu: Optional[MainMenu] = MainMenu(self.manager, self.size, has_saves=bool(list_saves(1)))
+        self.menu.scenarios = self._scenario_list()
+        self.sel_army: Optional[int] = None                  # выбранная армия
+        self.toasts: list[list[Any]] = []                    # всплывающие уведомления: [текст, ttl, цвет]
+        self._toast_n = 0
+        self.join_picker: Optional[JoinPicker] = None        # выбор страны при входе в идущую партию
+        self._start_speed = 0
         # игровое
         self.session: Optional[Session] = None
         self.state: Optional[GameState] = None
@@ -117,6 +133,8 @@ class App:
         self.ctx.refresh = self.refresh_ui
         self.ctx.start_play = self.start_play
         self.ctx.do = self.do
+        self.ctx.select_army = self.select_army
+        self.ctx.center_on = self.center_on_region
 
     # ---------- окно и тема ----------
     def _set_mode(self) -> pygame.Surface:
@@ -134,16 +152,36 @@ class App:
             log.exception("Тема оформления не загружена — стандартная")
             return pygame_gui.UIManager(self.size)
 
-    def _new_state(self, seed: Optional[int] = None, tutorial: bool = False) -> GameState:
+    def _scenario_list(self) -> list[dict[str, Any]]:
+        try:
+            return scenarios.list_scenarios()
+        except Exception:                                   # noqa: BLE001 — сценарии необязательны для запуска
+            log.exception("Не удалось прочитать сценарии")
+            return []
+
+    def _new_state(self, seed: Optional[int] = None, tutorial: bool = False, scenario: str = "modern",
+                   difficulty: Optional[str] = None, ai: Optional[int] = None) -> GameState:
+        """Новое состояние мира + выбранный сценарий (при ошибке данных — современная карта)."""
         provs = [(p.iso, p.name, p.continent) for p in self.provs]
-        return GameState.new(self.countries, provs, self.adj, seed=seed, tutorial=tutorial)
+        st = GameState.new(self.countries, provs, self.adj, seed=seed, tutorial=tutorial, geo=self.geo)
+        try:
+            data = self._sc_cache.get(scenario) or scenarios.load_scenario(scenario)
+            self._sc_cache[scenario] = data
+            scenarios.apply_scenario(st, data, self._tech_ids, difficulty or SETTINGS.difficulty,
+                                     SETTINGS.ai_activity if ai is None else ai)
+        except (scenarios.ScenarioError, KeyError, ValueError, OSError, TypeError):
+            log.exception("Сценарий «%s» не применён — используется современная карта", scenario)
+        return st
 
     # ---------- переходы ----------
-    def new_game(self, tutorial: bool) -> None:
-        """Создаёт партию и переходит к выбору страны."""
+    def new_game(self, tutorial: bool, opts: Optional[dict[str, Any]] = None) -> None:
+        """Создаёт партию (сценарий и параметры из экрана выбора) и переходит к выбору страны."""
         if not self.countries and not self.provs:
             return
-        self.enter_game(self._new_state(tutorial=tutorial))
+        opts = opts or {}
+        self._start_speed = int(opts.get("speed", 0)) if not tutorial else 0
+        self.enter_game(self._new_state(tutorial=tutorial, scenario=str(opts.get("scenario", "modern")),
+                                        difficulty=opts.get("difficulty"), ai=opts.get("ai")))
 
     def enter_game(self, state: GameState, session: Optional[Session] = None) -> None:
         """Строит игровой UI вокруг состояния."""
@@ -156,6 +194,12 @@ class App:
         self.ctx.session = self.session
         self.state, self.mode = state, "play"
         self.ctx.state, self.ctx.selected = state, state.player_iso
+        self.sel_army = self.ctx.sel_army = None
+        self.toasts.clear()
+        self._toast_n = state.log_seq
+        self.renderer.eta_of = lambda a: am.eta_days(state, a)
+        if not self.session.multiplayer and not state.tutorial and self._start_speed:
+            self.session.clock.set_speed(self._start_speed)
         self.hud = HUD(self.ctx)
         if self.session.multiplayer:
             self.chat_name = (self.session.host.name if self.session.host else
@@ -165,7 +209,8 @@ class App:
                 placeholder_text="Чат (Enter — отправить)")
             self.chat_entry.set_text_length_limit(200)
         self.panels = {p.NAME: p for p in (CountryPanel(self.ctx), DiplomacyPanel(self.ctx),
-                                           ResearchPanel(self.ctx), MilitaryPanel(self.ctx))}
+                                           ResearchPanel(self.ctx), MilitaryPanel(self.ctx),
+                                           ArmiesPanel(self.ctx), ProgressPanel(self.ctx))}
         self.active, state.map_dirty = None, True
         self.renderer.pulse = 0.0
         self._ui_rev = -1
@@ -200,6 +245,10 @@ class App:
         self.ctx.reg.clear()
         self.state = None
         self.ctx.state = None
+        self.sel_army = self.ctx.sel_army = None
+        if self.join_picker is not None:
+            self.join_picker.close()
+            self.join_picker = None
 
     def to_menu(self, message: str = "") -> None:
         """Возврат в главное меню (с автосохранением; сетевые соединения закрываются)."""
@@ -231,8 +280,38 @@ class App:
     def focus_player(self, zoom: float) -> None:
         """Камера на страну игрока."""
         iso = self.state.player_iso if self.state else None
-        if iso and iso in self.renderer.by_iso:
-            self.camera.focus(*self.renderer.by_iso[iso].capital_world, zoom)
+        w = self.renderer.capital_world(self.state, iso) if (self.state and iso) else None
+        if w is not None:
+            self.camera.focus(*w, zoom)
+
+    def center_on_region(self, rid: str) -> None:
+        """Центрирует карту на регионе (кнопка «Показать на карте»)."""
+        p = self.renderer.by_iso.get(rid)
+        if p is not None:
+            self.camera.focus(*p.center_world, max(self.camera.zoom, 2.4))
+
+    def select_army(self, aid: Optional[int]) -> None:
+        """Выбор армии (плашка на карте или список)."""
+        self.sel_army = self.ctx.sel_army = aid
+        if aid is not None and self.mode == "play":
+            if self.active != "armies":
+                self.open_panel("armies")
+            else:
+                self.refresh_ui()
+        elif self.active == "armies":
+            self.refresh_ui()
+
+    def _order_at(self, pos: tuple[int, int]) -> None:
+        """ПКМ по карте: приказ выбранной армии идти в регион под курсором (права и маршрут проверяет ядро)."""
+        st = self.state
+        a = st.armies.get(self.sel_army) if (st and self.sel_army) else None
+        if a is None or a.owner != st.player_iso or self.over_ui(pos):
+            return
+        rid = self.renderer.province_at(pos)
+        if not rid:
+            self.ctx.say(False, "Укажите регион на суше")
+            return
+        self.do({"t": "army_move", "id": a.id, "target": rid})
 
     # ---------- команды игрока ----------
     def do(self, cmd: dict[str, Any]) -> None:
@@ -289,6 +368,8 @@ class App:
         """Находится ли точка над элементами интерфейса."""
         if self.mode == "lobby":
             return bool(self.lobby_panel and self.lobby_panel.rect.collidepoint(pos))
+        if self.mode == "join":
+            return bool(self.join_picker and self.join_picker.rect.collidepoint(pos))
         if self.mode != "play" or not self.hud:
             return False
         if self.hud.blocks(pos):
@@ -315,6 +396,14 @@ class App:
             return
         if self.mode == "lobby":
             if self.lobby_panel and self.lobby_panel.handle_event(e):
+                return
+            if e.type == pygame.KEYDOWN and e.key == pygame.K_ESCAPE:
+                self.to_menu()
+            else:
+                self.map_event(e)
+            return
+        if self.mode == "join":
+            if self.join_picker and self.join_picker.handle_event(e):
                 return
             if e.type == pygame.KEYDOWN and e.key == pygame.K_ESCAPE:
                 self.to_menu()
@@ -364,19 +453,28 @@ class App:
             pos = pygame.mouse.get_pos()
             if not self.over_ui(pos):
                 self.camera.zoom_at(e.y, *pos)
+        elif e.type == pygame.MOUSEBUTTONDOWN and e.button == 3:
+            if self.mode == "play":
+                self._order_at(e.pos)
         elif e.type == pygame.MOUSEBUTTONDOWN and e.button == 1:
             self.drag_start, self.dragging, self.press_on_ui = e.pos, False, self.over_ui(e.pos)
         elif e.type == pygame.MOUSEMOTION:
             if self.drag_start and e.buttons[0] and not self.press_on_ui:
                 if self.dragging or abs(e.pos[0] - self.drag_start[0]) + abs(e.pos[1] - self.drag_start[1]) > 5:
                     self.dragging = True
+                    self.hover = None                                # во время перетаскивания подсветку не считаем
                     self.camera.pan(*e.rel)
             else:
                 self._mouse, self._hover_dirty = e.pos, True       # hover считается раз в кадр, а не на каждое событие
         elif e.type == pygame.MOUSEBUTTONUP and e.button == 1:
             if self.drag_start and not self.dragging and not self.press_on_ui:
-                self.select(self.renderer.province_at(e.pos))
+                aid = self.renderer.army_at(e.pos) if self.mode == "play" else None
+                if aid is not None:
+                    self.select_army(aid)
+                else:
+                    self.select(self.renderer.province_at(e.pos))
             self.drag_start = None
+            self._mouse, self._hover_dirty = e.pos, True
 
     def on_key(self, key: int) -> None:
         """Горячие клавиши: Пробел — пауза, 1-5 — скорость, +/- — быстрее/медленнее, . — шаг в день."""
@@ -384,7 +482,14 @@ class App:
         if key == pygame.K_SPACE:
             self.hud_action("pause")
         elif key == pygame.K_ESCAPE:
-            self.to_menu()
+            if self.sel_army is not None:
+                self.select_army(None)
+            else:
+                self.to_menu()
+        elif key in (pygame.K_y, pygame.K_n) and ses and ses.vote:
+            ses.cast_vote(key == pygame.K_y)
+        elif key == pygame.K_s and ses and self.sel_army is not None:
+            self.do({"t": "army_stop", "id": self.sel_army})
         elif key in (pygame.K_1, pygame.K_2, pygame.K_3, pygame.K_4, pygame.K_5):
             self.hud_action(f"speed:{key - pygame.K_1}")
         elif key in (pygame.K_EQUALS, pygame.K_PLUS, pygame.K_KP_PLUS) and ses and not ses.is_client:
@@ -431,6 +536,8 @@ class App:
         """Действия главного меню."""
         if action == "new":
             self.new_game(False)
+        elif action == "new_scenario":
+            self.new_game(False, data)
         elif action == "tutorial":
             self.new_game(True)
         elif action == "continue":
@@ -459,7 +566,7 @@ class App:
             if not saves:
                 return
             save_id = saves[0]["id"]
-        st = load_game(save_id, self.adj)
+        st = load_game(save_id, self.adj, self.geo)
         if st is None or set(st.owner) != {p.iso for p in self.provs}:
             log.error("Сохранение несовместимо с текущей картой или повреждено")
             if self.menu:
@@ -475,7 +582,15 @@ class App:
         if self.menu:
             self.menu.kill()
             self.menu = None
-        self.preview = self._new_state()
+        sid = host.scenario_id if host else str((client.info or {}).get("scenario_id", "modern")) if client else "modern"
+        if host:
+            sid = SETTINGS.last_scenario if any(x["id"] == SETTINGS.last_scenario for x in self._scenario_list()) else "modern"
+            host.scenario_id, host.valid_isos = sid, set()
+        self.preview = self._new_state(scenario=sid)
+        self._lobby_sid = sid
+        if host:
+            host.valid_isos = set(self.preview.countries)
+            self._lobby_info_update(host)
         self.state = self.preview
         self.ctx.state, self.ctx.selected = self.preview, None
         self.preview.map_dirty = True
@@ -487,6 +602,10 @@ class App:
             lb.players = host.lobby_view()
         lb.pick, lb.toggle_ready, lb.start, lb.leave = self._lobby_pick, self._lobby_ready, self._lobby_start, self.to_menu
         lb.can_start = host.can_start if host else (lambda: (False, ""))
+        lb.scenario = self.preview.scenario.get("name", "")
+        if host:
+            lb.allow_join = host.allow_join
+            lb.toggle_join, lb.cycle_scenario = self._lobby_toggle_join, self._lobby_cycle_scenario
         self.lobby = lb
         self.ctx.lobby = lb                                    # type: ignore[attr-defined]
         self.lobby_panel = LobbyPanel(self.ctx)
@@ -505,6 +624,40 @@ class App:
             self.lobby_host = self.lobby_client = None
         elif self.mode != "lobby":
             self.lobby_host = self.lobby_client = None
+
+    def _lobby_info_update(self, host: Host) -> None:
+        """Описание партии для автопоиска (сценарий и дата старта)."""
+        sc = self.preview.scenario
+        host.extra_info = {"scenario": sc.get("name", ""), "scenario_id": sc.get("id", "modern"),
+                           "date": self.preview.date.isoformat()}
+
+    def _lobby_toggle_join(self) -> None:
+        if self.lobby_host and self.lobby:
+            self.lobby_host.allow_join = not self.lobby_host.allow_join
+            self.lobby.allow_join = self.lobby_host.allow_join
+
+    def _set_lobby_scenario(self, sid: str) -> None:
+        """Меняет сценарий лобби (хост) или подстраивает карту под сценарий хоста (клиент)."""
+        self.preview = self._new_state(scenario=sid)
+        self._lobby_sid = sid
+        self.state = self.ctx.state = self.preview
+        self.ctx.selected = None
+        self.preview.map_dirty = True
+        self.renderer.rebuild(self.preview)
+        if self.lobby:
+            self.lobby.scenario = self.preview.scenario.get("name", "")
+        host = self.lobby_host
+        if host:
+            host.scenario_id, host.valid_isos = sid, set(self.preview.countries)
+            for p in host.players.values():
+                p.iso, p.ready = None, False
+            self._lobby_info_update(host)
+            host._changed_lobby()
+
+    def _lobby_cycle_scenario(self) -> None:
+        ids = [x["id"] for x in self._scenario_list()] or ["modern"]
+        cur = getattr(self, "_lobby_sid", "modern")
+        self._set_lobby_scenario(ids[(ids.index(cur) + 1) % len(ids)] if cur in ids else ids[0])
 
     def start_host(self, name: str) -> None:
         """Создаёт LAN-игру: открывает порт и показывает IP/порт в лобби."""
@@ -528,8 +681,11 @@ class App:
 
         def work() -> None:
             c = Client(name)
+            token = SETTINGS.last_token if SETTINGS.last_token_host == f"{ip}:{port}" else ""
             try:
-                c.connect(ip, port)
+                c.connect(ip, port, token=token)
+                SETTINGS.last_token, SETTINGS.last_token_host = c.token, f"{ip}:{port}"
+                SETTINGS.save()
                 self._join_result = ("ok", c)
             except ClientError as exc:
                 self._join_result = ("err", str(exc))
@@ -558,7 +714,10 @@ class App:
             kind, val = self._join_result
             self._join_result = None
             if kind == "ok":
-                self._enter_lobby("client", client=val)
+                if val.phase == "play":
+                    self._enter_late_join(val)
+                else:
+                    self._enter_lobby("client", client=val)
             elif self.menu:
                 self.menu.set_status(val)
         if self._disc_result is not None and self.menu:
@@ -593,10 +752,11 @@ class App:
             return
         st = self.preview
         st.player_iso = host.players[0].iso
-        st.humans = set(host.humans())
+        host.allow_join = lb.allow_join
         st.log_event("LAN-партия началась", None, True)
         ses = Session(st, "host", host=host)
-        host.begin(st.to_dict(), ses.clock.to_dict())
+        ses.clock.set_speed(SETTINGS.default_speed)
+        ses.begin_play()                                       # стартовые снимки уходят всем клиентам лобби
         self.lobby_host = self.lobby_client = None
         self.enter_game(st, ses)
 
@@ -612,6 +772,9 @@ class App:
                 t = m.get("t")
                 if t == "lobby":
                     lb.players = m.get("players", [])
+                    sid = str(m.get("scenario", "modern"))
+                    if sid != getattr(self, "_lobby_sid", "modern"):
+                        self._set_lobby_scenario(sid)
                 elif t == "start":
                     self._client_start(m)
                     return
@@ -623,20 +786,44 @@ class App:
             self.lobby_panel.refresh()
 
     def _client_start(self, m: dict[str, Any]) -> None:
+        """Старт партии из лобби: применяем стартовый снимок хоста."""
         try:
-            st = GameState.from_dict(m["state"], self.adj)
-            if set(st.owner) != {p.iso for p in self.provs}:
-                raise ValueError("карта хоста отличается от вашей")
-        except (KeyError, ValueError) as exc:
+            st = self._new_state()
+            ses = Session(st, "client", client=self.lobby_client)
+            ses._apply_full(m)
+        except (KeyError, ValueError, TypeError) as exc:
             log.exception("Не удалось принять мир от хоста")
             self.to_menu(f"Ошибка начала игры: {exc}")
             return
-        st.player_iso = m.get("you")
-        client = self.lobby_client
-        ses = Session(st, "client", client=client)
-        ses.clock.load(m.get("clock", {}))
         self.lobby_host = self.lobby_client = None
         self.enter_game(st, ses)
+
+    def _enter_late_join(self, client: Client) -> None:
+        """Подключение к идущей партии: окно выбора страны (если место не удержано) и мгновенная синхронизация."""
+        if self.menu:
+            self.menu.kill()
+            self.menu = None
+        st = self._new_state()
+        ses = Session(st, "client", client=client)
+        self.session = self.ctx.session = ses
+        self.state, self.mode = st, "join"
+        self.ctx.state, self.ctx.selected = st, None
+        st.map_dirty = True
+        self.camera.focus(1800, 700, 0.6)
+        self.join_picker = JoinPicker(self.ctx, client.info, client.claim, self.to_menu, ses)
+        self.join_picker.waiting = client.resumed
+        self.join_picker.open()
+        self._join_sig: tuple = (len(ses.free), ses.claim_error)
+
+    def _finish_join(self) -> None:
+        """Снимок получен: закрываем окно выбора и входим в партию."""
+        st, ses = self.state, self.session
+        if self.join_picker:
+            self.join_picker.close()
+            self.join_picker = None
+        assert st is not None and ses is not None
+        self.enter_game(st, ses)
+        self.toasts.append(["Подключение завершено: вы в идущей партии", 6.0, (170, 210, 255)])
 
     # ---------- кадр ----------
     def update(self, dt: float) -> None:
@@ -649,6 +836,22 @@ class App:
         if self.mode == "lobby":
             self._update_hover()
             self._update_lobby()
+            return
+        if self.mode == "join":
+            self._update_hover()
+            ses = self.session
+            if ses is None or self.state is None:
+                return
+            ses.update(dt)
+            if ses.closed_reason:
+                self.to_menu(ses.closed_reason)
+            elif ses.synced and self.state.player_iso:
+                self._finish_join()
+            elif self.join_picker and (len(ses.free), ses.claim_error) != self._join_sig:
+                self._join_sig = (len(ses.free), ses.claim_error)
+                if ses.claim_error:
+                    self.join_picker.waiting = False
+                self.join_picker.refresh()
             return
         self._update_hover()
         ses, st = self.session, self.state
@@ -663,8 +866,12 @@ class App:
         ses.clock.max_days = 1 if self.lite else MAX_DAYS_PER_FRAME
         ses.update(dt)
         if ses.closed_reason:
-            self.to_menu(ses.closed_reason)
+            self.to_menu(ses.closed_reason + (" Подключитесь снова: место удерживается 5 минут."
+                                              if ses.is_client and "потеряно" in ses.closed_reason else ""))
             return
+        if self.sel_army is not None and self.sel_army not in st.armies:
+            self.select_army(None)
+        self._collect_toasts(dt)
         self._ui_t += dt
         if ses.rev != self._ui_rev and self._ui_t >= UI_REFRESH_INTERVAL:
             self._ui_rev, self._ui_t = ses.rev, 0.0
@@ -675,8 +882,36 @@ class App:
                 pygame.Rect(self.size[0] // 2 - 120, self.size[1] // 2 + 20, 240, 44), "В главное меню", self.manager)
         self.hud.update(ses)
 
+    def _collect_toasts(self, dt: float) -> None:
+        """Всплывающие уведомления: важные события, касающиеся вашей державы (без повторов), и сообщения сети."""
+        st, ses = self.state, self.session
+        if st is None or ses is None:
+            return
+        for t in self.toasts:
+            t[1] -= dt
+        self.toasts = [t for t in self.toasts if t[1] > 0]
+        me = st.player_iso
+        if me and st.log:
+            for e in st.log:
+                if e.get("n", 0) <= self._toast_n:
+                    continue
+                if e.get("iso") == me or me in e.get("isos", ()):
+                    if e.get("imp") or e.get("k") in ("capture", "warn"):
+                        k = e.get("k")
+                        col = (226, 120, 120) if k in ("war", "battle", "warn") else (232, 214, 140) if e.get("imp") \
+                            else (214, 218, 224)
+                        if not any(t[0] == e["text"] for t in self.toasts):
+                            self.toasts.append([e["text"], 7.0, col])
+            self._toast_n = max(self._toast_n, st.log[-1].get("n", 0))
+        for note in ses.notices:
+            self.toasts.append([note, 6.0, (170, 210, 255)])
+        ses.notices.clear()
+        del self.toasts[:-4]
+
     def _update_hover(self) -> None:
         """Провинция под курсором — один раз за кадр."""
+        if self.dragging:
+            return
         if self._hover_dirty:
             self._hover_dirty = False
             self.hover = None if self.over_ui(self._mouse) else self.renderer.province_at(self._mouse)
@@ -703,12 +938,18 @@ class App:
             self._banner("LAN-лобби: выберите страну кликом по карте", (226, 230, 236), 14, 20)
             self.manager.draw_ui(self.screen)
             return
+        if self.mode == "join" and st:
+            self.renderer.draw(self.screen, st, self.hover, None, ())
+            self._banner("Вход в идущую партию: выберите страну", (226, 230, 236), 14, 20)
+            self.manager.draw_ui(self.screen)
+            return
         ses = self.session
         if not st or not self.hud or not ses:
             return
         extra = self.engine.extra_countries() if self.engine and not self.engine.finished else ()
         self.renderer.draw(self.screen, st, self.hover, self.ctx.selected, extra)
-        self.renderer.draw_overlays(self.screen, st, st.player_iso, dt)
+        pick = self.hover if (self.sel_army is not None and self.hover and not self.dragging) else None
+        self.renderer.draw_overlays(self.screen, st, st.player_iso, dt, self.sel_army, pick)
         if st.player_iso and self.engine and not self.engine.finished and self.engine.step and \
                 self.engine.step.id in ("capital",):
             self.renderer.draw_marker(self.screen, st.player_iso, dt)
@@ -729,12 +970,8 @@ class App:
                     self.screen.blit(font.render(f"{nm}: {tx}", True, (170, 210, 255)), (x0 + 6, y0 + 3 + i * 20))
                 bottom -= h + 4
         self.hud.draw_log(self.screen, bottom, side)
-        if self.hover and self.hover in st.countries:
-            name = st.countries[st.owner.get(self.hover, self.hover)].name
-            t = get_font(15).render(name, True, (240, 242, 246))
-            mx, my = pygame.mouse.get_pos()
-            pygame.draw.rect(self.screen, (18, 21, 26), (mx + 12, my + 10, t.get_width() + 8, t.get_height() + 4))
-            self.screen.blit(t, (mx + 16, my + 12))
+        if self.hover and self.hover in st.owner and not self.dragging:
+            self._tooltip(st, self.hover)
         if tut and self.overlay:
             self.overlay.draw_box(self.screen)
         self.manager.draw_ui(self.screen)
@@ -742,6 +979,12 @@ class App:
             self.overlay.draw_highlight(self.screen, pygame.Rect(
                 LEFT_PANEL_W, HUD_HEIGHT, self.size[0] - LEFT_PANEL_W - (SIDE_PANEL_W if side else 0),
                 self.size[1] - HUD_HEIGHT))
+        self._draw_toasts()
+        if ses.vote:
+            v = ses.vote
+            self._banner(f"Голосование: {v['by']} — {ses._vote_text(v['kind'], v.get('value', 0))}.  "
+                         f"Y — за, N — против  ({v['yes']}/{v['need']}, {v['left']} с)", (232, 214, 140),
+                         HUD_HEIGHT + 44, 18)
         if st.player_iso and ses.clock.paused and not st.game_over:
             self._banner("ПАУЗА" + ("  (пробел — продолжить)" if not ses.is_client else "  (хост)"),
                          (214, 218, 224), HUD_HEIGHT + 10, 20)
@@ -757,6 +1000,45 @@ class App:
                 self._banner("ПОРАЖЕНИЕ — ваша страна пала", (226, 120, 120), self.size[1] // 2 - 40, 38)
         elif me is not None and not me.alive and ses.multiplayer:
             self._banner("Ваша страна пала — вы наблюдаете за игрой", (226, 120, 120), HUD_HEIGHT + 46, 20)
+
+    def _tooltip(self, st: GameState, rid: str) -> None:
+        """Подсказка у курсора: регион, владелец, контролёр, местность, войска."""
+        own = st.owner.get(rid, "")
+        ctl = st.ctrl.get(rid, own)
+        oc, cc = st.countries.get(own), st.countries.get(ctl)
+        lines = [st.geo.name.get(rid, rid), f"Владелец: {oc.name if oc else own}"]
+        if ctl != own and cc is not None:
+            lines.append(f"Под контролем: {cc.name}")
+        lines.append(f"Местность: {TERR_RU.get(st.geo.terrain.get(rid, ''), '—')}")
+        n = sum(a.units for a in st.armies.values() if a.region == rid and a.progress <= 0)
+        if n:
+            lines.append(f"Войск в регионе: {n}")
+        font = get_font(14)
+        surfs = [font.render(t, True, (240, 242, 246)) for t in lines]
+        w, h = max(s_.get_width() for s_ in surfs) + 14, sum(s_.get_height() for s_ in surfs) + 10
+        mx, my = pygame.mouse.get_pos()
+        x = min(mx + 14, self.size[0] - w - 4)
+        y = min(my + 14, self.size[1] - h - 4)
+        pygame.draw.rect(self.screen, (18, 21, 26), (x, y, w, h))
+        pygame.draw.rect(self.screen, (70, 78, 90), (x, y, w, h), 1)
+        yy = y + 5
+        for s_ in surfs:
+            self.screen.blit(s_, (x + 7, yy))
+            yy += s_.get_height()
+
+    def _draw_toasts(self) -> None:
+        """Компактные всплывающие уведомления под верхней строкой."""
+        font = get_font(15)
+        y = HUD_HEIGHT + 8
+        for text, ttl, col in self.toasts:
+            t = font.render(text, True, col)
+            bg = pygame.Surface((t.get_width() + 20, t.get_height() + 10), pygame.SRCALPHA)
+            bg.fill((14, 16, 20, int(205 * min(1.0, ttl / 1.0))))
+            x = self.size[0] - bg.get_width() - 12
+            self.screen.blit(bg, (x, y))
+            t.set_alpha(int(255 * min(1.0, ttl / 1.0)))
+            self.screen.blit(t, (x + 10, y + 5))
+            y += bg.get_height() + 4
 
     def set_lite(self, on: bool) -> None:
         """Режим для слабых устройств (авто или клавиша F9)."""

@@ -1,0 +1,660 @@
+{
+ "v": 1,
+ "id": "1939",
+ "name": "1939 — Накануне Второй мировой",
+ "date": [
+  1939,
+  1,
+  1
+ ],
+ "era": "ww2",
+ "approx": true,
+ "desc": "Январь 1939. Германия поглощает соседей, Япония воюет в Китае, демократии медлят, СССР готовится. Колониальные империи владеют Африкой и Азией; всё может пойти иначе.",
+ "notes": "Границы приблизительны: карта построена на регионах современных стран, поэтому, например, Западная Украина и Западная Белоруссия показаны в составе СССР, а колонии — целыми странами.",
+ "locked": [],
+ "techs": [
+  "inf_1",
+  "ind_1",
+  "eco_1",
+  "navy_1",
+  "infra_1",
+  "tank_1",
+  "air_1"
+ ],
+ "default": {
+  "pop_mult": 0.35,
+  "gdp_mult": 0.1,
+  "army_mult": 0.5,
+  "air_mult": 0.2
+ },
+ "countries": [
+  {
+   "id": "RUS",
+   "name": "СССР",
+   "color": [
+    184,
+    56,
+    56
+   ],
+   "ideology": "communism",
+   "pop": 170,
+   "gdp": 70,
+   "army": 80,
+   "capital": "Москва",
+   "cap_ll": [
+    37.6,
+    55.75
+   ],
+   "navy": 14,
+   "air": 40,
+   "techs": [
+    "inf_2",
+    "tank_2",
+    "ind_2",
+    "air_1"
+   ]
+  },
+  {
+   "id": "DEU",
+   "name": "Германия",
+   "color": [
+    96,
+    100,
+    110
+   ],
+   "ideology": "autocracy",
+   "pop": 79,
+   "gdp": 85,
+   "army": 60,
+   "capital": "Берлин",
+   "cap_ll": [
+    13.4,
+    52.5
+   ],
+   "navy": 12,
+   "air": 55,
+   "techs": [
+    "inf_2",
+    "tank_2",
+    "air_2",
+    "ind_2"
+   ]
+  },
+  {
+   "id": "GBR",
+   "name": "Британская империя",
+   "color": [
+    196,
+    120,
+    132
+   ],
+   "ideology": "democracy",
+   "pop": 48,
+   "gdp": 80,
+   "army": 22,
+   "capital": "Лондон",
+   "cap_ll": [
+    -0.1,
+    51.5
+   ],
+   "navy": 40,
+   "air": 35,
+   "techs": [
+    "navy_2",
+    "air_2",
+    "ind_2",
+    "eco_2"
+   ]
+  },
+  {
+   "id": "FRA",
+   "name": "Франция",
+   "color": [
+    96,
+    128,
+    190
+   ],
+   "ideology": "democracy",
+   "pop": 42,
+   "gdp": 45,
+   "army": 55,
+   "capital": "Париж",
+   "cap_ll": [
+    2.35,
+    48.85
+   ],
+   "navy": 22,
+   "air": 25,
+   "techs": [
+    "inf_2",
+    "tank_1",
+    "ind_2"
+   ]
+  },
+  {
+   "id": "ITA",
+   "name": "Италия",
+   "color": [
+    92,
+    148,
+    96
+   ],
+   "ideology": "autocracy",
+   "pop": 44,
+   "gdp": 32,
+   "army": 40,
+   "capital": "Рим",
+   "cap_ll": [
+    12.5,
+    41.9
+   ],
+   "navy": 18,
+   "air": 25,
+   "techs": [
+    "inf_2",
+    "navy_2"
+   ]
+  },
+  {
+   "id": "JPN",
+   "name": "Японская империя",
+   "color": [
+    222,
+    202,
+    120
+   ],
+   "ideology": "autocracy",
+   "pop": 73,
+   "gdp": 48,
+   "army": 48,
+   "capital": "Токио",
+   "cap_ll": [
+    139.7,
+    35.7
+   ],
+   "navy": 34,
+   "air": 30,
+   "techs": [
+    "navy_2",
+    "air_2",
+    "inf_2"
+   ]
+  },
+  {
+   "id": "USA",
+   "name": "США",
+   "color": [
+    74,
+    118,
+    168
+   ],
+   "ideology": "democracy",
+   "pop": 131,
+   "gdp": 190,
+   "army": 14,
+   "capital": "Вашингтон",
+   "cap_ll": [
+    -77.0,
+    38.9
+   ],
+   "navy": 30,
+   "air": 20,
+   "techs": [
+    "ind_3",
+    "eco_3",
+    "navy_2",
+    "air_2"
+   ]
+  },
+  {
+   "id": "POL",
+   "name": "Польша",
+   "color": [
+    178,
+    70,
+    84
+   ],
+   "ideology": "autocracy",
+   "pop": 35,
+   "gdp": 14,
+   "army": 36,
+   "capital": "Варшава",
+   "cap_ll": [
+    21.0,
+    52.2
+   ],
+   "navy": 2,
+   "air": 10
+  },
+  {
+   "id": "CHN",
+   "name": "Китайская Республика",
+   "color": [
+    206,
+    172,
+    70
+   ],
+   "ideology": "autocracy",
+   "pop": 450,
+   "gdp": 28,
+   "army": 70,
+   "capital": "Чунцин",
+   "cap_ll": [
+    106.5,
+    29.6
+   ],
+   "navy": 2,
+   "air": 4
+  },
+  {
+   "id": "CZE",
+   "name": "Чехословакия",
+   "color": [
+    128,
+    150,
+    196
+   ],
+   "ideology": "democracy",
+   "pop": 14,
+   "gdp": 10,
+   "army": 20,
+   "capital": "Прага",
+   "cap_ll": [
+    14.4,
+    50.1
+   ]
+  },
+  {
+   "id": "SRB",
+   "name": "Югославия",
+   "color": [
+    126,
+    112,
+    164
+   ],
+   "ideology": "autocracy",
+   "pop": 15,
+   "gdp": 9,
+   "army": 24,
+   "capital": "Белград",
+   "cap_ll": [
+    20.5,
+    44.8
+   ]
+  },
+  {
+   "id": "ESP",
+   "name": "Испания (Франко)",
+   "color": [
+    214,
+    170,
+    80
+   ],
+   "ideology": "autocracy",
+   "pop": 25,
+   "gdp": 12,
+   "army": 30,
+   "capital": "Бургос",
+   "cap_ll": [
+    -3.7,
+    42.35
+   ]
+  },
+  {
+   "id": "MNC",
+   "name": "Маньчжоу-го",
+   "color": [
+    170,
+    124,
+    78
+   ],
+   "ideology": "autocracy",
+   "pop": 40,
+   "gdp": 6,
+   "army": 10,
+   "capital": "Синьцзин",
+   "cap_ll": [
+    125.3,
+    43.9
+   ],
+   "new": true,
+   "population": 40
+  }
+ ],
+ "rules": [
+  {
+   "to": "DEU",
+   "c": [
+    "AUT"
+   ]
+  },
+  {
+   "to": "CZE",
+   "c": [
+    "SVK"
+   ]
+  },
+  {
+   "to": "RUS",
+   "c": [
+    "BLR",
+    "UKR",
+    "KAZ",
+    "UZB",
+    "TKM",
+    "TJK",
+    "KGZ",
+    "GEO",
+    "ARM",
+    "AZE"
+   ]
+  },
+  {
+   "to": "ROU",
+   "c": [
+    "MDA"
+   ]
+  },
+  {
+   "to": "SRB",
+   "c": [
+    "BIH",
+    "HRV",
+    "SVN",
+    "MKD",
+    "MNE",
+    "KOS"
+   ]
+  },
+  {
+   "to": "ITA",
+   "c": [
+    "LBY",
+    "ETH",
+    "ERI",
+    "SOM"
+   ]
+  },
+  {
+   "to": "GBR",
+   "c": [
+    "IND",
+    "PAK",
+    "BGD",
+    "LKA",
+    "MMR",
+    "MYS",
+    "BRN",
+    "SGP",
+    "SDN",
+    "SSD",
+    "KEN",
+    "UGA",
+    "TZA",
+    "ZMB",
+    "ZWE",
+    "MWI",
+    "BWA",
+    "NGA",
+    "GHA",
+    "SLE",
+    "GMB",
+    "PSE",
+    "ISR",
+    "JOR",
+    "CYP",
+    "MLT",
+    "JAM",
+    "TTO",
+    "GUY",
+    "BLZ",
+    "FJI",
+    "LSO",
+    "SWZ",
+    "BHR",
+    "KWT",
+    "QAT",
+    "ARE",
+    "OMN",
+    "BHS",
+    "BRB",
+    "ATG",
+    "DMA",
+    "GRD",
+    "KNA",
+    "LCA",
+    "VCT",
+    "TON",
+    "SLB",
+    "VUT",
+    "FLK",
+    "MUS",
+    "SYC",
+    "NPL",
+    "BTN",
+    "MDV"
+   ]
+  },
+  {
+   "to": "FRA",
+   "c": [
+    "DZA",
+    "MAR",
+    "TUN",
+    "SEN",
+    "MLI",
+    "MRT",
+    "NER",
+    "TCD",
+    "CIV",
+    "BFA",
+    "GIN",
+    "BEN",
+    "TGO",
+    "GAB",
+    "COG",
+    "CAF",
+    "CMR",
+    "MDG",
+    "DJI",
+    "VNM",
+    "LAO",
+    "KHM",
+    "SYR",
+    "LBN",
+    "NCL",
+    "COM"
+   ]
+  },
+  {
+   "to": "NLD",
+   "c": [
+    "IDN",
+    "SUR"
+   ]
+  },
+  {
+   "to": "BEL",
+   "c": [
+    "COD",
+    "RWA",
+    "BDI"
+   ]
+  },
+  {
+   "to": "PRT",
+   "c": [
+    "AGO",
+    "MOZ",
+    "GNB",
+    "CPV",
+    "STP",
+    "TLS"
+   ]
+  },
+  {
+   "to": "ESP",
+   "c": [
+    "GNQ",
+    "ESH"
+   ]
+  },
+  {
+   "to": "USA",
+   "c": [
+    "PHL",
+    "PRI"
+   ]
+  },
+  {
+   "to": "JPN",
+   "c": [
+    "KOR",
+    "PRK",
+    "TWN",
+    "FSM",
+    "MHL",
+    "PLW"
+   ]
+  },
+  {
+   "to": "AUS",
+   "c": [
+    "PNG",
+    "NRU"
+   ]
+  },
+  {
+   "to": "NZL",
+   "c": [
+    "WSM"
+   ]
+  },
+  {
+   "to": "MNC",
+   "regions": [
+    "CHN-02",
+    "CHN-05",
+    "CHN-11"
+   ]
+  },
+  {
+   "to": "CHN",
+   "regions": [
+    "CHN-09",
+    "CHN-10",
+    "CHN-06",
+    "CHN-14"
+   ],
+   "ctrl": "JPN"
+  }
+ ],
+ "alliances": [
+  [
+   "DEU",
+   "ITA"
+  ],
+  [
+   "GBR",
+   "FRA"
+  ],
+  [
+   "GBR",
+   "POL"
+  ],
+  [
+   "FRA",
+   "POL"
+  ],
+  [
+   "GBR",
+   "AUS"
+  ],
+  [
+   "GBR",
+   "CAN"
+  ],
+  [
+   "GBR",
+   "NZL"
+  ],
+  [
+   "GBR",
+   "ZAF"
+  ],
+  [
+   "JPN",
+   "MNC"
+  ]
+ ],
+ "pacts": [
+  [
+   "DEU",
+   "JPN"
+  ],
+  [
+   "ITA",
+   "JPN"
+  ]
+ ],
+ "relations": [
+  [
+   "DEU",
+   "POL",
+   -35
+  ],
+  [
+   "DEU",
+   "FRA",
+   -25
+  ],
+  [
+   "DEU",
+   "GBR",
+   -25
+  ],
+  [
+   "RUS",
+   "DEU",
+   -30
+  ],
+  [
+   "RUS",
+   "JPN",
+   -30
+  ],
+  [
+   "JPN",
+   "USA",
+   -20
+  ],
+  [
+   "ITA",
+   "FRA",
+   -20
+  ],
+  [
+   "JPN",
+   "GBR",
+   -15
+  ],
+  [
+   "JPN",
+   "CHN",
+   -60
+  ]
+ ],
+ "wars": [
+  {
+   "attackers": [
+    "JPN",
+    "MNC"
+   ],
+   "defenders": [
+    "CHN"
+   ],
+   "momentum": 10,
+   "ago": 540
+  }
+ ]
+}

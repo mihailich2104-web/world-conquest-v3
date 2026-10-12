@@ -21,6 +21,8 @@ def recruit(c: "Country", kind: str, n: int = 1) -> tuple[bool, str]:
     """Ставит в очередь обучение n единиц (army/navy/air)."""
     if kind not in _ATTR:
         return False, "Неизвестный тип юнита"
+    if kind in getattr(c, "locked", ()):
+        return False, "Этот род войск недоступен в выбранную эпоху"
     if len(c.training) + n > MAX_TRAINING:
         return False, f"Очередь обучения заполнена ({MAX_TRAINING})"
     cost = COSTS[kind]

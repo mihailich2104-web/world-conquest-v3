@@ -53,6 +53,10 @@ class Country:
     researching: list[list[Any]] = field(default_factory=list)    # [id технологии, прогресс]
     alive: bool = True
     modifiers: list[list[Any]] = field(default_factory=list)      # [ключ, дней осталось, значение] — эффекты событий
+    capital_region: str = ""         # регион-столица (id региона карты)
+    capital_pos: Optional[tuple[float, float]] = None             # (lon, lat) столицы; None — центр региона
+    econ_mult: float = 1.0           # доля экономики, не потерянная из-за оккупации (0..1)
+    locked: list[str] = field(default_factory=list)   # недоступные по эпохе ветки технологий/виды войск (tanks, air)
 
     # ---------- создание ----------
     @classmethod
@@ -83,6 +87,7 @@ class Country:
         for k in SET_FIELDS:
             d[k] = sorted(d[k])
         d["color"] = list(self.color)
+        d["capital_pos"] = list(self.capital_pos) if self.capital_pos else None
         return d
 
     @classmethod
@@ -92,6 +97,7 @@ class Country:
         for k in SET_FIELDS:
             d[k] = set(d.get(k, []))
         d["color"] = tuple(d["color"])
+        d["capital_pos"] = tuple(d["capital_pos"]) if d.get("capital_pos") else None
         known = {k: v for k, v in d.items() if k in cls.__dataclass_fields__}
         return cls(**known)
 

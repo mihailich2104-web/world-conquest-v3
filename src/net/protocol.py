@@ -7,7 +7,8 @@ import struct
 import zlib
 from typing import Any, Optional
 
-MAX_MSG = 32 * 1024 * 1024
+MAX_MSG = 32 * 1024 * 1024          # клиент принимает снимки хоста
+MAX_CLIENT_MSG = 64 * 1024          # хост принимает от клиента только короткие сообщения
 COMPRESS_OVER = 512
 
 
@@ -34,16 +35,19 @@ def _recv_exact(sock: socket.socket, n: int) -> bytes:
     return bytes(buf)
 
 
-def recv_msg(sock: socket.socket) -> dict[str, Any]:
+def recv_msg(sock: socket.socket, max_len: int = MAX_MSG) -> dict[str, Any]:
     """Читает одно сообщение (блокирующе). Бросает ConnectionError/ProtocolError."""
     (length,) = struct.unpack(">I", _recv_exact(sock, 4))
-    if length < 1 or length > MAX_MSG:
+    if length < 1 or length > max_len:
         raise ProtocolError(f"недопустимая длина сообщения: {length}")
     body = _recv_exact(sock, length)
     flag, data = body[0], body[1:]
     try:
         if flag == 1:
-            data = zlib.decompress(data)
+            d = zlib.decompressobj()
+            data = d.decompress(data, max_len)                 # защита от «бомбы» сжатия
+            if d.unconsumed_tail:
+                raise ProtocolError("распакованное сообщение слишком велико")
         obj = json.loads(data.decode("utf-8"))
     except (zlib.error, ValueError) as exc:
         raise ProtocolError(f"повреждённое сообщение: {exc}") from exc

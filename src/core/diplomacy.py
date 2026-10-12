@@ -178,22 +178,51 @@ def declare_war(state: "GameState", a_iso: str, b_iso: str) -> tuple[bool, str]:
 
 
 def ai_accepts_peace(state: "GameState", war: warmod.War, receiver: str) -> tuple[bool, str]:
-    """Решение получателя мирного предложения (ИИ)."""
+    """Решение получателя мирного предложения (ИИ) с понятной причиной: фронт, потери земли, казна, усталость."""
     s = war.score_for(receiver)
+    c = state.countries[receiver]
+    occ = warmod.occupied_share(state, war, receiver)
     if war.days < 5:
-        return False, "Слишком рано для мира"
+        return False, "Слишком рано для мира: война только началась"
     if s >= 40:
-        return False, "Противник уверен в победе и отказывается"
-    if s <= 15 or war.days >= 45:
-        return True, "Мир принят"
+        return False, "Противник уверен в победе: у него перевес на фронте"
+    tired = [t for t, ok in (("казна пуста", c.treasury <= 0), ("низкая стабильность", c.stability < 25),
+                             ("война затянулась", war.days >= 60), (f"занято {occ * 100:.0f}% земель", occ >= 0.35)) if ok]
+    if s <= 15:
+        return True, "Мир принят: положение на фронте не в пользу противника"
+    if war.days >= 45 or len(tired) >= 2:
+        return True, "Мир принят: " + (", ".join(tired) if tired else "война затянулась")
     return False, "Противник пока хочет продолжать войну"
 
 
-def propose_peace(state: "GameState", a_iso: str, b_iso: str) -> tuple[bool, str]:
-    """Предлагает мир: завершает войну между a и b (или выводит одного участника)."""
+def peace_preview(state: "GameState", a_iso: str, b_iso: str) -> dict:
+    """Что получится при мире сейчас: тип условий и сколько регионов получит/потеряет a_iso."""
+    w = warmod.find_war(state, a_iso, b_iso)
+    if w is None:
+        return {}
+    sc = w.score_for(a_iso)
+    kind = "annex" if sc >= warmod.ANNEX_SCORE else "cede" if sc <= -warmod.ANNEX_SCORE else "white"
+    gain = lose = 0
+    for rid, ctl in state.ctrl.items():
+        own = state.owner[rid]
+        so, sc2 = w.side_of(own), w.side_of(ctl)
+        if not so or not sc2 or so == sc2:
+            continue
+        if kind == "annex" and sc2 == w.side_of(a_iso) and so != sc2:
+            gain += 1
+        if kind == "cede" and sc2 != w.side_of(a_iso) and so == w.side_of(a_iso):
+            lose += 1
+    return {"kind": kind, "gain": gain, "lose": lose, "score": sc, "days": w.days,
+            "captured": len(w.captured)}
+
+
+def propose_peace(state: "GameState", a_iso: str, b_iso: str, mode: str = "auto") -> tuple[bool, str]:
+    """Предлагает мир: auto — условия по счёту войны, white — вернуть всё, annex — оставить занятое (нужен перевес)."""
     w = warmod.find_war(state, a_iso, b_iso)
     if w is None:
         return False, "Вы не воюете с этой страной"
+    if mode == "annex" and w.score_for(a_iso) < warmod.ANNEX_SCORE:
+        return False, f"Для аннексии нужен перевес не меньше {warmod.ANNEX_SCORE:.0f} (сейчас {w.score_for(a_iso):+.0f})"
     ok, why = ai_accepts_peace(state, w, b_iso)
     if not ok:
         return False, why
@@ -201,8 +230,13 @@ def propose_peace(state: "GameState", a_iso: str, b_iso: str) -> tuple[bool, str
         gain = state.countries[b_iso].treasury * 0.3 if w.score_for(a_iso) >= 50 else 0.0
         state.countries[b_iso].treasury -= gain
         state.countries[a_iso].treasury += gain
-        warmod.end_war(state, w, "мирный договор")
-        return True, "Мирный договор подписан" + (f"; контрибуция {gain:.0f}" if gain else "")
+        prev = preview = peace_preview(state, a_iso, b_iso)
+        warmod.end_war(state, w, "мирный договор", force_white=(mode == "white"))
+        tail = ""
+        if mode != "white" and prev:
+            tail = (f"; получено регионов: {preview['gain']}" if preview["gain"] else
+                    f"; передано регионов: {preview['lose']}" if preview["lose"] else "")
+        return True, "Мирный договор подписан" + (f"; контрибуция {gain:.0f}" if gain else "") + tail
     # участник второго плана просто выходит из войны
     for lst in (w.attackers, w.defenders):
         if a_iso in lst and len(lst) > 1:

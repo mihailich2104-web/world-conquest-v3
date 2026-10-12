@@ -7,7 +7,9 @@ import math
 from pathlib import Path
 from typing import Any, Iterator, Optional
 
-from config import CAPITALS_PATH, NON_PLAYABLE, PROVINCES_PATH
+from config import CAPITALS_PATH, DATA_DIR, NON_PLAYABLE, PROVINCES_PATH
+from core.geo import Geo
+from .borders import build_arcs
 from .province import Province, Ring
 
 log = logging.getLogger(__name__)
@@ -84,6 +86,31 @@ def load_provinces(path: Path = PROVINCES_PATH, known: Optional[set[str]] = None
     return out
 
 
+REGIONS_PATH = DATA_DIR / "regions.json"
+
+
+def load_regions(path: Path = REGIONS_PATH, known: Optional[set[str]] = None) -> list[Province]:
+    """Регионы (игровые провинции) из regions.json — их создаёт tools/make_regions.py."""
+    data = json.loads(path.read_text(encoding="utf-8"))
+    caps = load_capitals()
+    out: list[Province] = []
+    for r in data["regions"]:
+        if known and r["c"] not in known:
+            continue
+        rings = [[(float(x), float(y)) for x, y in ring] for ring in r["poly"] if len(ring) >= 4]
+        if not rings:
+            continue
+        holes = [[(float(x), float(y)) for x, y in ring] for ring in r.get("holes", ()) if len(ring) >= 4]
+        p = Province(str(r["id"]), str(r["name"]), "", rings, holes=holes, country=str(r["c"]))
+        p.center = (float(r["seed"][0]), float(r["seed"][1]))
+        p.is_capital = bool(r.get("cap"))
+        p.finalize()
+        if p.is_capital:
+            p.capital = caps.get(p.country)
+        out.append(p)
+    return out
+
+
 def build_adjacency(provs: list[Province]) -> dict[str, list[str]]:
     """Соседи = провинции, чьи вершины лежат в соседних ячейках сетки (общая граница или узкий пролив)."""
     own: dict[str, set[tuple[int, int]]] = {}
@@ -121,14 +148,32 @@ def build_fallback(countries: list[dict[str, Any]]) -> list[Province]:
     return out
 
 
+def load_world_geo(countries: list[dict[str, Any]]) -> tuple[list[Province], Geo, bool]:
+    """Возвращает (регионы, география, is_fallback). Регионы берутся из regions.json, иначе страны целиком."""
+    known = {c["iso"] for c in countries}
+    fallback = False
+    provs: list[Province] = []
+    if REGIONS_PATH.exists():
+        try:
+            provs = load_regions(known=known)
+        except (OSError, ValueError, KeyError, TypeError, IndexError):
+            log.exception("regions.json повреждён — используются страны целиком")
+    if not provs:
+        try:
+            provs = load_provinces(known=known)
+            if not provs:
+                raise ValueError("пустая карта")
+        except (OSError, ValueError, KeyError):
+            log.exception("Не удалось загрузить карту")
+            provs, fallback = build_fallback(countries), True
+    coastal = {a.iso for a in build_arcs(provs) if a.nb is None}
+    geo = Geo.build(provs, build_adjacency(provs), coastal)
+    if coastal:
+        geo.sea_links(next(iter(coastal)))                  # граф морских связей строится сразу, а не рывком посреди партии
+    return provs, geo, fallback
+
+
 def load_world(countries: list[dict[str, Any]]) -> tuple[list[Province], dict[str, list[str]], bool]:
-    """Возвращает (провинции, смежность, is_fallback)."""
-    try:
-        provs = load_provinces(known={c["iso"] for c in countries})
-        if not provs:
-            raise ValueError("пустая карта")
-        fallback = False
-    except (OSError, ValueError, KeyError):
-        log.exception("Не удалось загрузить карту")
-        provs, fallback = build_fallback(countries), True
-    return provs, build_adjacency(provs), fallback
+    """Возвращает (провинции, смежность, is_fallback) — прежний интерфейс."""
+    provs, geo, fb = load_world_geo(countries)
+    return provs, geo.adj, fb

@@ -15,7 +15,7 @@ from . import UIContext, get_font
 
 log = logging.getLogger(__name__)
 MONTHS = ("янв", "фев", "мар", "апр", "мая", "июн", "июл", "авг", "сен", "окт", "ноя", "дек")
-HUD_KEYS = ("btn_country", "btn_diplomacy", "btn_research", "btn_military", "btn_map", "btn_save", "btn_menu",
+HUD_KEYS = ("btn_country", "btn_diplomacy", "btn_research", "btn_military", "btn_armies", "btn_progress", "btn_map", "btn_save", "btn_menu",
             "btn_next_turn", "btn_pause")
 
 
@@ -52,6 +52,7 @@ class HUD:
         # --- левая панель ---
         spec = [("Страна", "panel:country", "btn_country"), ("Дипломатия", "panel:diplomacy", "btn_diplomacy"),
                 ("Исследования", "panel:research", "btn_research"), ("Армия", "panel:military", "btn_military"),
+                ("Войска", "panel:armies", "btn_armies"), ("Прогресс", "panel:progress", "btn_progress"),
                 None,
                 ("Режим карты", "map_mode", "btn_map"), ("Сохранить", "save", "btn_save"),
                 ("+1 день", "next_turn", "btn_next_turn"), None, ("Меню", "menu", "btn_menu")]
@@ -62,10 +63,10 @@ class HUD:
                 y += 14
                 continue
             text, action, key = item
-            b = UIButton(pygame.Rect(4, y, bw, 38), text, m, self.left)
+            b = UIButton(pygame.Rect(4, y, bw, 36), text, m, self.left)
             self.buttons[b] = action
             ctx.reg[key] = b
-            y += 44
+            y += 41
         self.btn_next = ctx.reg["btn_next_turn"]
         self.btn_save = ctx.reg["btn_save"]
 

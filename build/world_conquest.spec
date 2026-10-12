@@ -13,7 +13,8 @@ icon = ROOT / "assets" / "icons" / "game.ico"
 bundle_geo = os.environ.get("WC_BUNDLE_GEOPANDAS") == "1"
 
 hidden = ["pygame", "pygame_gui", "core", "map", "ui", "tutorial", "net", "core.session", "core.events",
-          "core.clock", "core.commands", "net.host", "net.client", "net.discovery", "net.protocol"] \
+          "core.clock", "core.commands", "net.host", "net.client", "net.discovery", "net.protocol", "net.sync", "core.armies", "core.ai_war", "core.scenarios", "core.stats", "core.geo",
+          "core.terrain", "map.geom", "ui.armies_panel", "ui.progress_panel", "ui.join_picker"] \
     + collect_submodules("pygame_gui")
 excludes = ["tkinter", "matplotlib", "scipy", "IPython"]
 datas = [(str(ROOT / "src" / "data"), "src/data"), (str(ROOT / "assets"), "assets")] \

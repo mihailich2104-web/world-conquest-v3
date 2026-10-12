@@ -34,6 +34,15 @@ jobs:
       - name: Карта мира (Natural Earth 50m; при ошибке — запасная 110m из проекта)
         run: python tools/prepare_map.py --force
       - run: python tools/gen_countries.py
+      - name: Регионы (провинции) из карты — центры зафиксированы в region_seeds.json
+        run: python tools/make_regions.py
+      - run: python tools/build_scenarios.py
+      - run: python tools/check_names.py
+      - run: pip install pillow
+      - run: python tests/test_geom.py
+      - run: python tests/test_render.py
+      - run: python tests/test_armies.py
+      - run: python tests/test_scenarios.py
       - run: python tests/test_core.py
       - run: python tests/test_tutorial.py
       - run: python tests/test_features.py
@@ -54,15 +63,3 @@ jobs:
         with:
           name: world-data
           path: src/data/provinces.geojson
-
-      - name: Установщик (Inno Setup)
-        if: runner.os == 'Windows'
-        run: |
-          choco install innosetup -y --no-progress
-          & "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" installer.iss
-      - name: Загрузка установщика
-        if: runner.os == 'Windows'
-        uses: actions/upload-artifact@v4
-        with:
-          name: WorldConquest-Setup
-          path: installer/WorldConquest-Setup.exe

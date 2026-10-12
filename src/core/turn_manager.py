@@ -5,11 +5,10 @@ import logging
 import math
 from typing import TYPE_CHECKING
 
-from config import AUTOSAVE_EVERY_DAYS, SETTINGS
+from config import AI_ARMY_BUDGET, AUTOSAVE_EVERY_DAYS, SETTINGS
 from datetime import timedelta
-from . import diplomacy, events, military, research
+from . import ai_war, armies, diplomacy, events, military, research, stats, war as warmod
 from .game_state import GameState, save_game
-from .war import resolve_day
 
 if TYPE_CHECKING:
     from .country import Country
@@ -27,6 +26,7 @@ class AIController:
 
     def __init__(self, state: GameState) -> None:
         self.s = state
+        self.budget = [AI_ARMY_BUDGET]      # остаток приказов армиям на текущий день (общий для всех ИИ)
 
     def act(self, c: "Country") -> None:
         """Решения одной страны на один день."""
@@ -40,6 +40,8 @@ class AIController:
         if rng.random() < 0.08:
             self._react(c)
         self._war(c)
+        if self.budget[0] > 0 and ai_war.due(self.s, c):
+            ai_war.plan(self.s, c, self.budget)
 
     def _economy(self, c: "Country") -> None:
         """Исследования, найм и строительство."""
@@ -114,7 +116,8 @@ class AIController:
         if c.at_war_with:
             if rng.random() < 0.1:
                 for w in list(s.wars):
-                    if w.side_of(c.iso) and (w.score_for(c.iso) <= -30 or w.days > 80):
+                    if w.side_of(c.iso) and (w.score_for(c.iso) <= -30 or w.days > 80
+                                             or warmod.occupied_share(s, w, c.iso) >= 0.35):
                         enemy = w.enemy_main(c.iso)
                         if s.is_human(enemy):
                             if w.score_for(c.iso) <= -30:
@@ -163,13 +166,20 @@ class TurnManager:
             for m in research.research_tick(c):
                 if s.is_human(c.iso):
                     s.log_event(m, c.iso, True)
-        for w in list(s.wars):                            # бои
+        armies.reconcile(s)                               # новые дивизии — в столицу, внешние потери — из армий
+        armies.tick(s)                                    # движение, бои, оккупация, снабжение
+        for w in list(s.wars):                            # счёт войн, капитуляции
             if w in s.wars:
-                resolve_day(s, w)
+                warmod.daily_update(s, w)
+        stats.econ_update(s)
         events.tick_events(s)                             # случайные события
+        self.ai.budget[0] = AI_ARMY_BUDGET
         for c in s.alive_countries():                     # ИИ
             if not s.is_human(c.iso):
                 self.ai.act(c)
+        stats.warnings(s)
+        if s.date.day == 1:
+            stats.record(s)
         diplomacy.expire_offers(s)
         s.check_victory()
         if SETTINGS.autosave and s.player_iso and s.date.toordinal() % AUTOSAVE_EVERY_DAYS == 0:

@@ -52,10 +52,11 @@ EVENT_LOG_LIMIT: int = 300
 # Игровое время: секунд реального времени на один игровой день при скорости 1X
 DAY_SECONDS: float = 1.0
 SPEEDS: tuple[int, ...] = (1, 2, 4, 8, 16)
+AI_ARMY_BUDGET: int = 6        # макс. приказов армиям от всех ИИ за игровой день (держит кадр плавным)
 MAX_DAYS_PER_FRAME: int = 4
 
 # LAN-мультиплеер
-NET_VERSION: int = 1
+NET_VERSION: int = 2
 NET_DEFAULT_PORT: int = 47800
 NET_DISCOVERY_PORT: int = 47801
 NET_SNAPSHOT_INTERVAL: float = 0.5
@@ -101,6 +102,12 @@ class Settings:
     map_mode: str = "political"  # political | ideology
     autosave: bool = True
     player_name: str = "Игрок"
+    difficulty: str = "normal"   # easy | normal | hard — качество решений ИИ (без бонусов к ресурсам)
+    ai_activity: int = 1         # 0 — пассивный, 1 — обычный, 2 — активный ИИ
+    default_speed: int = 1       # индекс скорости игры по умолчанию (0..4)
+    last_scenario: str = "modern"
+    last_token: str = ""         # токен возвращения в LAN-партию (хранится для последнего сервера)
+    last_token_host: str = ""    # ip:port сервера, которому принадлежит токен
     last_ip: str = ""
     last_port: int = 47800
 
