@@ -14,7 +14,10 @@ case "${1:-build}" in
     gh workflow run build.yml || true
     sleep 5
     gh run watch "$(gh run list --workflow build.yml --limit 1 --json databaseId -q '.[0].databaseId')"
-    gh run download "$(gh run list --workflow build.yml --limit 1 --json databaseId -q '.[0].databaseId')" -D dist_from_ci
+    RID="$(gh run list --workflow build.yml --limit 1 --json databaseId -q '.[0].databaseId')"
+    gh run view "$RID" --log-failed 2>/dev/null | grep -v "^$" | tail -60 || true
+    rm -rf dist_from_ci
+    gh run download "$RID" -D dist_from_ci
     echo "✅ Артефакты в dist_from_ci/"
     ;;
   play)
