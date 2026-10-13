@@ -57,6 +57,23 @@ jobs:
         with:
           name: ${{ matrix.name }}
           path: ${{ matrix.path }}
+      - name: Установщик (Windows, Inno Setup)
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          $env:WC_ONEDIR = "1"
+          python -m PyInstaller build/world_conquest.spec --clean --noconfirm
+          if (-not (Test-Path dist/WorldConquest/WorldConquest.exe)) { throw "onedir не собран" }
+          $iscc = "${env:ProgramFiles(x86)}\Inno Setup 6\ISCC.exe"
+          if (-not (Test-Path $iscc)) { choco install innosetup -y --no-progress; $iscc = "${env:ProgramFiles(x86)}\Inno Setup 6\ISCC.exe" }
+          & $iscc installer.iss
+          if (-not (Test-Path installer/WorldConquest-Setup.exe)) { throw "установщик не собран" }
+      - name: Артефакт установщика
+        if: runner.os == 'Windows'
+        uses: actions/upload-artifact@v4
+        with:
+          name: WorldConquest-Setup
+          path: installer/WorldConquest-Setup.exe
       - name: Карта мира как артефакт (для Termux/других сборок)
         if: runner.os == 'Linux'
         uses: actions/upload-artifact@v4

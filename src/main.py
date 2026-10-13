@@ -1084,9 +1084,29 @@ class App:
         pygame.quit()
 
 
+def _check_data() -> None:
+    """Проверяет наличие обязательных данных; при отсутствии — понятное сообщение вместо падения."""
+    from config import DATA_DIR
+    missing = []
+    if not (DATA_DIR / "countries.json").exists():
+        missing.append("countries.json")
+    if not (DATA_DIR / "regions.json").exists() and not (DATA_DIR / "provinces.geojson").exists():
+        missing.append("regions.json / provinces.geojson")
+    if missing:
+        msg = f"Не найдены данные игры: {', '.join(missing)}\nПапка: {DATA_DIR}\nПереустановите игру."
+        log.error(msg)
+        try:
+            import ctypes
+            ctypes.windll.user32.MessageBoxW(0, msg, "World Conquest", 0x10)  # type: ignore[attr-defined]
+        except Exception:
+            print(msg, file=sys.stderr)
+        raise SystemExit(2)
+
+
 def main() -> None:
     """Запуск приложения."""
     setup_logging()
+    _check_data()
     try:
         App().run()
     except Exception:

@@ -135,8 +135,10 @@ def build_adjacency(provs: list[Province]) -> dict[str, list[str]]:
 
 def build_fallback(countries: list[dict[str, Any]]) -> list[Province]:
     """Запасная карта-сетка: используется, если provinces.geojson не создан."""
+    if not countries:
+        countries = [{"iso": "XXX", "name": "Нет данных", "continent": ""}]
     cols = 16
-    rows = math.ceil(len(countries) / cols)
+    rows = max(1, math.ceil(len(countries) / cols))
     w, h = 360.0 / cols, 140.0 / rows
     out = []
     for i, c in enumerate(countries):
@@ -163,7 +165,7 @@ def load_world_geo(countries: list[dict[str, Any]]) -> tuple[list[Province], Geo
             provs = load_provinces(known=known)
             if not provs:
                 raise ValueError("пустая карта")
-        except (OSError, ValueError, KeyError):
+        except (OSError, ValueError, KeyError, TypeError, IndexError):
             log.exception("Не удалось загрузить карту")
             provs, fallback = build_fallback(countries), True
     coastal = {a.iso for a in build_arcs(provs) if a.nb is None}

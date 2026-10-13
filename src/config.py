@@ -9,12 +9,23 @@ from pathlib import Path
 
 log = logging.getLogger(__name__)
 
-# Корень ресурсов: в PyInstaller — sys._MEIPASS, иначе корень репозитория
-if getattr(sys, "frozen", False):
-    ROOT: Path = Path(sys._MEIPASS)  # type: ignore[attr-defined]
-else:
-    ROOT = Path(__file__).resolve().parent.parent
+def _find_root() -> Path:
+    """Корень ресурсов: ищем каталог, где реально лежит src/data/countries.json (exe, _MEIPASS, рядом, cwd)."""
+    cands: list[Path] = []
+    if getattr(sys, "frozen", False):
+        meipass = getattr(sys, "_MEIPASS", None)
+        if meipass:
+            cands.append(Path(meipass))
+        exe_dir = Path(sys.executable).resolve().parent
+        cands += [exe_dir, exe_dir / "_internal"]
+    cands += [Path(__file__).resolve().parent.parent, Path.cwd()]
+    for c in cands:
+        if (c / "src" / "data" / "countries.json").exists():
+            return c
+    return cands[0]
 
+
+ROOT: Path = _find_root()
 DATA_DIR: Path = ROOT / "src" / "data"
 ASSETS_DIR: Path = ROOT / "assets"
 FONT_PATH: Path = ASSETS_DIR / "fonts" / "DejaVuSans.ttf"

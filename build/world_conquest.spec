@@ -12,6 +12,12 @@ ROOT = Path(SPECPATH).parent
 icon = ROOT / "assets" / "icons" / "game.ico"
 bundle_geo = os.environ.get("WC_BUNDLE_GEOPANDAS") == "1"
 
+# Без этих файлов exe собирается «пустым» и падает при запуске — прерываем сборку сразу
+for _req in ("countries.json", "regions.json", "provinces.geojson", "capitals.json", "technologies.json"):
+    if not (ROOT / "src" / "data" / _req).exists():
+        raise SystemExit(f"[spec] нет src/data/{_req} — сначала запустите tools/prepare_map.py, gen_countries.py, make_regions.py")
+onedir = os.environ.get("WC_ONEDIR") == "1"      # для установщика: папка вместо одного exe (быстрее старт)
+
 hidden = ["pygame", "pygame_gui", "core", "map", "ui", "tutorial", "net", "core.session", "core.events",
           "core.clock", "core.commands", "net.host", "net.client", "net.discovery", "net.protocol", "net.sync", "core.armies", "core.ai_war", "core.scenarios", "core.stats", "core.geo",
           "core.terrain", "map.geom", "ui.armies_panel", "ui.progress_panel", "ui.join_picker"] \
@@ -34,8 +40,11 @@ a = Analysis(
 )
 pyz = PYZ(a.pure)
 exe = EXE(
-    pyz, a.scripts, a.binaries, a.datas, [],
+    pyz, a.scripts, [] if onedir else a.binaries, [] if onedir else a.datas, [],
+    exclude_binaries=onedir,
     name="WorldConquest",
     console=False,          # windowed
     icon=str(icon) if icon.exists() else None,
 )
+if onedir:
+    coll = COLLECT(exe, a.binaries, a.datas, name="WorldConquest")
