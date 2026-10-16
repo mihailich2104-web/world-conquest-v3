@@ -30,7 +30,14 @@ jobs:
         if: runner.os == 'Linux'
         run: sudo apt-get update && sudo apt-get install -y libsdl2-2.0-0 libsdl2-image-2.0-0 libsdl2-ttf-2.0-0
       - run: python -m pip install --upgrade pip
-      - run: pip install -r requirements.txt
+      - name: Зависимости (только pygame-ce, без обычного pygame)
+        shell: bash
+        run: |
+          pip uninstall -y pygame || true
+          pip install -r requirements.txt
+          pip uninstall -y pygame || true
+          pip install --force-reinstall --no-deps pygame-ce==2.5.2
+          python -c "import pygame, pygame_gui; from pygame import DIRECTION_LTR; print('pygame', pygame.version.ver, pygame.IS_CE)"
       - name: Карта мира (Natural Earth 50m; при ошибке — запасная 110m из проекта)
         run: python tools/prepare_map.py --force
       - run: python tools/gen_countries.py

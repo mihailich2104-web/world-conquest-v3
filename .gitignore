@@ -1,7 +1,8 @@
-__pycache__/
+*.egg-info/
+*.log
 *.pyc
+.venv/
+__pycache__/
 build/*/
 dist/
 dist_from_ci/
-*.egg-info/
-.venv/

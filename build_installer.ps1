@@ -6,6 +6,9 @@ Set-Location $PSScriptRoot
 python -m pip install --upgrade pip
 python -m pip uninstall -y pygame 2>$null
 python -m pip install -r requirements.txt pillow
+python -m pip uninstall -y pygame 2>$null
+python -m pip install --force-reinstall --no-deps pygame-ce==2.5.2
+python -c "from pygame import DIRECTION_LTR; import pygame_gui"
 
 if (-not (Test-Path src\data\provinces.geojson)) { python tools\prepare_map.py }
 if (-not (Test-Path src\data\countries.json))    { python tools\gen_countries.py }

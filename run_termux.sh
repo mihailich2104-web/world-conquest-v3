@@ -9,6 +9,8 @@ pkg install -y python git gh
 case "${1:-build}" in
   build)
     gh auth status >/dev/null 2>&1 || gh auth login
+    echo -e "dist_from_ci/\n*.log" >> .gitignore; sort -u .gitignore -o .gitignore
+    git rm -r -q --cached dist_from_ci build.log build_failed.log 2>/dev/null || true
     git add -A && git commit -m "update" || true
     git push
     gh workflow run build.yml || true
